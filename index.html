@@ -235,15 +235,19 @@
         // (geralmente envolve JavaScript para manipular elementos na página
         // e talvez armazenar informações no localStorage)
     </script>
-window.onload = function() {
-    var audio = document.querySelector('.audio-player audio');
-    if (audio) {
-        audio.play().catch(function(error) {
-            console.error("Erro ao tentar reproduzir áudio automaticamente:", error);
-        });
-    }
-};
+<body>
+    <script>
+        window.onload = function() {
+            var audio = document.querySelector('.audio-player audio');
+            if (audio) {
+                audio.play().catch(function(error) {
+                    console.error("Erro ao tentar reproduzir áudio automaticamente:", error);
+                });
+            }
+        };
+    </script>
 
 </body>
+
 
 </html>
