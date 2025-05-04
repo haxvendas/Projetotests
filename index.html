@@ -37,6 +37,54 @@
             margin-top: 10px;
             font-size: 18px;
         }
+        .products-container {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .product-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .product-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .product-price {
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+        .product-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .add-to-cart-btn, .buy-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .add-to-cart-btn:hover, .buy-btn:hover {
+            background-color: #0056b3;
+        }
         .whatsapp-btn {
             position: fixed;
             bottom: 80px;
@@ -68,6 +116,78 @@
     <div class="title">HAX VENDAS</div>
     <div class="subtitle">Loja de diamantes baratos</div>
 
+    <div class="products-container">
+        <div class="product-card">
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+            <h3 class="product-title">200 diamantes</h3>
+            <p class="product-price">R$ 10</p>
+            <div class="product-buttons">
+                <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 10')">Comprar</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+            <h3 class="product-title">620 diamantes</h3>
+            <p class="product-price">R$ 23</p>
+            <div class="product-buttons">
+                <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 23')">Comprar</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+            <h3 class="product-title">1040 diamantes</h3>
+            <p class="product-price">R$ 40</p>
+            <div class="product-buttons">
+                <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 40')">Comprar</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+            <h3 class="product-title">2120 diamantes</h3>
+            <p class="product-price">R$ 75</p>
+            <div class="product-buttons">
+                <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 75')">Comprar</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+            <h3 class="product-title">4360 diamantes</h3>
+            <p class="product-price">R$ 150</p>
+            <div class="product-buttons">
+                <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 150')">Comprar</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+            <h3 class="product-title">11.200 diamantes</h3>
+            <p class="product-price">R$ 350</p>
+            <div class="product-buttons">
+                <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 350')">Comprar</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+            <h3 class="product-title">22.400 diamantes</h3>
+            <p class="product-price">R$ 685</p>
+            <div class="product-buttons">
+                <button class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 685')">Comprar</button>
+            </div>
+        </div>
+    </div>
+
     <div class="audio-player">
         <audio controls autoplay loop>
             <source src="skyfall.mp3" type="audio/mpeg">
@@ -80,5 +200,18 @@
     </a>
 
     <footer>Feito por Hax Vendas</footer>
+
+    <script>
+        function enviarWhatsApp(produto) {
+            const numeroWhatsApp = "5591991912912";
+            const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+            const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            window.open(linkWhatsApp, '_blank');
+        }
+
+        // Aqui você pode adicionar a lógica para o carrinho de compras
+        // (geralmente envolve JavaScript para manipular elementos na página
+        // e talvez armazenar informações no localStorage)
+    </script>
 </body>
 </html>
