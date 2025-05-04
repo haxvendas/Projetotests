@@ -45,81 +45,80 @@
         gap: 10px; /* Reduzi ainda mais o gap */
     }
     .product-card {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 128, 0, 0.3); /* Verde semi-transparente (RGBA: R=0, G=128, B=0, A=0.3) */
         border-radius: 6px;
-        padding: 10px; /* Reduzi ainda mais o padding */
-        width: 160px; /* Defini uma largura menor para os cards */
+        padding: 10px; /* Mantenho o padding */
+        width: 160px; /* Mantenho a largura */
         text-align: center;
         display: flex; /* Para alinhar os elementos internos verticalmente */
         flex-direction: column;
         align-items: center; /* Centraliza os itens dentro do card */
     }
     .product-image {
-        max-width: 60%; /* Reduzi ainda mais a largura máxima da imagem */
+        max-width: 60%; /* Mantenho a largura máxima da imagem */
         height: auto;
         border-radius: 3px;
-        margin-bottom: 5px; /* Reduzi a margem inferior */
-        max-height: 80px; /* Reduzi ainda mais a altura máxima */
+        margin-bottom: 5px; /* Mantenho a margem inferior */
+        max-height: 80px; /* Mantenho a altura máxima */
         object-fit: contain;
     }
     .product-title {
-        font-size: 14px; /* Reduzi ainda mais a fonte */
+        font-size: 14px; /* Mantenho a fonte */
         font-weight: bold;
-        margin-bottom: 3px; /* Reduzi a margem inferior */
+        margin-bottom: 3px; /* Mantenho a margem inferior */
     }
     .product-price {
-        font-size: 12px; /* Reduzi ainda mais a fonte */
+        font-size: 12px; /* Mantenho a fonte */
         color: #ddd;
-        margin-bottom: 5px; /* Reduzi a margem inferior */
+        margin-bottom: 10px; /* Aumento um pouco a margem para separar do botão */
     }
     .product-buttons {
         display: flex;
-        flex-direction: column; /* Organizar os botões verticalmente em espaços menores */
-        gap: 5px;
-        width: 100%; /* Os botões ocupam a largura total do card */
+        justify-content: center; /* Centraliza o botão "Comprar" */
+        width: 100%; /* O botão ocupa a largura total do card */
     }
-    .add-to-cart-btn, .buy-btn {
-        background-color: #007bff;
+    .buy-btn {
+        background-color: #25D366; /* Usei um tom de verde mais vibrante para o botão comprar */
         color: white;
         border: none;
-        padding: 5px 8px; /* Reduzi ainda mais o padding dos botões */
+        padding: 5px 8px; /* Mantenho o padding */
         border-radius: 3px;
         cursor: pointer;
-        font-size: 12px; /* Reduzi ainda mais a fonte dos botões */
+        font-size: 12px; /* Mantenho a fonte */
         transition: background-color 0.3s ease;
-        width: 100%; /* Botões com largura total */
+        width: 100%; /* Botão com largura total */
     }
-    .add-to-cart-btn:hover, .buy-btn:hover {
-        background-color: #0056b3;
+    .buy-btn:hover {
+        background-color: #128C7E; /* Tom mais escuro no hover */
     }
     .whatsapp-btn {
         position: fixed;
-        bottom: 60px; /* Ajustei a posição */
-        right: 15px; /* Ajustei a posição */
+        bottom: 60px; /* Mantenho a posição */
+        right: 15px; /* Mantenho a posição */
         background-color: #25D366;
         border-radius: 50%;
-        padding: 10px; /* Reduzi o padding */
+        padding: 10px; /* Mantenho o padding */
     }
     .whatsapp-btn img {
-        width: 30px; /* Reduzi o tamanho da imagem */
+        width: 30px; /* Mantenho o tamanho da imagem */
     }
     footer {
         position: fixed;
-        bottom: 5px; /* Ajustei a posição */
+        bottom: 5px; /* Mantenho a posição */
         width: 100%;
-        font-size: 10px; /* Reduzi a fonte */
+        font-size: 10px; /* Mantenho a fonte */
         color: #ccc;
     }
     .audio-player {
         position: fixed;
-        bottom: 30px; /* Ajustei a posição */
+        bottom: 30px; /* Mantenho a posição */
         left: 50%;
         transform: translateX(-50%);
-        width: 80%; /* Reduzi a largura do player */
+        width: 80%; /* Mantenho a largura do player */
     }
     .audio-player audio {
         width: 100%;
-        max-height: 30px; /* Tenta limitar a altura do player */
+        max-height: 30px; /* Mantenho a altura do player */
     }
 
     /* Estilos responsivos para telas menores */
@@ -129,6 +128,7 @@
         }
     }
 </style>
+
 
 
 </head>
