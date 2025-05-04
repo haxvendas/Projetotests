@@ -22,108 +22,114 @@
         position: relative;
     }
     .logo {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
-        margin-top: 20px;
-        border: 4px solid white;
+        margin-top: 15px;
+        border: 3px solid white;
     }
     .title {
-        margin-top: 20px;
-        font-size: 32px;
+        margin-top: 15px;
+        font-size: 24px;
         font-weight: bold;
     }
     .subtitle {
-        margin-top: 10px;
-        font-size: 18px;
+        margin-top: 8px;
+        font-size: 16px;
     }
     .products-container {
-        margin-top: 20px; /* Reduzi a margem superior */
+        margin-top: 15px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px; /* Reduzi um pouco o gap */
+        justify-content: center; /* Mantém os itens centralizados */
+        gap: 10px; /* Reduzi ainda mais o gap */
     }
     .product-card {
         background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        padding: 15px; /* Reduzi um pouco o padding */
-        width: 280px; /* Ajustei a largura */
+        border-radius: 6px;
+        padding: 10px; /* Reduzi ainda mais o padding */
+        width: 160px; /* Defini uma largura menor para os cards */
         text-align: center;
+        display: flex; /* Para alinhar os elementos internos verticalmente */
+        flex-direction: column;
+        align-items: center; /* Centraliza os itens dentro do card */
     }
     .product-image {
-        max-width: 80%; /* Reduzi a largura máxima da imagem */
+        max-width: 60%; /* Reduzi ainda mais a largura máxima da imagem */
         height: auto;
-        border-radius: 4px;
-        margin-bottom: 10px;
-        max-height: 150px; /* Adicionei uma altura máxima para a imagem */
-        object-fit: contain; /* Garante que a imagem caiba dentro do container */
+        border-radius: 3px;
+        margin-bottom: 5px; /* Reduzi a margem inferior */
+        max-height: 80px; /* Reduzi ainda mais a altura máxima */
+        object-fit: contain;
     }
     .product-title {
-        font-size: 18px; /* Reduzi um pouco a fonte */
+        font-size: 14px; /* Reduzi ainda mais a fonte */
         font-weight: bold;
-        margin-bottom: 5px;
+        margin-bottom: 3px; /* Reduzi a margem inferior */
     }
     .product-price {
-        font-size: 14px; /* Reduzi um pouco a fonte */
+        font-size: 12px; /* Reduzi ainda mais a fonte */
         color: #ddd;
-        margin-bottom: 10px;
+        margin-bottom: 5px; /* Reduzi a margem inferior */
     }
     .product-buttons {
         display: flex;
-        gap: 5px; /* Reduzi o gap entre os botões */
-        justify-content: center;
+        flex-direction: column; /* Organizar os botões verticalmente em espaços menores */
+        gap: 5px;
+        width: 100%; /* Os botões ocupam a largura total do card */
     }
     .add-to-cart-btn, .buy-btn {
         background-color: #007bff;
         color: white;
         border: none;
-        padding: 8px 15px; /* Reduzi o padding dos botões */
-        border-radius: 5px;
+        padding: 5px 8px; /* Reduzi ainda mais o padding dos botões */
+        border-radius: 3px;
         cursor: pointer;
-        font-size: 14px; /* Reduzi a fonte dos botões */
+        font-size: 12px; /* Reduzi ainda mais a fonte dos botões */
         transition: background-color 0.3s ease;
+        width: 100%; /* Botões com largura total */
     }
     .add-to-cart-btn:hover, .buy-btn:hover {
         background-color: #0056b3;
     }
     .whatsapp-btn {
         position: fixed;
-        bottom: 80px;
-        right: 20px;
+        bottom: 60px; /* Ajustei a posição */
+        right: 15px; /* Ajustei a posição */
         background-color: #25D366;
         border-radius: 50%;
-        padding: 15px;
+        padding: 10px; /* Reduzi o padding */
     }
     .whatsapp-btn img {
-        width: 40px;
+        width: 30px; /* Reduzi o tamanho da imagem */
     }
     footer {
         position: fixed;
-        bottom: 10px;
+        bottom: 5px; /* Ajustei a posição */
         width: 100%;
-        font-size: 14px;
+        font-size: 10px; /* Reduzi a fonte */
         color: #ccc;
     }
     .audio-player {
         position: fixed;
-        bottom: 50px;
+        bottom: 30px; /* Ajustei a posição */
         left: 50%;
         transform: translateX(-50%);
+        width: 80%; /* Reduzi a largura do player */
+    }
+    .audio-player audio {
+        width: 100%;
+        max-height: 30px; /* Tenta limitar a altura do player */
     }
 
-    /* Estilos responsivos (opcional, mas recomendado) */
-    @media (max-width: 600px) {
+    /* Estilos responsivos para telas menores */
+    @media (max-width: 480px) {
         .product-card {
-            width: 90%; /* Ocupa mais largura em telas pequenas */
-        }
-        .product-buttons {
-            flex-direction: column; /* Botões em coluna em telas pequenas */
-            align-items: center;
-            gap: 8px;
+            width: 45%; /* Tenta colocar dois cards lado a lado em telas menores */
         }
     }
 </style>
+
 
 </head>
 <body>
