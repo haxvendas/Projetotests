@@ -21,6 +21,14 @@
         overflow: hidden;
         position: relative;
     }
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
     .logo {
         width: 100px;
         height: 100px;
@@ -130,6 +138,7 @@
 </style>
 </head>
 <body>
+<div id="particles-js"></div>
     <img src="perfil.jpg" alt="HAX VENDAS" class="logo">
     <div class="title">HAX VENDAS</div>
     <div class="subtitle">Loja de diamantes baratos</div>
@@ -211,6 +220,30 @@
     </a>
 
     <footer>Feito por Hax Vendas</footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        window.onload = function() {
+            Particles.init({
+                selector: '#particles-js',
+                color: '#00FF00', // Cor verde em hexadecimal
+                connectParticles: true, // Ativa a conexão entre as partículas
+                maxParticles: 100, // Número de partículas
+                sizeVariations: 5,
+                speed: 1,
+                minDistance: 120, // Distância mínima para conectar as partículas
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        options: {
+                            maxParticles: 80,
+                            minDistance: 90
+                        }
+                    }
+                ]
+            });
+        };
+    </script>
 
     <script>
         function enviarWhatsApp(produto) {
