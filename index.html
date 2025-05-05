@@ -14,13 +14,15 @@
         font-family: Arial, sans-serif;
         color: white;
         text-align: center;
-        background-image: url('bg.jpg');
+        /* Removendo a imagem de fundo */
+        /* background-image: url('bg.jpg');
         background-size: cover;
-        background-position: center;
+        background-position: center; */
+        background-color: #333; /* Cor de fundo cinza escura */
         height: 100vh;
         overflow: hidden;
         position: relative;
-        z-index: -2; /* Coloca o fundo atrás das partículas */
+        z-index: -1; /* Coloca o fundo atrás das partículas */
     }
     #particles-js {
         position: fixed;
