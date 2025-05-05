@@ -228,5 +228,24 @@
         };
     </script>
 
-    </body>
+    <script>
+        function enviarWhatsApp(produto) {
+            const numeroWhatsApp = "5591991912912";
+            const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+            const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            window.open(linkWhatsApp, '_blank');
+        }
+    </script>
+
+    <script>
+        window.onload = function() {
+            var audio = document.querySelector('.audio-player audio');
+            if (audio) {
+                audio.play().catch(function(error) {
+                    console.error("Erro ao tentar reproduzir áudio automaticamente:", error);
+                });
+            }
+        };
+    </script>
+</body>
 </html>
