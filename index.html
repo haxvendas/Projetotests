@@ -225,14 +225,15 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         window.onload = function() {
+            console.log("Função window.onload para partículas foi executada!");
             Particles.init({
                 selector: '#particles-js',
-                color: '#00FF00', // Cor verde em hexadecimal
-                connectParticles: true, // Ativa a conexão entre as partículas
-                maxParticles: 100, // Número de partículas
+                color: '#00FF00',
+                connectParticles: true,
+                maxParticles: 100,
                 sizeVariations: 5,
                 speed: 1,
-                minDistance: 120, // Distância mínima para conectar as partículas
+                minDistance: 120,
                 responsive: [
                     {
                         breakpoint: 768,
