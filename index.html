@@ -153,7 +153,6 @@
                 <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 10')">Comprar</button>
             </div>
         </div>
-
         <div class="product-card">
             <img src="diamante.jpg" alt="Diamantes" class="product-image">
             <h3 class="product-title">620 diamantes</h3>
@@ -162,7 +161,6 @@
                 <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 19')">Comprar</button>
             </div>
         </div>
-
         <div class="product-card">
             <img src="diamante.jpg" alt="Diamantes" class="product-image">
             <h3 class="product-title">1040 diamantes</h3>
@@ -171,7 +169,6 @@
                 <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 37')">Comprar</button>
             </div>
         </div>
-
         <div class="product-card">
             <img src="diamante.jpg" alt="Diamantes" class="product-image">
             <h3 class="product-title">2120 diamantes</h3>
@@ -180,7 +177,6 @@
                 <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 70')">Comprar</button>
             </div>
         </div>
-
         <div class="product-card">
             <img src="diamante.jpg" alt="Diamantes" class="product-image">
             <h3 class="product-title">4360 diamantes</h3>
@@ -189,7 +185,6 @@
                 <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 140')">Comprar</button>
             </div>
         </div>
-
         <div class="product-card">
             <img src="diamante.jpg" alt="Diamantes" class="product-image">
             <h3 class="product-title">11.200 diamantes</h3>
@@ -198,7 +193,6 @@
                 <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 340')">Comprar</button>
             </div>
         </div>
-
         <div class="product-card">
             <img src="diamante.jpg" alt="Diamantes" class="product-image">
             <h3 class="product-title">22.400 diamantes</h3>
@@ -234,24 +228,5 @@
         };
     </script>
 
-    <script>
-        function enviarWhatsApp(produto) {
-            const numeroWhatsApp = "5591991912912";
-            const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-            const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-            window.open(linkWhatsApp, '_blank');
-        }
-    </script>
-
-    <script>
-        window.onload = function() {
-            var audio = document.querySelector('.audio-player audio');
-            if (audio) {
-                audio.play().catch(function(error) {
-                    console.error("Erro ao tentar reproduzir áudio automaticamente:", error);
-                });
-            }
-        };
-    </script>
-</body>
+    </body>
 </html>
