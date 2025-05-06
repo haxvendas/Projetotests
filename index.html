@@ -221,11 +221,14 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         window.onload = function() {
-            console.log("Função window.onload para partículas foi executada!");
+            console.log("Função window.onload para partículas (configuração visível) foi executada!");
             Particles.init({
                 selector: '#particles-js',
-                color: '#00FF00',
-                maxParticles: 50
+                color: '#FF0000', // Mudando a cor para vermelho para contrastar com fundos claros
+                maxParticles: 80, // Aumentando o número de partículas
+                sizeVariations: 10, // Aumentando a variação no tamanho das partículas
+                opacity: 0.8, // Aumentando um pouco a opacidade
+                speed: 2 // Aumentando um pouco a velocidade para vê-las se mover
             });
         };
     </script>
