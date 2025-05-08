@@ -1,256 +1,469 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAX VENDAS</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HAX VENDAS</title>
+
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        color: white;
-        text-align: center;
-        /* Removendo a imagem de fundo */
-        /* background-image: url('bg.jpg');
-        background-size: cover;
-        background-position: center; */
-        background-color: #333; /* Cor de fundo cinza escura */
-        height: 100vh;
-        overflow: hidden;
-        position: relative;
-        z-index: -1; /* Coloca o fundo atrás das partículas */
-    }
-    #particles-js {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0; /* Coloca as partículas na frente */
-    }
-    .logo {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-top: 15px;
-        border: 3px solid white;
-    }
-    .title {
-        margin-top: 15px;
-        font-size: 24px;
-        font-weight: bold;
-    }
-    .subtitle {
-        margin-top: 8px;
-        font-size: 16px;
-    }
-    .products-container {
-        margin-top: 15px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; /* Mantém os itens centralizados */
-        gap: 10px; /* Reduzi ainda mais o gap */
-    }
-    .product-card {
-        background-color: rgba(0, 128, 0, 0.3); /* Verde semi-transparente (RGBA: R=0, G=128, B=0, A=0.3) */
-        border-radius: 6px;
-        padding: 10px; /* Mantenho o padding */
-        width: 160px; /* Mantenho a largura */
-        text-align: center;
-        display: flex; /* Para alinhar os elementos internos verticalmente */
-        flex-direction: column;
-        align-items: center; /* Centraliza os itens dentro do card */
-    }
-    .product-image {
-        max-width: 60%; /* Mantenho a largura máxima da imagem */
-        height: auto;
-        border-radius: 3px;
-        margin-bottom: 5px; /* Mantenho a margem inferior */
-        max-height: 80px; /* Mantenho a altura máxima */
-        object-fit: contain;
-    }
-    .product-title {
-        font-size: 14px; /* Mantenho a fonte */
-        font-weight: bold;
-        margin-bottom: 3px; /* Mantenho a margem inferior */
-    }
-    .product-price {
-        font-size: 12px; /* Mantenho a fonte */
-        color: #ddd;
-        margin-bottom: 10px; /* Aumento um pouco a margem para separar do botão */
-    }
-    .product-buttons {
-        display: flex;
-        justify-content: center; /* Centraliza o botão "Comprar" */
-        width: 100%; /* O botão ocupa a largura total do card */
-    }
-    .buy-btn {
-        background-color: #25D366; /* Usei um tom de verde mais vibrante para o botão comprar */
-        color: white;
-        border: none;
-        padding: 5px 8px; /* Mantenho o padding */
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 12px; /* Mantenho a fonte */
-        transition: background-color 0.3s ease;
-        width: 100%; /* Botão com largura total */
-    }
-    .buy-btn:hover {
-        background-color: #128C7E; /* Tom mais escuro no hover */
-    }
-    .whatsapp-btn {
-        position: fixed;
-        bottom: 60px; /* Mantenho a posição */
-        right: 15px; /* Mantenho a posição */
-        background-color: #25D366;
-        border-radius: 50%;
-        padding: 10px; /* Mantenho o padding */
-    }
-    .whatsapp-btn img {
-        width: 30px; /* Mantenho o tamanho da imagem */
-    }
-    footer {
-        position: fixed;
-        bottom: 5px; /* Mantenho a posição */
-        width: 100%;
-        font-size: 10px; /* Mantenho a fonte */
-        color: #ccc;
-    }
-    .audio-player {
-        position: fixed;
-        bottom: 30px; /* Mantenho a posição */
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%; /* Mantenho a largura do player */
-    }
-    .audio-player audio {
-        width: 100%;
-        max-height: 30px; /* Mantenho a altura do player */
-    }
 
-    /* Estilos responsivos para telas menores */
-    @media (max-width: 480px) {
-        .product-card {
-            width: 45%; /* Tenta colocar dois cards lado a lado em telas menores */
-        }
-    }
+    * {
+
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+    }
+
+    body {
+
+        font-family: Arial, sans-serif;
+
+        color: white;
+
+        text-align: center;
+
+        background-image: url('bg.jpg');
+
+        background-size: cover;
+
+        background-position: center;
+
+        height: 100vh;
+
+        overflow: hidden;
+
+        position: relative;
+
+    }
+
+    .logo {
+
+        width: 100px;
+
+        height: 100px;
+
+        border-radius: 50%;
+
+        margin-top: 15px;
+
+        border: 3px solid white;
+
+    }
+
+    .title {
+
+        margin-top: 15px;
+
+        font-size: 24px;
+
+        font-weight: bold;
+
+    }
+
+    .subtitle {
+
+        margin-top: 8px;
+
+        font-size: 16px;
+
+    }
+
+    .products-container {
+
+        margin-top: 15px;
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center; /* Mantém os itens centralizados */
+
+        gap: 10px; /* Reduzi ainda mais o gap */
+
+    }
+
+    .product-card {
+
+        background-color: rgba(0, 128, 0, 0.3); /* Verde semi-transparente (RGBA: R=0, G=128, B=0, A=0.3) */
+
+        border-radius: 6px;
+
+        padding: 10px; /* Mantenho o padding */
+
+        width: 160px; /* Mantenho a largura */
+
+        text-align: center;
+
+        display: flex; /* Para alinhar os elementos internos verticalmente */
+
+        flex-direction: column;
+
+        align-items: center; /* Centraliza os itens dentro do card */
+
+    }
+
+    .product-image {
+
+        max-width: 60%; /* Mantenho a largura máxima da imagem */
+
+        height: auto;
+
+        border-radius: 3px;
+
+        margin-bottom: 5px; /* Mantenho a margem inferior */
+
+        max-height: 80px; /* Mantenho a altura máxima */
+
+        object-fit: contain;
+
+    }
+
+    .product-title {
+
+        font-size: 14px; /* Mantenho a fonte */
+
+        font-weight: bold;
+
+        margin-bottom: 3px; /* Mantenho a margem inferior */
+
+    }
+
+    .product-price {
+
+        font-size: 12px; /* Mantenho a fonte */
+
+        color: #ddd;
+
+        margin-bottom: 10px; /* Aumento um pouco a margem para separar do botão */
+
+    }
+
+    .product-buttons {
+
+        display: flex;
+
+        justify-content: center; /* Centraliza o botão "Comprar" */
+
+        width: 100%; /* O botão ocupa a largura total do card */
+
+    }
+
+    .buy-btn {
+
+        background-color: #25D366; /* Usei um tom de verde mais vibrante para o botão comprar */
+
+        color: white;
+
+        border: none;
+
+        padding: 5px 8px; /* Mantenho o padding */
+
+        border-radius: 3px;
+
+        cursor: pointer;
+
+        font-size: 12px; /* Mantenho a fonte */
+
+        transition: background-color 0.3s ease;
+
+        width: 100%; /* Botão com largura total */
+
+    }
+
+    .buy-btn:hover {
+
+        background-color: #128C7E; /* Tom mais escuro no hover */
+
+    }
+
+    .whatsapp-btn {
+
+        position: fixed;
+
+        bottom: 60px; /* Mantenho a posição */
+
+        right: 15px; /* Mantenho a posição */
+
+        background-color: #25D366;
+
+        border-radius: 50%;
+
+        padding: 10px; /* Mantenho o padding */
+
+    }
+
+    .whatsapp-btn img {
+
+        width: 30px; /* Mantenho o tamanho da imagem */
+
+    }
+
+    footer {
+
+        position: fixed;
+
+        bottom: 5px; /* Mantenho a posição */
+
+        width: 100%;
+
+        font-size: 10px; /* Mantenho a fonte */
+
+        color: #ccc;
+
+    }
+
+    .audio-player {
+
+        position: fixed;
+
+        bottom: 30px; /* Mantenho a posição */
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 80%; /* Mantenho a largura do player */
+
+    }
+
+    .audio-player audio {
+
+        width: 100%;
+
+        max-height: 30px; /* Mantenho a altura do player */
+
+    }
+
+
+
+    /* Estilos responsivos para telas menores */
+
+    @media (max-width: 480px) {
+
+        .product-card {
+
+            width: 45%; /* Tenta colocar dois cards lado a lado em telas menores */
+
+        }
+
+    }
+
 </style>
+
 </head>
+
 <body>
-<div id="particles-js"></div>
-    <img src="perfil.jpg" alt="HAX VENDAS" class="logo">
-    <div class="title">HAX VENDAS</div>
-    <div class="subtitle">Loja de diamantes baratos</div>
 
-    <div class="products-container">
-        <div class="product-card">
-            <img src="diamante.jpg" alt="Diamantes" class="product-image">
-            <h3 class="product-title">200 diamantes</h3>
-            <p class="product-price">R$ 10</p>
-            <div class="product-buttons">
-                <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 10')">Comprar</button>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="diamante.jpg" alt="Diamantes" class="product-image">
-            <h3 class="product-title">620 diamantes</h3>
-            <p class="product-price">R$ 19</p>
-            <div class="product-buttons">
-                <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 19')">Comprar</button>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="diamante.jpg" alt="Diamantes" class="product-image">
-            <h3 class="product-title">1040 diamantes</h3>
-            <p class="product-price">R$ 37</p>
-            <div class="product-buttons">
-                <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 37')">Comprar</button>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="diamante.jpg" alt="Diamantes" class="product-image">
-            <h3 class="product-title">2120 diamantes</h3>
-            <p class="product-price">R$ 70</p>
-            <div class="product-buttons">
-                <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 70')">Comprar</button>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="diamante.jpg" alt="Diamantes" class="product-image">
-            <h3 class="product-title">4360 diamantes</h3>
-            <p class="product-price">R$ 140</p>
-            <div class="product-buttons">
-                <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 140')">Comprar</button>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="diamante.jpg" alt="Diamantes" class="product-image">
-            <h3 class="product-title">11.200 diamantes</h3>
-            <p class="product-price">R$ 340</p>
-            <div class="product-buttons">
-                <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 340')">Comprar</button>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="diamante.jpg" alt="Diamantes" class="product-image">
-            <h3 class="product-title">22.400 diamantes</h3>
-            <p class="product-price">R$ 650</p>
-            <div class="product-buttons">
-                <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 650')">Comprar</button>
-            </div>
-        </div>
-    </div>
+    <img src="perfil.jpg" alt="HAX VENDAS" class="logo">
 
-    <div class="audio-player" style="background-color: transparent;">
-        <audio controls autoplay loop style="background-color: transparent;">
-            <source src="skyfall.mp3" type="audio/mpeg">
-            Seu navegador não suporta o elemento de áudio.
-        </audio>
-    </div>
+    <div class="title">HAX VENDAS</div>
 
-    <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
+    <div class="subtitle">Loja de diamantes baratos</div>
 
-    <footer>Feito por Hax Vendas</footer>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        window.onload = function() {
-            console.log("Função window.onload para partículas (configuração visível) foi executada!");
-            Particles.init({
-                selector: '#particles-js',
-                color: '#FF0000', // Mudando a cor para vermelho para contrastar com fundos claros
-                maxParticles: 80, // Aumentando o número de partículas
-                sizeVariations: 10, // Aumentando a variação no tamanho das partículas
-                opacity: 0.8, // Aumentando um pouco a opacidade
-                speed: 2 // Aumentando um pouco a velocidade para vê-las se mover
-            });
-        };
-    </script>
 
-    <script>
-        function enviarWhatsApp(produto) {
-            const numeroWhatsApp = "5591991912912";
-            const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-            const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-            window.open(linkWhatsApp, '_blank');
-        }
-    </script>
+    <div class="products-container">
 
-    <script>
-        window.onload = function() {
-            var audio = document.querySelector('.audio-player audio');
-            if (audio) {
-                audio.play().catch(function(error) {
-                    console.error("Erro ao tentar reproduzir áudio automaticamente:", error);
-                });
-            }
-        };
-    </script>
+        <div class="product-card">
+
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+
+            <h3 class="product-title">200 diamantes</h3>
+
+            <p class="product-price">R$ 10</p>
+
+            <div class="product-buttons">
+
+                <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 10')">Comprar</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product-card">
+
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+
+            <h3 class="product-title">620 diamantes</h3>
+
+            <p class="product-price">R$ 19</p>
+
+            <div class="product-buttons">
+
+                <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 19')">Comprar</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product-card">
+
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+
+            <h3 class="product-title">1040 diamantes</h3>
+
+            <p class="product-price">R$ 37</p>
+
+            <div class="product-buttons">
+
+                <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 37')">Comprar</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product-card">
+
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+
+            <h3 class="product-title">2120 diamantes</h3>
+
+            <p class="product-price">R$ 70</p>
+
+            <div class="product-buttons">
+
+                <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 70')">Comprar</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product-card">
+
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+
+            <h3 class="product-title">4360 diamantes</h3>
+
+            <p class="product-price">R$ 140</p>
+
+            <div class="product-buttons">
+
+                <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 140')">Comprar</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product-card">
+
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+
+            <h3 class="product-title">11.200 diamantes</h3>
+
+            <p class="product-price">R$ 340</p>
+
+            <div class="product-buttons">
+
+                <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 340')">Comprar</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product-card">
+
+            <img src="diamante.jpg" alt="Diamantes" class="product-image">
+
+            <h3 class="product-title">22.400 diamantes</h3>
+
+            <p class="product-price">R$ 650</p>
+
+            <div class="product-buttons">
+
+                <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 650')">Comprar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="audio-player" style="background-color: transparent;">
+
+        <audio controls autoplay loop style="background-color: transparent;">
+
+            <source src="skyfall.mp3" type="audio/mpeg">
+
+            Seu navegador não suporta o elemento de áudio.
+
+        </audio>
+
+    </div>
+
+
+
+    <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+
+    </a>
+
+
+
+    <footer>Feito por Hax Vendas</footer>
+
+
+
+    <script>
+
+        function enviarWhatsApp(produto) {
+
+            const numeroWhatsApp = "5591991912912";
+
+            const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+
+            const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+            window.open(linkWhatsApp, '_blank');
+
+        }
+
+    </script>
+
+
+
+    <script>
+
+        window.onload = function() {
+
+            var audio = document.querySelector('.audio-player audio');
+
+            if (audio) {
+
+                audio.play().catch(function(error) {
+
+                    console.error("Erro ao tentar reproduzir áudio automaticamente:", error);
+
+                });
+
+            }
+
+        };
+
+    </script>
+
 </body>
+
 </html>
