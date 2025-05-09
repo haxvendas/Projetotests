@@ -6,9 +6,7 @@
   <title>HAX VENDAS</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
       font-family: Arial, sans-serif;
@@ -62,9 +60,10 @@
     }
     .product-image {
       max-width: 60%;
-      max-height: 80px;
+      height: auto;
       border-radius: 3px;
       margin-bottom: 5px;
+      max-height: 80px;
       object-fit: contain;
     }
     .product-title {
@@ -108,6 +107,13 @@
     .whatsapp-btn img {
       width: 30px;
     }
+    footer {
+      position: fixed;
+      bottom: 5px;
+      width: 100%;
+      font-size: 10px;
+      color: #ccc;
+    }
     .audio-player {
       position: fixed;
       bottom: 30px;
@@ -119,19 +125,13 @@
       width: 100%;
       max-height: 30px;
     }
-    footer {
-      position: fixed;
-      bottom: 5px;
-      width: 100%;
-      font-size: 10px;
-      color: #ccc;
-    }
     @media (max-width: 480px) {
       .product-card {
         width: 45%;
       }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
 <body>
   <div id="particles-js"></div>
@@ -149,13 +149,60 @@
         <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 10')">Comprar</button>
       </div>
     </div>
-    <!-- Repita os cards conforme necessário -->
+    <div class="product-card">
+      <img src="diamante.jpg" alt="Diamantes" class="product-image">
+      <h3 class="product-title">620 diamantes</h3>
+      <p class="product-price">R$ 19</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 19')">Comprar</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="diamante.jpg" alt="Diamantes" class="product-image">
+      <h3 class="product-title">1040 diamantes</h3>
+      <p class="product-price">R$ 35</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 35')">Comprar</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="diamante.jpg" alt="Diamantes" class="product-image">
+      <h3 class="product-title">2120 diamantes</h3>
+      <p class="product-price">R$ 70</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 70')">Comprar</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="diamante.jpg" alt="Diamantes" class="product-image">
+      <h3 class="product-title">4360 diamantes</h3>
+      <p class="product-price">R$ 140</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 140')">Comprar</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="diamante.jpg" alt="Diamantes" class="product-image">
+      <h3 class="product-title">11.200 diamantes</h3>
+      <p class="product-price">R$ 320</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 320')">Comprar</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="diamante.jpg" alt="Diamantes" class="product-image">
+      <h3 class="product-title">22.400 diamantes</h3>
+      <p class="product-price">R$ 630</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 630')">Comprar</button>
+      </div>
+    </div>
   </div>
 
   <div class="audio-player">
     <audio controls autoplay loop>
       <source src="skyfall.mp3" type="audio/mpeg">
-      Seu navegador não suporta o áudio.
+      Seu navegador não suporta o elemento de áudio.
     </audio>
   </div>
 
@@ -165,7 +212,6 @@
 
   <footer>Feito por Hax Vendas</footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     function enviarWhatsApp(produto) {
       const numeroWhatsApp = "5591991912912";
@@ -174,42 +220,40 @@
       window.open(linkWhatsApp, '_blank');
     }
 
-    particlesJS("particles-js", {
+    tsParticles.load("particles-js", {
+      fullScreen: { enable: false },
+      background: { color: { value: "transparent" } },
       particles: {
-        number: { value: 120, density: { enable: true, value_area: 800 } },
-        color: { value: "#39ff14" },
+        number: { value: 120 },
+        color: { value: "#00ff00" },
         shape: { type: "circle" },
-        opacity: { value: 0.6, random: true },
+        opacity: { value: 0.8 },
         size: { value: 3, random: true },
-        line_linked: {
+        links: {
           enable: true,
-          distance: 150,
-          color: "#39ff14",
-          opacity: 0.4,
+          color: "#00ff00",
+          distance: 100,
+          opacity: 0.6,
           width: 1
         },
         move: {
           enable: true,
-          speed: 3.5,
+          speed: 2,
           direction: "none",
-          random: false,
-          straight: false,
-          out_mode: "out",
-          bounce: false
+          outModes: { default: "out" }
         }
       },
       interactivity: {
-        detect_on: "canvas",
         events: {
-          onhover: { enable: true, mode: "repulse" },
-          onclick: { enable: true, mode: "push" }
+          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: true, mode: "push" }
         },
         modes: {
-          repulse: { distance: 100, duration: 0.4 },
-          push: { particles_nb: 4 }
+          repulse: { distance: 80 },
+          push: { quantity: 4 }
         }
       },
-      retina_detect: true
+      detectRetina: true
     });
   </script>
 </body>
