@@ -391,8 +391,7 @@
             <button type="submit">Login</button>
         </form>
     </div>
-
-    <div class="products-container" id="products-section">
+        <div class="products-container" id="products-section">
         <div class="product-card">
             <img src="diamante.jpg" alt="Diamantes" class="product-image">
             <h3 class="product-title">200 diamantes</h3>
@@ -442,18 +441,54 @@
             <img src="diamante.jpg" alt="Diamantes" class="product-image">
             <h3 class="product-title">11.200 diamantes</h3>
             <p class="product-price">R$ 350</p>
-            <div class="product-buttons">
-                <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 350')">Comprar</button>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <img src="diamante.jpg" alt="Diamantes" class="product-image">
-            <h3 class="product-title">22.400 diamantes</h3>
-            <p class="product-price">R$ 685</p>
-            <div class="product-buttons">
+                        <div class="product-buttons">
                 <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 685')">Comprar</button>
             </div>
         </div>
     </div>
-    
+
+    <div class="audio-player" style="background-color: transparent;">
+        <audio controls autoplay loop style="background-color: transparent;">
+            <source src="skyfall.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+
+    <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <footer>Feito por Hax Vendas</footer>
+    <script>
+    function enviarWhatsApp(produto) {
+        const numeroWhatsApp = "5591991912912";
+        const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+        const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        window.open(linkWhatsApp, '_blank');
+    }
+
+    function mostrarProdutos(event) {
+        event.preventDefault(); // Evita o envio real do formulário
+        event.stopPropagation(); // Impede a propagação do evento de submit
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('products-section').classList.add('visible');
+        // Oculta também o logo, título e subtítulo se desejar
+        // document.querySelector('.logo').style.display = 'none';
+        // document.querySelector('.title').style.display = 'none';
+        // document.querySelector('.subtitle').style.display = 'none';
+    }
+
+    window.onload = function() {
+        var audio = document.querySelector('.audio-player audio');
+        if (audio) {
+            audio.play().catch(function(error) {
+                console.error("Erro ao tentar reproduzir áudio automaticamente:", error);
+            });
+        }
+        // Garante que a seção de produtos comece oculta
+        document.getElementById('products-section').classList.remove('visible');
+        document.getElementById('login-form').style.display = 'block'; // Garante que o formulário seja visível no início
+    };
+    </script>
+    </body>
+</html>
