@@ -22,80 +22,107 @@
         position: relative;
     }
     .logo {
-        width: 80px;
-        height: 80px;
+        width: 8vw; /* Largura relativa à largura da viewport */
+        max-width: 80px;
+        height: auto;
         border-radius: 50%;
-        margin-top: 10px;
-        border: 2px solid white;
+        margin-top: 1.5vw;
+        border: 0.2vw solid white;
     }
     .title {
-        margin-top: 10px;
-        font-size: 20px;
+        margin-top: 1.5vw;
+        font-size: 2.5vw;
         font-weight: bold;
     }
     .subtitle {
-        margin-top: 5px;
-        font-size: 14px;
+        margin-top: 0.8vw;
+        font-size: 1.8vw;
     }
 
     /* Estilos para o formulário de login */
     .tech-login {
-        position: absolute; /* Para poder posicionar precisamente */
+        position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); /* Centraliza na tela */
-        z-index: 5; /* Garante que fique acima de outros elementos */
+        transform: translate(-50%, -50%);
+        z-index: 5;
     }
 
     .tech-login form {
         animation: form-entry 0.5s ease-in-out;
         background: linear-gradient(#004746, #111111);
-        border: 4px solid #00a4a2;
-        box-shadow: 0 0 10px #00ffff;
-        border-radius: 5px;
-        padding: 20px; /* Reduzi o padding */
+        border: 0.5vw solid #00a4a2;
+        box-shadow: 0 0 1.5vw #00ffff;
+        border-radius: 0.6vw;
+        padding: 2vw;
         display: flex;
         flex-direction: column;
-        gap: 10px; /* Reduzi o gap */
-        width: 280px; /* Ajustei a largura para caber melhor */
+        gap: 1vw;
+        width: 35vw;
+        max-width: 280px;
     }
 
     .tech-login form:hover {
-        border: 4px solid #00ffff;
-        box-shadow: 0 0 15px #00ffff;
+        border: 0.5vw solid #00ffff;
+        box-shadow: 0 0 2.5vw #00ffff;
         transition: 0.5s all;
     }
 
     .tech-login label {
         color: #ddd;
-        font-size: 12px;
-        text-align: left; /* Alinha o label à esquerda */
+        font-size: 1.2vw;
+        text-align: left;
+    }
+
+    .input-container {
+        position: relative; /* Para posicionar o fake-caret dentro */
     }
 
     .tech-login input[type="text"],
     .tech-login input[type="password"] {
         background-color: #111;
-        border: 1px solid #00a4a2;
-        border-radius: 3px;
+        border: 0.1vw solid #00a4a2;
+        border-radius: 0.4vw;
         color: #eee;
-        padding: 8px; /* Reduzi o padding */
-        font-size: 14px;
+        padding: 1vw;
+        font-size: 1.6vw;
     }
 
     .tech-login input[type="text"]:focus,
     .tech-login input[type="password"]:focus {
         border-color: #00ffff;
-        box-shadow: 0 0 5px #00ffff;
+        box-shadow: 0 0 0.5vw #00ffff;
         outline: none;
+    }
+
+    .fake-caret {
+        position: absolute;
+        top: 50%;
+        right: 5px; /* Ajuste a posição conforme necessário */
+        transform: translateY(-50%);
+        width: 2px;
+        height: 1.2em;
+        background-color: #00ffff;
+        animation: blink 1s infinite steps(1, start);
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .tech-login input:focus + .fake-caret {
+        /* Você pode adicionar estilos quando o input está focado */
     }
 
     .tech-login button[type="submit"] {
         background-color: #00a4a2;
         color: #fff;
         border: none;
-        border-radius: 3px;
-        padding: 10px 15px; /* Reduzi o padding */
-        font-size: 16px;
+        border-radius: 0.4vw;
+        padding: 1.2vw 2vw;
+        font-size: 1.8vw;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
@@ -117,51 +144,52 @@
     }
 
     .products-container {
-        display: grid; /* Usando grid para layout em colunas */
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Cria colunas responsivas */
-        gap: 10px; /* Espaçamento entre os cards */
-        padding: 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 1vw;
+        padding: 1vw;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 90%;
-        max-width: 600px; /* Largura máxima para o container de produtos */
+        max-width: 900px;
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
-        align-items: center; /* Alinha os itens verticalmente no centro */
+        align-items: center;
     }
     .products-container.visible {
         opacity: 1;
     }
     .product-card {
         background-color: rgba(0, 128, 0, 0.3);
-        border-radius: 6px;
-        padding: 8px; /* Reduzi o padding */
+        border-radius: 0.6vw;
+        padding: 0.8vw;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between; /* Espaçamento entre os elementos internos */
-        min-width: 0; /* Impede que os itens fiquem muito pequenos */
+        justify-content: space-between;
+        min-width: 0;
     }
     .product-image {
-        max-width: 70%;
+        max-width: 80%; /* Aumentei um pouco */
         height: auto;
-        border-radius: 3px;
-        margin-bottom: 3px; /* Reduzi a margem */
-        max-height: 60px; /* Reduzi a altura máxima */
+        border-radius: 0.3vw;
+        margin-bottom: 0.5vw;
+        max-height: 8vw; /* Altura relativa à largura da viewport */
         object-fit: contain;
     }
     .product-title {
-        font-size: 10px; /* Reduzi a fonte */
+        font-size: 1.2vw;
         font-weight: bold;
-        margin-bottom: 2px; /* Reduzi a margem */
+        margin-bottom: 0.3vw;
+        word-break: break-word; /* Evita quebras de linha feias */
     }
     .product-price {
-        font-size: 9px; /* Reduzi a fonte */
+        font-size: 1vw;
         color: #ddd;
-        margin-bottom: 5px; /* Reduzi a margem */
+        margin-bottom: 0.8vw;
     }
     .product-buttons {
         display: flex;
@@ -172,10 +200,10 @@
         background-color: #25D366;
         color: white;
         border: none;
-        padding: 4px 6px; /* Reduzi o padding */
-        border-radius: 3px;
+        padding: 0.5vw 0.8vw;
+        border-radius: 0.3vw;
         cursor: pointer;
-        font-size: 10px; /* Reduzi a fonte */
+        font-size: 1vw;
         transition: background-color 0.3s ease;
         width: 100%;
     }
@@ -184,27 +212,28 @@
     }
     .whatsapp-btn {
         position: fixed;
-        bottom: 20px;
-        right: 10px;
+        bottom: 3vw;
+        right: 2vw;
         background-color: #25D366;
         border-radius: 50%;
-        padding: 8px; /* Reduzi o padding */
+        padding: 1vw;
         z-index: 4;
     }
     .whatsapp-btn img {
-        width: 25px; /* Reduzi o tamanho da imagem */
+        width: 3vw;
+        height: auto;
     }
     footer {
         position: fixed;
-        bottom: 5px;
+        bottom: 0.5vw;
         width: 100%;
-        font-size: 8px; /* Reduzi a fonte */
+        font-size: 0.8vw;
         color: #ccc;
         z-index: 4;
     }
     .audio-player {
         position: fixed;
-        bottom: 50px; /* Ajustei a posição */
+        bottom: 6vw;
         left: 50%;
         transform: translateX(-50%);
         width: 80%;
@@ -212,57 +241,133 @@
     }
     .audio-player audio {
         width: 100%;
-        max-height: 30px; /* Reduzi a altura */
+        max-height: 4vw;
     }
 
-    /* Estilos responsivos para telas menores */
-    @media (max-width: 480px) {
-        .products-container {
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Colunas menores em telas pequenas */
-        }
-        .product-card {
-            padding: 5px;
-        }
-        .product-image {
-            max-height: 40px;
-            margin-bottom: 2px;
-        }
-        .product-title {
-            font-size: 9px;
-        }
-        .product-price {
-            font-size: 8px;
-            margin-bottom: 3px;
-        }
-        .buy-btn {
-            font-size: 9px;
-            padding: 3px 5px;
-        }
-        .tech-login form {
-            width: 90%;
-            max-width: 280px;
-            padding: 15px;
-        }
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
         .logo {
-            width: 60px;
-            height: 60px;
+            width: 12vw;
+            max-width: 60px;
+            border-width: 0.3vw;
         }
         .title {
-            font-size: 18px;
+            font-size: 3vw;
         }
         .subtitle {
-            font-size: 12px;
+            font-size: 2vw;
+        }
+        .tech-login form {
+            width: 60vw;
+            max-width: 300px;
+            padding: 3vw;
+            gap: 1.5vw;
+        }
+        .tech-login label {
+            font-size: 1.6vw;
+        }
+        .tech-login input {
+            padding: 1.5vw;
+            font-size: 2vw;
+        }
+        .tech-login button {
+            padding: 1.5vw 2.5vw;
+            font-size: 2.2vw;
+        }
+        .products-container {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5vw;
+            padding: 1.5vw;
+        }
+        .product-image {
+            max-height: 12vw;
+        }
+        .product-title {
+            font-size: 1.6vw;
+        }
+        .product-price {
+            font-size: 1.4vw;
+        }
+        .buy-btn {
+            font-size: 1.4vw;
+            padding: 0.8vw 1.2vw;
         }
         .whatsapp-btn {
-            bottom: 15px;
-            right: 5px;
-            padding: 6px;
+            bottom: 4vw;
+            right: 3vw;
+            padding: 1.2vw;
         }
         .whatsapp-btn img {
-            width: 20px;
+            width: 4vw;
+        }
+        footer {
+            font-size: 1vw;
         }
         .audio-player {
-            bottom: 40px;
+            bottom: 8vw;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo {
+            width: 16vw;
+            max-width: 50px;
+            border-width: 0.4vw;
+        }
+        .title {
+            font-size: 4vw;
+        }
+        .subtitle {
+            font-size: 2.5vw;
+        }
+        .tech-login form {
+            width: 80vw;
+            max-width: 300px;
+            padding: 4vw;
+            gap: 2vw;
+        }
+        .tech-login label {
+            font-size: 2vw;
+        }
+        .tech-login input {
+            padding: 2vw;
+            font-size: 2.5vw;
+        }
+        .tech-login button {
+            padding: 2vw 3vw;
+            font-size: 3vw;
+        }
+        .products-container {
+            grid-template-columns: 1fr 1fr; /* Duas colunas em telas muito pequenas */
+            gap: 2vw;
+            padding: 2vw;
+        }
+        .product-image {
+            max-height: 16vw;
+        }
+        .product-title {
+            font-size: 2vw;
+        }
+        .product-price {
+            font-size: 1.8vw;
+        }
+        .buy-btn {
+            font-size: 1.8vw;
+            padding: 1vw 1.5vw;
+        }
+        .whatsapp-btn {
+            bottom: 5vw;
+            right: 4vw;
+            padding: 1.5vw;
+        }
+        .whatsapp-btn img {
+            width: 5vw;
+        }
+        footer {
+            font-size: 1.2vw;
+        }
+        .audio-player {
+            bottom: 10vw;
         }
     }
 </style>
@@ -275,8 +380,14 @@
     <div class="tech-login" id="login-form">
         <form action="#" method="post" onsubmit="mostrarProdutos(event)">
             <label for="username">Meowish</label>
-            <input type="text" id="username" name="username" placeholder="Nome de usuário">
-            <input type="password" id="password" name="password" placeholder="Senha">
+            <div class="input-container">
+                <input type="text" id="username" name="username" placeholder="Nome de usuário">
+                <span class="fake-caret"></span>
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" name="password" placeholder="Senha">
+                <span class="fake-caret"></span>
+            </div>
             <button type="submit">Login</button>
         </form>
     </div>
@@ -345,49 +456,4 @@
             </div>
         </div>
     </div>
-
-    <div class="audio-player" style="background-color: transparent;">
-        <audio controls autoplay loop style="background-color: transparent;">
-            <source src="skyfall.mp3" type="audio/mpeg">
-            Seu navegador não suporta o elemento de áudio.
-        </audio>
-    </div>
-
-    <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
-
-    <footer>Feito por Hax Vendas</footer>
-
-    <script>
-        function enviarWhatsApp(produto) {
-            const numeroWhatsApp = "5591991912912";
-            const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-            const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-            window.open(linkWhatsApp, '_blank');
-        }
-
-        function mostrarProdutos(event) {
-            event.preventDefault(); // Evita o envio real do formulário (por enquanto)
-            document.getElementById('login-form').style.display = 'none';
-            document.getElementById('products-section').classList.add('visible');
-            // Oculta também o logo, título e subtítulo se desejar
-            // document.querySelector('.logo').style.display = 'none';
-            // document.querySelector('.title').style.display = 'none';
-            // document.querySelector('.subtitle').style.display = 'none';
-        }
-
-        window.onload = function() {
-            var audio = document.querySelector('.audio-player audio');
-            if (audio) {
-                audio.play().catch(function(error) {
-                    console.error("Erro ao tentar reproduzir áudio automaticamente:", error);
-                });
-            }
-            // Garante que a seção de produtos comece oculta
-            document.getElementById('products-section').classList.remove('visible');
-            document.getElementById('login-form').style.display = 'block'; // Garante que o formulário seja visível no início
-        };
-    </script>
-</body>
-</html>
+    
