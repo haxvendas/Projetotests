@@ -11,18 +11,25 @@
       margin: 0; padding: 0; box-sizing: border-box;
     }
     html, body {
-      height: 100%;
-      overflow: auto;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
-      background-image: url('bg.jpg');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background-image: url('bg.jpg'); /* Altere se necessário */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: scroll; /* melhor para iOS */
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
     #particles-js {
       position: fixed;
       width: 100%;
