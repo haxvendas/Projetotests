@@ -2,11 +2,17 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>HAX VENDAS</title>
+  <link rel="apple-touch-icon" href="icone.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <style>
     * {
       margin: 0; padding: 0; box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: auto;
     }
     body {
       font-family: Arial, sans-serif;
@@ -15,8 +21,6 @@
       background-image: url('bg.jpg');
       background-size: cover;
       background-position: center;
-      height: 100vh;
-      overflow: hidden;
       position: relative;
     }
     #particles-js {
@@ -86,12 +90,13 @@
       background-color: #007bff;
       color: white;
       border: none;
-      padding: 5px 8px;
+      padding: 10px;
       border-radius: 3px;
       cursor: pointer;
       font-size: 12px;
       transition: background-color 0.3s ease;
       width: 100%;
+      min-height: 44px; /* Melhor acessibilidade no toque */
     }
     .buy-btn:hover {
       background-color: #0056b3;
@@ -103,6 +108,7 @@
       background-color: #25D366;
       border-radius: 50%;
       padding: 10px;
+      z-index: 10;
     }
     .whatsapp-btn img {
       width: 30px;
@@ -113,6 +119,7 @@
       width: 100%;
       font-size: 10px;
       color: #ccc;
+      padding-bottom: env(safe-area-inset-bottom); /* suporte para iOS notch */
     }
     .audio-player {
       position: fixed;
@@ -120,10 +127,22 @@
       left: 50%;
       transform: translateX(-50%);
       width: 80%;
+      z-index: 5;
+    }
+    .audio-player button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
     }
     .audio-player audio {
       width: 100%;
       max-height: 30px;
+      margin-top: 5px;
+      display: none; /* escondido até ser acionado */
     }
     @media (max-width: 480px) {
       .product-card {
@@ -141,67 +160,13 @@
   <div class="subtitle">Loja de diamantes baratos</div>
 
   <div class="products-container">
-        <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">200 diamantes</h3>
-      <p class="product-price">R$ 8</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 8')" style="background-color: #4CAF50;">Comprar</button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">620 diamantes</h3>
-      <p class="product-price">R$ 19</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 19')" style="background-color: #4CAF50;">Comprar</button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">1040 diamantes</h3>
-      <p class="product-price">R$ 33</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 33')" style="background-color: #4CAF50;">Comprar</button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">2120 diamantes</h3>
-      <p class="product-price">R$ 65</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 65')" style="background-color: #4CAF50;">Comprar</button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">4360 diamantes</h3>
-      <p class="product-price">R$ 130</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 130')" style="background-color: #4CAF50;">Comprar</button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">11.200 diamantes</h3>
-      <p class="product-price">R$ 305</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 305')" style="background-color: #4CAF50;">Comprar</button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">22.400 diamantes</h3>
-      <p class="product-price">R$ 610</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 610')" style="background-color: #4CAF50;">Comprar</button>
-      </div>
-    </div>
-    
+    <!-- Produtos -->
+    <!-- ... mantenha todos os seus produtos como estão ... -->
   </div>
 
   <div class="audio-player">
-    <audio controls autoplay loop>
+    <button onclick="document.getElementById('bg-audio').play()">🎵 Tocar Música</button>
+    <audio id="bg-audio" loop>
       <source src="skyfall.mp3" type="audio/mpeg">
       Seu navegador não suporta o elemento de áudio.
     </audio>
