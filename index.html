@@ -295,9 +295,10 @@ function mostrarCategoria(categoria) {
     container.appendChild(card);
   });
 
-  // Mostra aviso específico por categoria
+  // Mensagens personalizadas por categoria
   const infoBox = document.getElementById("info-box");
   infoBox.style.display = "block";
+
   if (categoria === "diamantes") {
     infoBox.innerHTML = `
       <strong>🛡️ ATENÇÃO:</strong><br>
@@ -305,17 +306,28 @@ function mostrarCategoria(categoria) {
       <em>O QUE É ACCESS TOKEN?</em> É basicamente um ID único de cada conta no game.<br>
       Após efetuar a compra, ensinamos como pegar na hora o Access Token e fazemos o envio dos diamantes <strong>100% seguro!</strong>
     `;
+  } else if (categoria === "passe") {
+    infoBox.innerHTML = `
+      <strong>🎟️ SOBRE O PASSE:</strong><br>
+      O passe é enviado diretamente na sua conta após a confirmação de pagamento.<br>
+      Basta informar o seu ID e aguardarmos o envio, que é feito em poucos minutos.
+    `;
+  } else if (categoria === "emotes") {
+    infoBox.innerHTML = `
+      <strong>💃 EMOTES EXCLUSIVOS:</strong><br>
+      Os emotes são enviados via eventos especiais ou resgates.<br>
+      Após a compra, informaremos as instruções detalhadas para garantir os emotes com segurança.
+    `;
   } else {
-    infoBox.innerHTML = ""; // Você pode adicionar outros textos para outras categorias se quiser.
     infoBox.style.display = "none";
   }
 
   pai.style.display = "flex";
 }
 
-},
       pai.style.display = "flex";
     }
+ });
 
     function voltarCategorias() {
       document.getElementById("produtos-container").style.display = "none";
