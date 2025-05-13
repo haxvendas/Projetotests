@@ -229,7 +229,13 @@
     <div class="category-section" onclick="mostrarCategoria('emotes')">
       <div class="product-card category-card">
         <img src="emotes.jpg" alt="Emotes" class="product-image">
-        <h3 class="product-title">📱/💻´Produtos IOS e PC</h3>
+        <h3 class="product-title">💃 Emotes</h3>
+      </div>
+    </div>
+  <div class="category-section" onclick="mostrarCategoria('emotes')">
+      <div class="product-card category-card">
+        <img src="unlock.jpg" alt="unlock" class="product-image">
+        <h3 class="product-title">👕 Unlock all skins</h3>
       </div>
     </div>
   </div>
@@ -272,6 +278,10 @@
       emotes: [
         { nome: "Emotes mensal", preco: "R$ 30" },
         { nome: "Emotes perma", preco: "R$ 50" }
+      ],
+      unlock: [
+        { nome: "Unlock skins mensal", preco: "R$ 20" },
+        { nome: "Unlock skins perma", preco: "R$ 40" }
       ]
     };
 
@@ -316,6 +326,11 @@ function mostrarCategoria(categoria) {
     infoBox.innerHTML = `
       <strong>EMOTES [PC | IOS]:</strong><br>
       COMO PODEM VER, VEM LITERALMENTE TODOS EMOTES DO JOGO, INCLUSIVE OS QUE AINDA NAO VEIO PRO GAME E ESTAO PRA VIR EM LONGA DATA! FUNCIONA EM TODOS OS MODOS E TODOS DO SQUAD OU INIMIGOS CONSEGUEM VER. 100% FUNCIONAL!
+    `;
+  } else if (categoria === "unlock") {
+    infoBox.innerHTML = `
+      <strong>Unlock all skins [PC | IOS]:</strong><br>
+      Obtenha todas as skins do jogo para gravar aquele conteúdo e bater umas prints usando a roupa. NÃO FUNCIONA NA PARTIDA, APENAS NO LOBBY
     `;
   } else {
     infoBox.style.display = "none";
