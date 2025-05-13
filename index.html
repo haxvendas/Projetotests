@@ -74,17 +74,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-bottom: 1px solid #444;
-      padding-bottom: 15px;
-    }
-
-    .product-list {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
-      margin-top: 10px;
-      gap: 10px;
     }
 
     .product-card {
@@ -155,13 +144,6 @@
       box-shadow: 0 0 8px #4CAF50;
     }
 
-    .arrow-icon {
-      font-size: 14px;
-      margin-left: 6px;
-      color: #4CAF50 !important;
-      transition: transform 0.3s ease;
-    }
-
     .whatsapp-btn {
       position: fixed;
       bottom: 60px;
@@ -230,30 +212,32 @@
   <div class="title">HAX VENDAS</div>
   <div class="subtitle">Loja de diamantes baratos</div>
 
+  <!-- CATEGORIAS -->
   <div id="categorias" class="products-container">
-    <div class="category-section">
-      <div class="product-card category-card" onclick="toggleCategoria('diamantes')">
+    <div class="category-section" onclick="mostrarCategoria('diamantes')">
+      <div class="product-card category-card">
         <img src="diamante.jpg" alt="Diamantes" class="product-image">
-        <h3 class="product-title">💎 Diamantes<span class="arrow-icon" id="arrow-diamantes">▼</span></h3>
+        <h3 class="product-title">💎 Diamantes</h3>
       </div>
-      <div id="lista-diamantes" class="product-list"></div>
     </div>
-
-    <div class="category-section">
-      <div class="product-card category-card" onclick="toggleCategoria('passe')">
+    <div class="category-section" onclick="mostrarCategoria('passe')">
+      <div class="product-card category-card">
         <img src="passe.jpg" alt="Passe de Elite" class="product-image">
-        <h3 class="product-title">🎟️ Passe<span class="arrow-icon" id="arrow-passe">▼</span></h3>
+        <h3 class="product-title">🎟️ Passe</h3>
       </div>
-      <div id="lista-passe" class="product-list"></div>
     </div>
-
-    <div class="category-section">
-      <div class="product-card category-card" onclick="toggleCategoria('emotes')">
+    <div class="category-section" onclick="mostrarCategoria('emotes')">
+      <div class="product-card category-card">
         <img src="emotes.jpg" alt="Emotes" class="product-image">
-        <h3 class="product-title">💃 Emotes<span class="arrow-icon" id="arrow-emotes">▼</span></h3>
+        <h3 class="product-title">💃 Emotes</h3>
       </div>
-      <div id="lista-emotes" class="product-list"></div>
     </div>
+  </div>
+
+  <!-- PRODUTOS DE UMA CATEGORIA -->
+  <div id="produtos-container" style="display: none; flex-direction: column; align-items: center;">
+    <button onclick="voltarCategorias()" style="margin-top: 15px; margin-bottom: 15px; background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">⬅️ Voltar</button>
+    <div id="produtos" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;"></div>
   </div>
 
   <div class="audio-player">
@@ -268,7 +252,7 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
-  <footer>Feito por Hax Vendas</footer>
+  <footer>Feito por Thiago HAX</footer>
 
   <script>
     const produtos = {
@@ -288,31 +272,31 @@
       ]
     };
 
-    function toggleCategoria(categoria) {
-      const lista = document.getElementById(`lista-${categoria}`);
-      const seta = document.getElementById(`arrow-${categoria}`);
+    function mostrarCategoria(categoria) {
+      document.getElementById("categorias").style.display = "none";
+      const container = document.getElementById("produtos");
+      const pai = document.getElementById("produtos-container");
+      container.innerHTML = "";
 
-      if (lista.style.display === "none" || lista.innerHTML === "") {
-        lista.innerHTML = "";
-        produtos[categoria].forEach(produto => {
-          const item = document.createElement("div");
-          item.className = "product-card";
-          item.innerHTML = `
-            <h3 class="product-title">${produto.nome}</h3>
-            <p class="product-price">${produto.preco}</p>
-            <div class="product-buttons">
-              <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
-            </div>
-          `;
-          lista.appendChild(item);
-        });
-        lista.style.display = "flex";
-        seta.textContent = "▲";
-      } else {
-        lista.innerHTML = "";
-        lista.style.display = "none";
-        seta.textContent = "▼";
-      }
+      produtos[categoria].forEach(produto => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <h3 class="product-title">${produto.nome}</h3>
+          <p class="product-price">${produto.preco}</p>
+          <div class="product-buttons">
+            <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      pai.style.display = "flex";
+    }
+
+    function voltarCategorias() {
+      document.getElementById("produtos-container").style.display = "none";
+      document.getElementById("categorias").style.display = "flex";
     }
 
     function enviarWhatsApp(produto) {
@@ -379,4 +363,3 @@
   </script>
 </body>
 </html>
-S
