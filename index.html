@@ -202,114 +202,94 @@
   <div class="title">HAX VENDAS</div>
   <div class="subtitle">Loja de diamantes baratos</div>
 
-  <div class="products-container">
-    <!-- PRODUTOS -->
-    <div class="product-card">
+  <!-- CATEGORIAS -->
+  <div id="category-container" class="products-container">
+    <div class="product-card" onclick="mostrarCategoria('diamantes')">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">200 diamantes</h3>
-      <p class="product-price">R$ 8</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 8')" style="background-color: #4CAF50;" aria-label="Comprar 200 diamantes">Comprar</button>
-      </div>
+      <h3 class="product-title">💎 Diamantes</h3>
     </div>
-
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">620 diamantes</h3>
-      <p class="product-price">R$ 19</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 19')" style="background-color: #4CAF50;" aria-label="Comprar 620 diamantes">Comprar</button>
-      </div>
+    <div class="product-card" onclick="mostrarCategoria('passe')">
+      <img src="passe.jpg" alt="Passe de Elite" class="product-image">
+      <h3 class="product-title">🎟️ Passe</h3>
     </div>
-
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">1040 diamantes</h3>
-      <p class="product-price">R$ 33</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 33')" style="background-color: #4CAF50;" aria-label="Comprar 1040 diamantes">Comprar</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">2120 diamantes</h3>
-      <p class="product-price">R$ 65</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 65')" style="background-color: #4CAF50;" aria-label="Comprar 2120 diamantes">Comprar</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">4360 diamantes</h3>
-      <p class="product-price">R$ 130</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 130')" style="background-color: #4CAF50;" aria-label="Comprar 4360 diamantes">Comprar</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">11.200 diamantes</h3>
-      <p class="product-price">R$ 310</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 310')" style="background-color: #4CAF50;" aria-label="Comprar 11200 diamantes">Comprar</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">22.400 diamantes</h3>
-      <p class="product-price">R$ 615</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 615')" style="background-color: #4CAF50;" aria-label="Comprar 22400 diamantes">Comprar</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="passe.jpg" alt="Passe de elite" class="product-image">
-      <h3 class="product-title">Passe</h3>
-      <p class="product-price">R$ 7</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('Passe - R$ 7')" style="background-color: #4CAF50;" aria-label="Comprar Passe">Comprar</button>
-      </div>
-    </div>
-
-    <div class="product-card">
+    <div class="product-card" onclick="mostrarCategoria('emotes')">
       <img src="emotes.jpg" alt="Emotes" class="product-image">
-      <h3 class="product-title">Emotes mensal</h3>
-      <p class="product-price">R$ 30</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('Emotes mensal - R$ 30')" style="background-color: #4CAF50;" aria-label="Comprar Emotes Mensal">Comprar</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="emotes.jpg" alt="Emotes" class="product-image">
-      <h3 class="product-title">Emotes Perma</h3>
-      <p class="product-price">R$ 50</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('Emotes perma - R$ 50')" style="background-color: #4CAF50;" aria-label="Comprar Emotes Perma">Comprar</button>
-      </div>
+      <h3 class="product-title">💃 Emotes</h3>
     </div>
   </div>
 
+  <!-- PRODUTOS -->
+  <div id="products-view" class="products-container" style="display: none;"></div>
+
+  <!-- BOTÃO VOLTAR -->
+  <div id="back-button" style="display: none; margin-top: 10px;">
+    <button onclick="voltarCategorias()" class="buy-btn" style="background-color: #dc3545;">← Voltar</button>
+  </div>
+
+  <!-- AUDIO PLAYER -->
   <div class="audio-player">
     <button onclick="tocarMusica()">🎵 Tocar Música</button>
-    <audio id="bg-audio" loop>
+    <audio id="bg-audio" autoplay loop>
       <source src="Happy Nation.mp3" type="audio/mpeg">
       Seu navegador não suporta o elemento de áudio.
     </audio>
   </div>
 
-  <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank" aria-label="Fale conosco no WhatsApp">
+  <!-- BOTÃO WHATSAPP -->
+  <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
-  <footer>Feito por Thiago HAX</footer>
+  <footer>Feito por Hax Vendas</footer>
 
   <script>
+    const produtos = {
+      diamantes: [
+        { nome: "200 diamantes", preco: "R$ 8" },
+        { nome: "620 diamantes", preco: "R$ 19" },
+        { nome: "1040 diamantes", preco: "R$ 33" },
+        { nome: "2120 diamantes", preco: "R$ 65" },
+        { nome: "4360 diamantes", preco: "R$ 130" },
+        { nome: "11.200 diamantes", preco: "R$ 310" },
+        { nome: "22.400 diamantes", preco: "R$ 615" }
+      ],
+      passe: [
+        { nome: "Passe", preco: "R$ 7" }
+      ],
+      emotes: [
+        { nome: "Emotes mensal", preco: "R$ 30" },
+        { nome: "Emotes perma", preco: "R$ 50" }
+      ]
+    };
+
+    function mostrarCategoria(categoria) {
+      const container = document.getElementById("products-view");
+      container.innerHTML = "";
+
+      produtos[categoria].forEach(produto => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <h3 class="product-title">${produto.nome}</h3>
+          <p class="product-price">${produto.preco}</p>
+          <div class="product-buttons">
+            <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      document.getElementById("category-container").style.display = "none";
+      container.style.display = "flex";
+      document.getElementById("back-button").style.display = "block";
+    }
+
+    function voltarCategorias() {
+      document.getElementById("products-view").style.display = "none";
+      document.getElementById("category-container").style.display = "flex";
+      document.getElementById("back-button").style.display = "none";
+    }
+
     function enviarWhatsApp(produto) {
       const numeroWhatsApp = "5591991912912";
       const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
@@ -360,12 +340,11 @@
       });
     }
 
-    // Tocar música no primeiro clique
     window.addEventListener('click', function ativarSom() {
       tocarMusica();
       window.removeEventListener('click', ativarSom);
     });
   </script>
-
 </body>
+
 </html>
