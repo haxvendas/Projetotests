@@ -249,12 +249,13 @@ body {
   </div>
 
   <div class="audio-player">
-    <button onclick="document.getElementById('bg-audio').play()">🎵 Tocar Música</button>
-    <audio id="bg-audio" loop>
-      <source src="Happy Nation.mp3" type="audio/mpeg">
-      Seu navegador não suporta o elemento de áudio.
-    </audio>
-  </div>
+  <button onclick="tocarMusica()">🎵 Tocar Música</button>
+  <audio id="bg-audio" autoplay loop>
+    <source src="Happy Nation.mp3" type="audio/mpeg">
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
+</div>
+
 
   <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
@@ -263,48 +264,70 @@ body {
   <footer>Feito por Hax Vendas</footer>
 
   <script>
-    function enviarWhatsApp(produto) {
-      const numeroWhatsApp = "5591991912912";
-      const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-      const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-      window.open(linkWhatsApp, '_blank');
-    }
+  function enviarWhatsApp(produto) {
+    const numeroWhatsApp = "5591991912912";
+    const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+    const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+    window.open(linkWhatsApp, '_blank');
+  }
 
-    tsParticles.load("particles-js", {
-      fullScreen: { enable: false },
-      background: { color: { value: "transparent" } },
-      particles: {
-        number: { value: 120 },
-        color: { value: "#00ff00" },
-        shape: { type: "circle" },
-        opacity: { value: 0.8 },
-        size: { value: 3, random: true },
-        links: {
-          enable: true,
-          color: "#00ff00",
-          distance: 100,
-          opacity: 0.6,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          outModes: { default: "out" }
-        }
+  tsParticles.load("particles-js", {
+    fullScreen: { enable: false },
+    background: { color: { value: "transparent" } },
+    particles: {
+      number: { value: 120 },
+      color: { value: "#00ff00" },
+      shape: { type: "circle" },
+      opacity: { value: 0.8 },
+      size: { value: 3, random: true },
+      links: {
+        enable: true,
+        color: "#00ff00",
+        distance: 100,
+        opacity: 0.6,
+        width: 1
       },
-      interactivity: {
-        events: {
-          onHover: { enable: true, mode: "repulse" },
-          onClick: { enable: true, mode: "push" }
-        },
-        modes: {
-          repulse: { distance: 80 },
-          push: { quantity: 4 }
-        }
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        outModes: { default: "out" }
+      }
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "repulse" },
+        onClick: { enable: true, mode: "push" }
       },
-      detectRetina: true
-    });
-  </script>
+      modes: {
+        repulse: { distance: 80 },
+        push: { quantity: 4 }
+      }
+    },
+    detectRetina: true
+  }); // <- AQUI estava faltando
+
+  // Código do áudio
+  const audio = document.getElementById('bg-audio');
+
+  function tocarMusica() {
+    audio.play();
+  }
+
+  // Tentativa de autoplay ao carregar a página
+  window.addEventListener('DOMContentLoaded', () => {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Sucesso no autoplay
+        })
+        .catch((error) => {
+          console.warn("Autoplay bloqueado. Usuário precisa interagir.");
+        });
+    }
+  });
+</script>
+
 </body>
 </html>
