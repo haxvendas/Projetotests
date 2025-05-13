@@ -268,12 +268,12 @@
 
   <!-- AUDIO PLAYER -->
   <div class="audio-player">
-    <button onclick="tocarMusica()">🎵 Tocar Música</button>
-    <audio id="bg-audio" autoplay loop>
-      <source src="Happy Nation.mp3" type="audio/mpeg">
-      Seu navegador não suporta o elemento de áudio.
-    </audio>
-  </div>
+  <button onclick="toggleMusica()" id="musica-btn">🎵 Tocar Música</button>
+  <audio id="bg-audio" loop>
+    <source src="Happy Nation.mp3" type="audio/mpeg">
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
+</div>
 
   <!-- BOTÃO WHATSAPP -->
   <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
@@ -374,12 +374,19 @@
       detectRetina: true
     });
 
-    function tocarMusica() {
-      const audio = document.getElementById('bg-audio');
-      audio.play().catch(() => {
-        console.warn('Autoplay ainda bloqueado.');
-      });
-    }
+    function toggleMusica() {
+  const audio = document.getElementById('bg-audio');
+  const botao = document.getElementById('musica-btn');
+
+  if (audio.paused) {
+    audio.play();
+    botao.innerText = "⏸️ Pausar Música";
+  } else {
+    audio.pause();
+    botao.innerText = "🎵 Tocar Música";
+  }
+}
+
 
     window.addEventListener('click', function ativarSom() {
       tocarMusica();
