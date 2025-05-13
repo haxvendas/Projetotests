@@ -4,28 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>HAX VENDAS</title>
+
+  <!-- Ícone e Apple -->
   <link rel="apple-touch-icon" href="icone.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- SEO -->
+  <meta name="description" content="Compre diamantes baratos para Free Fire com segurança via WhatsApp. Produtos digitais entregues rapidamente.">
+  <meta name="keywords" content="Free Fire, diamantes baratos, loja online, HAX VENDAS, comprar diamantes, passe de elite, emotes">
+  <meta name="author" content="HAX VENDAS">
+
   <style>
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
     html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  color: white;
-  text-align: center;
-  background-color: #000000; /* Fundo preto sólido */
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-}
-
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      background-color: #000000;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
 
     #particles-js {
       position: fixed;
@@ -33,6 +39,7 @@ body {
       height: 100%;
       z-index: -1;
     }
+
     .logo {
       width: 100px;
       height: 100px;
@@ -40,15 +47,18 @@ body {
       margin-top: 15px;
       border: 3px solid white;
     }
+
     .title {
       margin-top: 15px;
       font-size: 24px;
       font-weight: bold;
     }
+
     .subtitle {
       margin-top: 8px;
       font-size: 16px;
     }
+
     .products-container {
       margin-top: 15px;
       display: flex;
@@ -56,6 +66,7 @@ body {
       justify-content: center;
       gap: 10px;
     }
+
     .product-card {
       background-color: rgba(144, 238, 144, 0.1);
       border-radius: 6px;
@@ -65,7 +76,14 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      background-color: rgba(144, 238, 144, 0.2);
+    }
+
     .product-image {
       max-width: 60%;
       height: auto;
@@ -74,22 +92,26 @@ body {
       max-height: 80px;
       object-fit: contain;
     }
+
     .product-title {
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 3px;
     }
+
     .product-price {
       font-size: 12px;
-      color: #ddd;
+      color: #90ee90;
       margin-bottom: 5px;
     }
+
     .product-buttons {
       display: flex;
       flex-direction: column;
       gap: 5px;
       width: 100%;
     }
+
     .buy-btn {
       background-color: #007bff;
       color: white;
@@ -100,11 +122,13 @@ body {
       font-size: 12px;
       transition: background-color 0.3s ease;
       width: 100%;
-      min-height: 44px; /* Melhor acessibilidade no toque */
+      min-height: 44px;
     }
+
     .buy-btn:hover {
       background-color: #0056b3;
     }
+
     .whatsapp-btn {
       position: fixed;
       bottom: 60px;
@@ -113,18 +137,28 @@ body {
       border-radius: 50%;
       padding: 10px;
       z-index: 10;
+      animation: pulse 2s infinite;
     }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
     .whatsapp-btn img {
       width: 30px;
     }
+
     footer {
       position: fixed;
       bottom: 5px;
       width: 100%;
       font-size: 10px;
       color: #ccc;
-      padding-bottom: env(safe-area-inset-bottom); /* suporte para iOS notch */
+      padding-bottom: env(safe-area-inset-bottom);
     }
+
     .audio-player {
       position: fixed;
       bottom: 30px;
@@ -133,6 +167,7 @@ body {
       width: 80%;
       z-index: 5;
     }
+
     .audio-player button {
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
@@ -142,20 +177,24 @@ body {
       cursor: pointer;
       font-size: 12px;
     }
+
     .audio-player audio {
       width: 100%;
       max-height: 30px;
       margin-top: 5px;
-      display: none; /* escondido até ser acionado */
+      display: block;
     }
+
     @media (max-width: 480px) {
       .product-card {
         width: 45%;
       }
     }
   </style>
+
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
+
 <body>
   <div id="particles-js"></div>
 
@@ -164,163 +203,169 @@ body {
   <div class="subtitle">Loja de diamantes baratos</div>
 
   <div class="products-container">
+    <!-- PRODUTOS -->
     <div class="product-card">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
       <h3 class="product-title">200 diamantes</h3>
       <p class="product-price">R$ 8</p>
       <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 8')" style="background-color: #4CAF50;">Comprar</button>
+        <button class="buy-btn" onclick="enviarWhatsApp('200 diamantes - R$ 8')" aria-label="Comprar 200 diamantes">Comprar</button>
       </div>
     </div>
+
     <div class="product-card">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
       <h3 class="product-title">620 diamantes</h3>
       <p class="product-price">R$ 19</p>
       <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 19')" style="background-color: #4CAF50;">Comprar</button>
+        <button class="buy-btn" onclick="enviarWhatsApp('620 diamantes - R$ 19')" aria-label="Comprar 620 diamantes">Comprar</button>
       </div>
     </div>
+
     <div class="product-card">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
       <h3 class="product-title">1040 diamantes</h3>
       <p class="product-price">R$ 33</p>
       <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 33')" style="background-color: #4CAF50;">Comprar</button>
+        <button class="buy-btn" onclick="enviarWhatsApp('1040 diamantes - R$ 33')" aria-label="Comprar 1040 diamantes">Comprar</button>
       </div>
     </div>
+
     <div class="product-card">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
       <h3 class="product-title">2120 diamantes</h3>
       <p class="product-price">R$ 65</p>
       <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 65')" style="background-color: #4CAF50;">Comprar</button>
+        <button class="buy-btn" onclick="enviarWhatsApp('2120 diamantes - R$ 65')" aria-label="Comprar 2120 diamantes">Comprar</button>
       </div>
     </div>
+
     <div class="product-card">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
       <h3 class="product-title">4360 diamantes</h3>
       <p class="product-price">R$ 130</p>
       <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 130')" style="background-color: #4CAF50;">Comprar</button>
+        <button class="buy-btn" onclick="enviarWhatsApp('4360 diamantes - R$ 130')" aria-label="Comprar 4360 diamantes">Comprar</button>
       </div>
     </div>
+
     <div class="product-card">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
       <h3 class="product-title">11.200 diamantes</h3>
       <p class="product-price">R$ 310</p>
       <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 310')" style="background-color: #4CAF50;">Comprar</button>
+        <button class="buy-btn" onclick="enviarWhatsApp('11.200 diamantes - R$ 310')" aria-label="Comprar 11200 diamantes">Comprar</button>
       </div>
     </div>
+
     <div class="product-card">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
       <h3 class="product-title">22.400 diamantes</h3>
       <p class="product-price">R$ 615</p>
       <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 610')" style="background-color: #4CAF50;">Comprar</button>
+        <button class="buy-btn" onclick="enviarWhatsApp('22.400 diamantes - R$ 615')" aria-label="Comprar 22400 diamantes">Comprar</button>
       </div>
-      </div>
-      <div class="product-card">
-  <img src="passe.jpg" alt="Passe de elite" class="product-image">
-  <h3 class="product-title">Passe</h3>
-  <p class="product-price">R$ 7</p>
-  <div class="product-buttons">
-    <button class="buy-btn" onclick="enviarWhatsApp('passe - R$ 7')" style="background-color: #4CAF50;">Comprar</button>
-  </div>
-</div>
-<div class="product-card">
-  <img src="emotes.jpg" alt="Emotes" class="product-image">
-  <h3 class="product-title">Emotes mensal</h3>
-  <p class="product-price">R$ 30</p>
-  <div class="product-buttons">
-    <button class="buy-btn" onclick="enviarWhatsApp('Emotes perma - R$ 30')" style="background-color: #4CAF50;">Comprar</button>
-  </div>
-</div>
+    </div>
+
     <div class="product-card">
-  <img src="emotes.jpg" alt="Emotes" class="product-image">
-  <h3 class="product-title">Emotes Perma</h3>
-  <p class="product-price">R$ 50</p>
-  <div class="product-buttons">
-    <button class="buy-btn" onclick="enviarWhatsApp('Emotes perma - R$ 50')" style="background-color: #4CAF50;">Comprar</button>
-  </div>
-</div>
-    </div><!-- Produtos -->
-    <!-- ... mantenha todos os seus produtos como estão ... -->
+      <img src="passe.jpg" alt="Passe de elite" class="product-image">
+      <h3 class="product-title">Passe</h3>
+      <p class="product-price">R$ 7</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('Passe - R$ 7')" aria-label="Comprar Passe">Comprar</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="emotes.jpg" alt="Emotes" class="product-image">
+      <h3 class="product-title">Emotes mensal</h3>
+      <p class="product-price">R$ 30</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('Emotes mensal - R$ 30')" aria-label="Comprar Emotes Mensal">Comprar</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="emotes.jpg" alt="Emotes" class="product-image">
+      <h3 class="product-title">Emotes Perma</h3>
+      <p class="product-price">R$ 50</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('Emotes perma - R$ 50')" aria-label="Comprar Emotes Perma">Comprar</button>
+      </div>
+    </div>
   </div>
 
   <div class="audio-player">
-  <button onclick="tocarMusica()">🎵 Tocar Música</button>
-  <audio id="bg-audio" autoplay loop>
-    <source src="Happy Nation.mp3" type="audio/mpeg">
-    Seu navegador não suporta o elemento de áudio.
-  </audio>
-</div>
+    <button onclick="tocarMusica()">🎵 Tocar Música</button>
+    <audio id="bg-audio" loop>
+      <source src="Happy Nation.mp3" type="audio/mpeg">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+  </div>
 
-
-  <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
+  <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank" aria-label="Fale conosco no WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
-  <footer>Feito por Hax Vendas</footer>
+  <footer>Feito por Thiago HAX</footer>
 
   <script>
-  function enviarWhatsApp(produto) {
-    const numeroWhatsApp = "5591991912912";
-    const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-    const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-    window.open(linkWhatsApp, '_blank');
-  }
+    function enviarWhatsApp(produto) {
+      const numeroWhatsApp = "5591991912912";
+      const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+      const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+      window.open(linkWhatsApp, '_blank');
+    }
 
-  tsParticles.load("particles-js", {
-    fullScreen: { enable: false },
-    background: { color: { value: "transparent" } },
-    particles: {
-      number: { value: 120 },
-      color: { value: "#00ff00" },
-      shape: { type: "circle" },
-      opacity: { value: 0.8 },
-      size: { value: 3, random: true },
-      links: {
-        enable: true,
-        color: "#00ff00",
-        distance: 100,
-        opacity: 0.6,
-        width: 1
+    tsParticles.load("particles-js", {
+      fullScreen: { enable: false },
+      background: { color: { value: "transparent" } },
+      particles: {
+        number: { value: 120 },
+        color: { value: "#00ff00" },
+        shape: { type: "circle" },
+        opacity: { value: 0.8 },
+        size: { value: 3, random: true },
+        links: {
+          enable: true,
+          color: "#00ff00",
+          distance: 100,
+          opacity: 0.6,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          outModes: { default: "out" }
+        }
       },
-      move: {
-        enable: true,
-        speed: 2,
-        direction: "none",
-        outModes: { default: "out" }
-      }
-    },
-    interactivity: {
-      events: {
-        onHover: { enable: true, mode: "repulse" },
-        onClick: { enable: true, mode: "push" }
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 80 },
+          push: { quantity: 4 }
+        }
       },
-      modes: {
-        repulse: { distance: 80 },
-        push: { quantity: 4 }
-      }
-    },
-    detectRetina: true
-  });
-
-  function tocarMusica() {
-    const audio = document.getElementById('bg-audio');
-    audio.play().catch(() => {
-      console.warn('Autoplay ainda bloqueado.');
+      detectRetina: true
     });
-  }
 
-  // Tocar música no primeiro clique do usuário
-  window.addEventListener('click', function ativarSom() {
-    tocarMusica();
-    window.removeEventListener('click', ativarSom);
-  });
-</script>
+    function tocarMusica() {
+      const audio = document.getElementById('bg-audio');
+      audio.play().catch(() => {
+        console.warn('Autoplay ainda bloqueado.');
+      });
+    }
 
+    // Tocar música no primeiro clique
+    window.addEventListener('click', function ativarSom() {
+      tocarMusica();
+      window.removeEventListener('click', ativarSom);
+    });
+  </script>
 
 </body>
 </html>
