@@ -184,6 +184,31 @@
       margin-top: 5px;
       display: block;
     }
+    
+    .category-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 15px;
+}
+
+.product-list {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+    
+.arrow-icon {
+  font-size: 14px;
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
 
     @media (max-width: 480px) {
       .product-card {
@@ -204,31 +229,32 @@
 
   <!-- CATEGORIAS COM EXPANSÃO -->
 <div id="categorias" class="products-container">
-  <!-- Diamantes -->
+  <!-- Categoria: Diamantes -->
   <div class="category-section">
-    <div class="product-card" onclick="toggleCategoria('diamantes')">
+    <div class="product-card category-card" onclick="toggleCategoria('diamantes')">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
-      <h3 class="product-title">💎 Diamantes</h3>
+      <h3 class="product-title">💎 Diamantes<span class="arrow-icon" id="arrow-diamantes">🔽</span></h3>
     </div>
-    <div id="lista-diamantes" class="product-list" style="display: none;"></div>
+    <div id="lista-diamantes" class="product-list"></div>
   </div>
 
-  <!-- Passe -->
+  <!-- Categoria: Passe -->
   <div class="category-section">
-    <div class="product-card" onclick="toggleCategoria('passe')">
-      <img src="passe.jpg" alt="Passe" class="product-image">
-      <h3 class="product-title">🎟️ Passe</h3>
+    <div class="product-card category-card" onclick="toggleCategoria('passe')">
+      <img src="passe.jpg" alt="Passe de Elite" class="product-image">
+      <h3 class="product-title">🎟️ Passe<span class="arrow-icon" id="arrow-passe">🔽</span>
+</h3>
     </div>
-    <div id="lista-passe" class="product-list" style="display: none;"></div>
+    <div id="lista-passe" class="product-list"></div>
   </div>
 
-  <!-- Emotes -->
+  <!-- Categoria: Emotes -->
   <div class="category-section">
-    <div class="product-card" onclick="toggleCategoria('emotes')">
+    <div class="product-card category-card" onclick="toggleCategoria('emotes')">
       <img src="emotes.jpg" alt="Emotes" class="product-image">
-      <h3 class="product-title">💃 Emotes</h3>
+      <h3 class="product-title">💃 Emotes<span class="arrow-icon" id="arrow-emotes">🔽</span></h3>
     </div>
-    <div id="lista-emotes" class="product-list" style="display: none;"></div>
+    <div id="lista-emotes" class="product-list"></div>
   </div>
 </div>
 
@@ -277,29 +303,33 @@
   };
 
   function toggleCategoria(categoria) {
-    const lista = document.getElementById(`lista-${categoria}`);
+  const lista = document.getElementById(`lista-${categoria}`);
+  const seta = document.getElementById(`arrow-${categoria}`);
 
-    if (lista.style.display === "none") {
-      // Expandir e preencher os produtos
-      lista.innerHTML = "";
-      produtos[categoria].forEach(produto => {
-        const item = document.createElement("div");
-        item.className = "product-card";
-        item.innerHTML = `
-          <h3 class="product-title">${produto.nome}</h3>
-          <p class="product-price">${produto.preco}</p>
-          <div class="product-buttons">
-            <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')">Comprar</button>
-          </div>
-        `;
-        lista.appendChild(item);
-      });
-      lista.style.display = "flex";
-    } else {
-      // Recolher
-      lista.style.display = "none";
-    }
+  if (lista.style.display === "none" || lista.innerHTML === "") {
+    // Expandir e preencher os produtos
+    lista.innerHTML = "";
+    produtos[categoria].forEach(produto => {
+      const item = document.createElement("div");
+      item.className = "product-card";
+      item.innerHTML = `
+        <h3 class="product-title">${produto.nome}</h3>
+        <p class="product-price">${produto.preco}</p>
+        <div class="product-buttons">
+          <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')">Comprar</button>
+        </div>
+      `;
+      lista.appendChild(item);
+    });
+    lista.style.display = "flex";
+    seta.textContent = "🔼";
+  } else {
+    // Recolher
+    lista.innerHTML = "";
+    lista.style.display = "none";
+    seta.textContent = "🔽";
   }
+}
 
   function enviarWhatsApp(produto) {
     const numero = "5591991912912";
