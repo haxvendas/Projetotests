@@ -206,8 +206,10 @@
 .arrow-icon {
   font-size: 14px;
   margin-left: 6px;
+  color: #00ff00; /* Verde neon */
   transition: transform 0.3s ease;
 }
+
 
 
     @media (max-width: 480px) {
@@ -316,7 +318,7 @@
         <h3 class="product-title">${produto.nome}</h3>
         <p class="product-price">${produto.preco}</p>
         <div class="product-buttons">
-          <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')">Comprar</button>
+          <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
         </div>
       `;
       lista.appendChild(item);
