@@ -325,21 +325,18 @@ function mostrarCategoria(categoria) {
   pai.style.display = "flex";
 }
 
-      pai.style.display = "flex";
-    }
- });
+function voltarCategorias() {
+  document.getElementById("produtos-container").style.display = "none";
+  document.getElementById("categorias").style.display = "flex";
+}
 
-    function voltarCategorias() {
-      document.getElementById("produtos-container").style.display = "none";
-      document.getElementById("categorias").style.display = "flex";
-    }
+function enviarWhatsApp(produto) {
+  const numero = "5591991912912";
+  const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+  const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  window.open(link, "_blank");
+}
 
-    function enviarWhatsApp(produto) {
-      const numero = "5591991912912";
-      const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-      const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-      window.open(link, "_blank");
-    }
 
     tsParticles.load("particles-js", {
       fullScreen: { enable: false },
