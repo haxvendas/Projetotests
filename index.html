@@ -305,29 +305,22 @@ body {
       }
     },
     detectRetina: true
-  }); // <- AQUI estava faltando
-
-  // Código do áudio
-  const audio = document.getElementById('bg-audio');
+  });
 
   function tocarMusica() {
-    audio.play();
+    const audio = document.getElementById('bg-audio');
+    audio.play().catch(() => {
+      console.warn('Autoplay ainda bloqueado.');
+    });
   }
 
-  // Tentativa de autoplay ao carregar a página
-  window.addEventListener('DOMContentLoaded', () => {
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Sucesso no autoplay
-        })
-        .catch((error) => {
-          console.warn("Autoplay bloqueado. Usuário precisa interagir.");
-        });
-    }
+  // Tocar música no primeiro clique do usuário
+  window.addEventListener('click', function ativarSom() {
+    tocarMusica();
+    window.removeEventListener('click', ativarSom);
   });
 </script>
+
 
 </body>
 </html>
