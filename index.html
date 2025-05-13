@@ -238,6 +238,9 @@
   <div id="produtos-container" style="display: none; flex-direction: column; align-items: center;">
     <button onclick="voltarCategorias()" style="margin-top: 15px; margin-bottom: 15px; background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">⬅️ Voltar</button>
     <div id="produtos" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;"></div>
+    <div id="info-box" style="display: none; max-width: 90%; margin-top: 20px; background-color: rgba(0,0,0,0.7); border-left: 5px solid #00ff00; padding: 15px; border-radius: 8px; text-align: left; font-size: 14px;">
+  <!-- Texto de aviso será inserido dinamicamente -->
+</div>
   </div>
 
   <div class="audio-player">
@@ -272,25 +275,45 @@
       ]
     };
 
-    function mostrarCategoria(categoria) {
-      document.getElementById("categorias").style.display = "none";
-      const container = document.getElementById("produtos");
-      const pai = document.getElementById("produtos-container");
-      container.innerHTML = "";
+function mostrarCategoria(categoria) {
+  document.getElementById("categorias").style.display = "none";
+  const container = document.getElementById("produtos");
+  const pai = document.getElementById("produtos-container");
+  container.innerHTML = "";
 
-      produtos[categoria].forEach(produto => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.innerHTML = `
-          <h3 class="product-title">${produto.nome}</h3>
-          <p class="product-price">${produto.preco}</p>
-          <div class="product-buttons">
-            <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
-          </div>
-        `;
-        container.appendChild(card);
-      });
+  // Mostrar os produtos
+  produtos[categoria].forEach(produto => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <h3 class="product-title">${produto.nome}</h3>
+      <p class="product-price">${produto.preco}</p>
+      <div class="product-buttons">
+        <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
 
+  // Mostra aviso específico por categoria
+  const infoBox = document.getElementById("info-box");
+  infoBox.style.display = "block";
+  if (categoria === "diamantes") {
+    infoBox.innerHTML = `
+      <strong>🛡️ ATENÇÃO:</strong><br>
+      OS DIAMANTES SÃO ENTREGUES VIA <strong>ACCESS TOKEN</strong>.<br>
+      <em>O QUE É ACCESS TOKEN?</em> É basicamente um ID único de cada conta no game.<br>
+      Após efetuar a compra, ensinamos como pegar na hora o Access Token e fazemos o envio dos diamantes <strong>100% seguro!</strong>
+    `;
+  } else {
+    infoBox.innerHTML = ""; // Você pode adicionar outros textos para outras categorias se quiser.
+    infoBox.style.display = "none";
+  }
+
+  pai.style.display = "flex";
+}
+
+},
       pai.style.display = "flex";
     }
 
