@@ -2,100 +2,91 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>HAX VENDAS</title>
-
-  <link rel="apple-touch-icon" href="icone.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-
-  <meta name="description" content="Compre diamantes baratos para Free Fire com segurança via WhatsApp. Produtos digitais entregues rapidamente.">
-  <meta name="keywords" content="Free Fire, diamantes baratos, loja online, HAX VENDAS, comprar diamantes, passe de elite, emotes">
-  <meta name="author" content="HAX VENDAS">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hax Vendas</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
       background: #000;
       color: #fff;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 1rem;
     }
 
     .header {
       text-align: center;
-      padding: 1rem 0;
+      padding: 1rem;
     }
 
-    .logo {
+    .header img {
       width: 100px;
       border-radius: 50%;
-      margin-bottom: 1rem;
     }
 
     h1 {
-      margin: 0;
-      font-size: 1.8rem;
+      margin: 0.5rem 0 0;
     }
 
-    p.subtitulo {
-      font-size: 1rem;
-      color: #aaa;
+    .sub {
+      color: #ccc;
       margin-bottom: 2rem;
     }
 
-    .section-title {
-      font-size: 1.2rem;
-      margin: 1.5rem 0 1rem;
-      border-bottom: 1px solid #0f0;
-      padding-bottom: 0.5rem;
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
     }
 
-    .card {
+    .menu button {
       background-color: #111;
-      border: 1px solid #0f0;
-      border-radius: 10px;
-      margin-bottom: 1rem;
+      border: 2px solid #0f0;
+      color: #0f0;
       padding: 1rem;
-      text-align: center;
-      box-shadow: 0 0 10px #0f0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.2s;
     }
 
-    .card h3 {
-      margin: 0.5rem 0;
-      font-size: 1.1rem;
-    }
-
-    .card p {
-      margin: 0.25rem 0;
-      color: #ccc;
-    }
-
-    .comprar-btn {
+    .menu button:hover {
       background-color: #0f0;
       color: #000;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      width: 100%;
+    }
+
+    .content {
+      display: none;
+      margin: 1rem auto;
+      max-width: 600px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .content.active {
+      display: grid;
+    }
+
+    .item {
+      border: 2px solid #0f0;
+      padding: 1rem;
+      border-radius: 10px;
+      background: #111;
+      text-align: center;
+    }
+
+    .item h3 {
+      margin: 0.5rem 0;
+    }
+
+    .item button {
       margin-top: 0.5rem;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 5px;
       cursor: pointer;
     }
 
@@ -104,130 +95,72 @@
       bottom: 20px;
       right: 20px;
       background-color: #25d366;
-      color: #fff;
+      color: white;
       border-radius: 50%;
       width: 60px;
       height: 60px;
-      text-align: center;
-      font-size: 30px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      box-shadow: 0 0 15px #25d366;
+      align-items: center;
+      font-size: 30px;
       text-decoration: none;
+      box-shadow: 0 0 15px #25d366;
     }
 
-    .footer {
+    footer {
       text-align: center;
       margin-top: 2rem;
       font-size: 0.8rem;
-      color: #888;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="header">
-      <img src="https://i.imgur.com/MG8mCMp.png" alt="Hax Vendas" class="logo" />
-      <h1>HAX VENDAS</h1>
-      <p class="subtitulo">Loja de diamantes baratos</p>
-    </div>
-
-    <div class="section-title">💎 Diamantes</div>
-
-    <div class="card">
-      <h3>200 diamantes</h3>
-      <p>R$ 8</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>620 diamantes</h3>
-      <p>R$ 19</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>1040 diamantes</h3>
-      <p>R$ 33</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>2120 diamantes</h3>
-      <p>R$ 65</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>4360 diamantes</h3>
-      <p>R$ 130</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>11.200 diamantes</h3>
-      <p>R$ 310</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>22.400 diamantes</h3>
-      <p>R$ 615</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="section-title">🎟️ Passe & Emotes</div>
-
-    <div class="card">
-      <h3>Passe Elite</h3>
-      <p>R$ 10</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>Pacote de Emotes</h3>
-      <p>R$ 15</p>
-      <button class="comprar-btn">Comprar</button>
-    </div>
-
-    <div class="footer">
-      Feito por Hax Vendas
-    </div>
+  <div class="header">
+    <img src="https://i.imgur.com/MG8mCMp.png" alt="Hax Vendas">
+    <h1>HAX VENDAS</h1>
+    <p class="sub">Loja de diamantes baratos</p>
   </div>
 
-  <div class="audio-player">
-    <button onclick="toggleMusica()" id="musica-btn">🎵 Tocar Música</button>
-    <audio id="bg-audio" loop>
-      <source src="Happy Nation.mp3" type="audio/mpeg">
-      Seu navegador não suporta o elemento de áudio.
-    </audio>
+  <div class="menu">
+    <button onclick="mostrarCategoria('diamantes')">💎 Diamantes</button>
+    <button onclick="mostrarCategoria('passe')">🎟️ Passe</button>
+    <button onclick="mostrarCategoria('emotes')">🕺 Emotes</button>
   </div>
 
-  <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+  <!-- Diamantes -->
+  <div id="diamantes" class="content active">
+    <div class="item"><h3>200</h3><p>R$ 8</p><button>Comprar</button></div>
+    <div class="item"><h3>620</h3><p>R$ 19</p><button>Comprar</button></div>
+    <div class="item"><h3>1040</h3><p>R$ 33</p><button>Comprar</button></div>
+    <div class="item"><h3>2120</h3><p>R$ 65</p><button>Comprar</button></div>
+    <div class="item"><h3>4360</h3><p>R$ 130</p><button>Comprar</button></div>
+    <div class="item"><h3>11200</h3><p>R$ 310</p><button>Comprar</button></div>
+    <div class="item"><h3>22400</h3><p>R$ 615</p><button>Comprar</button></div>
+  </div>
+
+  <!-- Passe -->
+  <div id="passe" class="content">
+    <div class="item"><h3>Elite Pass</h3><p>R$ 10</p><button>Comprar</button></div>
+  </div>
+
+  <!-- Emotes -->
+  <div id="emotes" class="content">
+    <div class="item"><h3>Pacote de Emotes</h3><p>R$ 15</p><button>Comprar</button></div>
+  </div>
+
+  <a href="https://wa.me/5591991912912" target="_blank" class="whatsapp-btn">📱</a>
 
   <footer>Feito por Hax Vendas</footer>
 
   <script>
-    const produtos = {
-      diamantes: [
-        { nome: "200 diamantes", preco: "R$ 8" },
-        { nome: "620 diamantes", preco: "R$ 19" },
-        { nome: "1040 diamantes", preco: "R$ 33" },
-        { nome: "2120 diamantes", preco: "R$ 65" },
-        { nome: "4360 diamantes", preco: "R$ 130" },
-        { nome: "11.200 diamantes", preco: "R$ 310" },
-        { nome: "22.400 diamantes", preco: "R$ 615" }
-      ],
-      passe: [ { nome: "Passe", preco: "R$ 7" } ],
-      emotes: [
-        { nome: "Emotes mensal", preco: "R$ 30" },
-        { nome: "Emotes perma", preco: "R$ 50" }
-      ]
-    };
+    function mostrarCategoria(id) {
+      document.querySelectorAll('.content').forEach(div => {
+        div.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
 
     function toggleCategoria(categoria) {
       const lista = document.getElementById(`lista-${categoria}`);
