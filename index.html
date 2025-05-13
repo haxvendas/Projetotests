@@ -2,165 +2,291 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hax Vendas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>HAX VENDAS</title>
+
+  <link rel="apple-touch-icon" href="icone.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="description" content="Compre diamantes baratos para Free Fire com segurança via WhatsApp. Produtos digitais entregues rapidamente.">
+  <meta name="keywords" content="Free Fire, diamantes baratos, loja online, HAX VENDAS, comprar diamantes, passe de elite, emotes">
+  <meta name="author" content="HAX VENDAS">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #000;
-      color: #fff;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .header {
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
       text-align: center;
-      padding: 1rem;
+      background: linear-gradient(145deg, #000000, #0f0f0f, #1c1c1c);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    .header img {
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .logo {
       width: 100px;
+      height: 100px;
       border-radius: 50%;
+      margin-top: 15px;
+      border: 3px solid white;
     }
 
-    h1 {
-      margin: 0.5rem 0 0;
+    .title {
+      margin-top: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
     }
 
-    .sub {
-      color: #ccc;
-      margin-bottom: 2rem;
+    .subtitle {
+      margin-top: 8px;
+      font-size: 16px;
     }
 
-    .menu {
+    .products-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
+      gap: 20px;
+      margin-top: 20px;
     }
 
-    .menu button {
-      background-color: #111;
-      border: 2px solid #0f0;
-      color: #0f0;
-      padding: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: 0.2s;
+    .category-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid #444;
+      padding-bottom: 15px;
     }
 
-    .menu button:hover {
-      background-color: #0f0;
-      color: #000;
-    }
-
-    .content {
+    .product-list {
       display: none;
-      margin: 1rem auto;
-      max-width: 600px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      margin-top: 10px;
+      gap: 10px;
     }
 
-    .content.active {
-      display: grid;
-    }
-
-    .item {
-      border: 2px solid #0f0;
-      padding: 1rem;
-      border-radius: 10px;
-      background: #111;
+    .product-card {
+      background-color: rgba(144, 238, 144, 0.05);
+      border-radius: 6px;
+      padding: 10px;
+      width: 160px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #25D366;
+      box-shadow: 0 0 8px rgba(37, 211, 102, 0.3);
+      animation: fadeInUp 0.6s forwards;
     }
 
-    .item h3 {
-      margin: 0.5rem 0;
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .item button {
-      margin-top: 0.5rem;
-      background-color: #0f0;
-      color: #000;
+    .product-image {
+      max-width: 60%;
+      height: auto;
+      border-radius: 3px;
+      margin-bottom: 5px;
+      max-height: 80px;
+      object-fit: contain;
+    }
+
+    .product-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+
+    .product-price {
+      font-size: 12px;
+      color: #ddd;
+      margin-bottom: 5px;
+    }
+
+    .product-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+    }
+
+    .buy-btn {
+      background-color: #007bff;
+      color: white;
       border: none;
-      padding: 0.5rem;
-      border-radius: 5px;
+      padding: 10px;
+      border-radius: 3px;
       cursor: pointer;
+      font-size: 12px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      min-height: 44px;
+    }
+
+    .buy-btn:hover {
+      background-color: #0056b3;
+      transform: scale(1.03);
+      box-shadow: 0 0 8px #4CAF50;
+    }
+
+    .arrow-icon {
+      font-size: 14px;
+      margin-left: 6px;
+      color: #4CAF50 !important;
+      transition: transform 0.3s ease;
     }
 
     .whatsapp-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
+      bottom: 60px;
+      right: 15px;
+      background-color: #25D366;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      text-decoration: none;
-      box-shadow: 0 0 15px #25d366;
+      padding: 10px;
+      z-index: 10;
+    }
+
+    .whatsapp-btn img {
+      width: 30px;
     }
 
     footer {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: #aaa;
+      position: fixed;
+      bottom: 5px;
+      width: 100%;
+      font-size: 10px;
+      color: #ccc;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .audio-player {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      z-index: 5;
+    }
+
+    .audio-player button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .audio-player button.playing::before {
+      content: "🎶 ";
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0.5; transform: scale(1); }
+    }
+
+    .audio-player audio {
+      display: none;
     }
   </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
+
 <body>
+  <div id="particles-js"></div>
 
-  <div class="header">
-    <img src="https://i.imgur.com/MG8mCMp.png" alt="Hax Vendas">
-    <h1>HAX VENDAS</h1>
-    <p class="sub">Loja de diamantes baratos</p>
+  <img src="perfil.jpg" alt="HAX VENDAS" class="logo">
+  <div class="title">HAX VENDAS</div>
+  <div class="subtitle">Loja de diamantes baratos</div>
+
+  <div id="categorias" class="products-container">
+    <div class="category-section">
+      <div class="product-card category-card" onclick="toggleCategoria('diamantes')">
+        <img src="diamante.jpg" alt="Diamantes" class="product-image">
+        <h3 class="product-title">💎 Diamantes<span class="arrow-icon" id="arrow-diamantes">▼</span></h3>
+      </div>
+      <div id="lista-diamantes" class="product-list"></div>
+    </div>
+
+    <div class="category-section">
+      <div class="product-card category-card" onclick="toggleCategoria('passe')">
+        <img src="passe.jpg" alt="Passe de Elite" class="product-image">
+        <h3 class="product-title">🎟️ Passe<span class="arrow-icon" id="arrow-passe">▼</span></h3>
+      </div>
+      <div id="lista-passe" class="product-list"></div>
+    </div>
+
+    <div class="category-section">
+      <div class="product-card category-card" onclick="toggleCategoria('emotes')">
+        <img src="emotes.jpg" alt="Emotes" class="product-image">
+        <h3 class="product-title">💃 Emotes<span class="arrow-icon" id="arrow-emotes">▼</span></h3>
+      </div>
+      <div id="lista-emotes" class="product-list"></div>
+    </div>
   </div>
 
-  <div class="menu">
-    <button onclick="mostrarCategoria('diamantes')">💎 Diamantes</button>
-    <button onclick="mostrarCategoria('passe')">🎟️ Passe</button>
-    <button onclick="mostrarCategoria('emotes')">🕺 Emotes</button>
+  <div class="audio-player">
+    <button onclick="toggleMusica()" id="musica-btn">🎵 Tocar Música</button>
+    <audio id="bg-audio" loop>
+      <source src="Happy Nation.mp3" type="audio/mpeg">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
   </div>
 
-  <!-- Diamantes -->
-  <div id="diamantes" class="content active">
-    <div class="item"><h3>200</h3><p>R$ 8</p><button>Comprar</button></div>
-    <div class="item"><h3>620</h3><p>R$ 19</p><button>Comprar</button></div>
-    <div class="item"><h3>1040</h3><p>R$ 33</p><button>Comprar</button></div>
-    <div class="item"><h3>2120</h3><p>R$ 65</p><button>Comprar</button></div>
-    <div class="item"><h3>4360</h3><p>R$ 130</p><button>Comprar</button></div>
-    <div class="item"><h3>11200</h3><p>R$ 310</p><button>Comprar</button></div>
-    <div class="item"><h3>22400</h3><p>R$ 615</p><button>Comprar</button></div>
-  </div>
-
-  <!-- Passe -->
-  <div id="passe" class="content">
-    <div class="item"><h3>Elite Pass</h3><p>R$ 10</p><button>Comprar</button></div>
-  </div>
-
-  <!-- Emotes -->
-  <div id="emotes" class="content">
-    <div class="item"><h3>Pacote de Emotes</h3><p>R$ 15</p><button>Comprar</button></div>
-  </div>
-
-  <a href="https://wa.me/5591991912912" target="_blank" class="whatsapp-btn">📱</a>
+  <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
   <footer>Feito por Hax Vendas</footer>
 
   <script>
-    function mostrarCategoria(id) {
-      document.querySelectorAll('.content').forEach(div => {
-        div.classList.remove('active');
-      });
-      document.getElementById(id).classList.add('active');
-    }
+    const produtos = {
+      diamantes: [
+        { nome: "200 diamantes", preco: "R$ 8" },
+        { nome: "620 diamantes", preco: "R$ 19" },
+        { nome: "1040 diamantes", preco: "R$ 33" },
+        { nome: "2120 diamantes", preco: "R$ 65" },
+        { nome: "4360 diamantes", preco: "R$ 130" },
+        { nome: "11.200 diamantes", preco: "R$ 310" },
+        { nome: "22.400 diamantes", preco: "R$ 615" }
+      ],
+      passe: [ { nome: "Passe", preco: "R$ 7" } ],
+      emotes: [
+        { nome: "Emotes mensal", preco: "R$ 30" },
+        { nome: "Emotes perma", preco: "R$ 50" }
+      ]
+    };
 
     function toggleCategoria(categoria) {
       const lista = document.getElementById(`lista-${categoria}`);
@@ -253,3 +379,4 @@
   </script>
 </body>
 </html>
+S
