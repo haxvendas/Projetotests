@@ -202,21 +202,35 @@
   <div class="title">HAX VENDAS</div>
   <div class="subtitle">Loja de diamantes baratos</div>
 
-  <!-- CATEGORIAS -->
-  <div id="category-container" class="products-container">
-    <div class="product-card" onclick="mostrarCategoria('diamantes')">
+  <!-- CATEGORIAS COM EXPANSÃO -->
+<div id="categorias" class="products-container">
+  <!-- Diamantes -->
+  <div class="category-section">
+    <div class="product-card" onclick="toggleCategoria('diamantes')">
       <img src="diamante.jpg" alt="Diamantes" class="product-image">
       <h3 class="product-title">💎 Diamantes</h3>
     </div>
-    <div class="product-card" onclick="mostrarCategoria('passe')">
-      <img src="passe.jpg" alt="Passe de Elite" class="product-image">
+    <div id="lista-diamantes" class="product-list" style="display: none;"></div>
+  </div>
+
+  <!-- Passe -->
+  <div class="category-section">
+    <div class="product-card" onclick="toggleCategoria('passe')">
+      <img src="passe.jpg" alt="Passe" class="product-image">
       <h3 class="product-title">🎟️ Passe</h3>
     </div>
-    <div class="product-card" onclick="mostrarCategoria('emotes')">
+    <div id="lista-passe" class="product-list" style="display: none;"></div>
+  </div>
+
+  <!-- Emotes -->
+  <div class="category-section">
+    <div class="product-card" onclick="toggleCategoria('emotes')">
       <img src="emotes.jpg" alt="Emotes" class="product-image">
       <h3 class="product-title">💃 Emotes</h3>
     </div>
+    <div id="lista-emotes" class="product-list" style="display: none;"></div>
   </div>
+</div>
 
   <!-- PRODUTOS -->
   <div id="products-view" class="products-container" style="display: none;"></div>
@@ -243,108 +257,58 @@
   <footer>Feito por Hax Vendas</footer>
 
   <script>
-    const produtos = {
-      diamantes: [
-        { nome: "200 diamantes", preco: "R$ 8" },
-        { nome: "620 diamantes", preco: "R$ 19" },
-        { nome: "1040 diamantes", preco: "R$ 33" },
-        { nome: "2120 diamantes", preco: "R$ 65" },
-        { nome: "4360 diamantes", preco: "R$ 130" },
-        { nome: "11.200 diamantes", preco: "R$ 310" },
-        { nome: "22.400 diamantes", preco: "R$ 615" }
-      ],
-      passe: [
-        { nome: "Passe", preco: "R$ 7" }
-      ],
-      emotes: [
-        { nome: "Emotes mensal", preco: "R$ 30" },
-        { nome: "Emotes perma", preco: "R$ 50" }
-      ]
-    };
+  const produtos = {
+    diamantes: [
+      { nome: "200 diamantes", preco: "R$ 8" },
+      { nome: "620 diamantes", preco: "R$ 19" },
+      { nome: "1040 diamantes", preco: "R$ 33" },
+      { nome: "2120 diamantes", preco: "R$ 65" },
+      { nome: "4360 diamantes", preco: "R$ 130" },
+      { nome: "11.200 diamantes", preco: "R$ 310" },
+      { nome: "22.400 diamantes", preco: "R$ 615" }
+    ],
+    passe: [
+      { nome: "Passe", preco: "R$ 7" }
+    ],
+    emotes: [
+      { nome: "Emotes mensal", preco: "R$ 30" },
+      { nome: "Emotes perma", preco: "R$ 50" }
+    ]
+  };
 
-    function mostrarCategoria(categoria) {
-      const container = document.getElementById("products-view");
-      container.innerHTML = "";
+  function toggleCategoria(categoria) {
+    const lista = document.getElementById(`lista-${categoria}`);
 
+    if (lista.style.display === "none") {
+      // Expandir e preencher os produtos
+      lista.innerHTML = "";
       produtos[categoria].forEach(produto => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.innerHTML = `
+        const item = document.createElement("div");
+        item.className = "product-card";
+        item.innerHTML = `
           <h3 class="product-title">${produto.nome}</h3>
           <p class="product-price">${produto.preco}</p>
           <div class="product-buttons">
-            <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
+            <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')">Comprar</button>
           </div>
         `;
-        container.appendChild(card);
+        lista.appendChild(item);
       });
-
-      document.getElementById("category-container").style.display = "none";
-      container.style.display = "flex";
-      document.getElementById("back-button").style.display = "block";
+      lista.style.display = "flex";
+    } else {
+      // Recolher
+      lista.style.display = "none";
     }
+  }
 
-    function voltarCategorias() {
-      document.getElementById("products-view").style.display = "none";
-      document.getElementById("category-container").style.display = "flex";
-      document.getElementById("back-button").style.display = "none";
-    }
+  function enviarWhatsApp(produto) {
+    const numero = "5591991912912";
+    const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    window.open(link, "_blank");
+  }
+</script>
 
-    function enviarWhatsApp(produto) {
-      const numeroWhatsApp = "5591991912912";
-      const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-      const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-      window.open(linkWhatsApp, '_blank');
-    }
-
-    tsParticles.load("particles-js", {
-      fullScreen: { enable: false },
-      background: { color: { value: "transparent" } },
-      particles: {
-        number: { value: 120 },
-        color: { value: "#00ff00" },
-        shape: { type: "circle" },
-        opacity: { value: 0.8 },
-        size: { value: 3, random: true },
-        links: {
-          enable: true,
-          color: "#00ff00",
-          distance: 100,
-          opacity: 0.6,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          outModes: { default: "out" }
-        }
-      },
-      interactivity: {
-        events: {
-          onHover: { enable: true, mode: "repulse" },
-          onClick: { enable: true, mode: "push" }
-        },
-        modes: {
-          repulse: { distance: 80 },
-          push: { quantity: 4 }
-        }
-      },
-      detectRetina: true
-    });
-
-    function tocarMusica() {
-      const audio = document.getElementById('bg-audio');
-      audio.play().catch(() => {
-        console.warn('Autoplay ainda bloqueado.');
-      });
-    }
-
-    window.addEventListener('click', function ativarSom() {
-      tocarMusica();
-      window.removeEventListener('click', ativarSom);
-    });
-  </script>
 </body>
 
 </html>
