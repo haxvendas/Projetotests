@@ -425,6 +425,12 @@ function enviarWhatsApp(produto) {
     window.addEventListener('click', function ativarSom() {
       toggleMusica();
       window.removeEventListener('click', ativarSom);
+
+       document.addEventListener("DOMContentLoaded", () => {
+    const musica = document.getElementById("musica") || document.getElementById("bg-audio");
+    if (musica) {
+      musica.volume = 0.5;
+    }
     });
   </script>
 </body>
