@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
   <style>
+    /* Estilos CSS (mantidos como estavam) */
     * {
       margin: 0;
       padding: 0;
@@ -74,6 +75,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      cursor: pointer; /* Adicionado cursor para indicar interatividade */
     }
 
     .product-card {
@@ -213,7 +215,6 @@
   <div class="subtitle">Loja de diamantes baratos</div>
  <div class="subtitle">Promoção por tempo limitado</div>
   <div class="subtitle">Divulgue o site para que a promoção dure mais tempo 👍🤓</div>
-  <!-- CATEGORIAS -->
   <div id="categorias" class="products-container">
     <div class="category-section" onclick="mostrarCategoria('diamantes')">
       <div class="product-card category-card">
@@ -241,13 +242,11 @@
     </div>
   </div>
 
-  <!-- PRODUTOS DE UMA CATEGORIA -->
   <div id="produtos-container" style="display: none; flex-direction: column; align-items: center;">
     <button onclick="voltarCategorias()" style="margin-top: 15px; margin-bottom: 15px; background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">⬅️ Voltar</button>
     <div id="produtos" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;"></div>
     <div id="info-box" style="display: none; max-width: 90%; margin-top: 20px; background-color: rgba(0,0,0,0.7); border-left: 5px solid #00ff00; padding: 15px; border-radius: 8px; text-align: left; font-size: 14px;">
-  <!-- Texto de aviso será inserido dinamicamente -->
-</div>
+  </div>
   </div>
 
   <div class="audio-player">
@@ -282,7 +281,7 @@
       ],
       unlock: [
         { nome: "Unlock Skins mensal", preco: "R$ 20" },
-        { nome: "Unlock Dkins permanente", preco: "R$ 40" }
+        { nome: "Unlock Skins permanente", preco: "R$ 40" }
       ]
     };
 
@@ -325,7 +324,7 @@ function mostrarCategoria(categoria) {
     `;
   } else if (categoria === "emotes") {
     infoBox.innerHTML = `
-      <strong>UNLOCK ALL EMOTES [PC | IOS]:</strong><br>
+      <strong>💃 UNLOCK ALL EMOTES [PC | IOS]:</strong><br>
      Sim, você leu certo: TODOS os emotes do jogo desbloqueados de uma vez só!
 Incluindo até aqueles que ainda nem foram lançados oficialmente e estão previstos só pra futuras atualizações. 😱
 
@@ -341,7 +340,7 @@ O palco é seu – e os emotes também!
     `;
   } else if (categoria === "unlock") {
     infoBox.innerHTML = `
-      <strong>UNLOCK ALL SKINS [PC | IOS]:</strong><br>
+      <strong>👕 UNLOCK ALL SKINS [PC | IOS]:</strong><br>
      Como o nome já entrega, o Unlock All te dá acesso a todas as skins do Free Fire – mas só no lobby. Ideal pra quem curte estilo, quer tirar aquelas prints insanas ou gravar conteúdo de respeito pro Insta, TikTok ou YouTube.
 
 🧥 Roupas lendárias, combinações raras, skins exclusivas… tudo ao seu alcance!
@@ -401,55 +400,70 @@ function enviarWhatsApp(produto) {
           onHover: { enable: true, mode: "repulse" },
           onClick: { enable: false, mode: "push" }
         },
-        modes: {
-          repulse: { distance: 80 },
+        modes:          {repulse: { distance: 80 },
           push: { quantity: 4 }
         }
       },
       detectRetina: true
     });
 
-    <!-- Contador de visualizações -->
-<div id="sfcqj2kgyj4xx5kbkwcx4ktxd379mbneq16"></div>
-<script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16&down=async" async></script>
-<br>
-<a href="https://www.freecounterstat.com">free web counter</a>
-<noscript>
+    // Contador de visualizações
+const contadorDiv = document.createElement('div');
+contadorDiv.id = 'sfcqj2kgyj4xx5kbkwcx4ktxd379mbneq16';
+document.body.appendChild(contadorDiv);
+
+const contadorScript = document.createElement('script');
+contadorScript.type = 'text/javascript';
+contadorScript.async = true;
+contadorScript.src = 'https://counter4.optistats.ovh/private/counter.js?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16&down=async';
+document.head.appendChild(contadorScript);
+
+const contadorNoscript = document.createElement('noscript');
+contadorNoscript.innerHTML = `
   <a href="https://www.freecounterstat.com" title="free web counter">
     <img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16" border="0" title="free web counter" alt="free web counter">
   </a>
-</noscript>
+`;
+document.body.appendChild(contadorNoscript);
+const brElement = document.createElement('br');
+document.body.appendChild(brElement);
 
-<!-- Script de controle da música -->
-<script>
-  function toggleMusica() {
-    const audio = document.getElementById('bg-audio');
-    const botao = document.getElementById('musica-btn');
-    if (audio.paused) {
-      audio.play();
-      botao.innerText = "⏸️ Pausar Música";
-      botao.classList.add('playing');
-    } else {
-      audio.pause();
-      botao.innerText = "🎵 Tocar Música";
-      botao.classList.remove('playing');
-    }
+const counterLink = document.createElement('a');
+counterLink.href = 'https://www.freecounterstat.com';
+counterLink.textContent = 'free web counter';
+document.body.appendChild(counterLink);
+
+    // Script de controle da música
+function toggleMusica() {
+  const audio = document.getElementById('bg-audio');
+  const botao = document.getElementById('musica-btn');
+  if (audio.paused) {
+    audio.play();
+    botao.innerText = "⏸️ Pausar Música";
+    botao.classList.add('playing');
+  } else {
+    audio.pause();
+    botao.innerText = "🎵 Tocar Música";
+    botao.classList.remove('playing');
   }
+}
 
-  // Toca a música no primeiro clique em qualquer lugar da página
-  function ativarSom() {
-    toggleMusica();
-    window.removeEventListener('click', ativarSom);
+// Toca a música no primeiro clique em qualquer lugar da página
+function ativarSom() {
+  toggleMusica();
+  window.removeEventListener('click', ativarSom);
+}
+window.addEventListener('click', ativarSom);
+
+// Define volume baixo ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+  const musica = document.getElementById("bg-audio");
+  if (musica) {
+    musica.volume = 0.01;
   }
-  window.addEventListener('click', ativarSom);
-
-  // Define volume baixo ao carregar a página
-  document.addEventListener("DOMContentLoaded", () => {
-    const musica = document.getElementById("bg-audio");
-    if (musica) {
-      musica.volume = 0.01;
-    }
-  });
-</script>
+});
+  </script>
 </body>
 </html>
+
+    
