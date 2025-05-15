@@ -372,7 +372,7 @@ function enviarWhatsApp(produto) {
 }
 
 
-    tsParticles.load("particles-js", {
+        tsParticles.load("particles-js", {
       fullScreen: { enable: false },
       background: { color: { value: "transparent" } },
       particles: {
@@ -401,71 +401,80 @@ function enviarWhatsApp(produto) {
           onClick: { enable: false, mode: "push" }
         },
         modes: {
-                    repulse: { distance: 80 },
+          repulse: { distance: 80 },
           push: { quantity: 4 }
         }
       },
       detectRetina: true
     });
 
-    // Contador de visualizações
-const contadorDiv = document.createElement('div');
-contadorDiv.id = 'sfcqj2kgyj4xx5kbkwcx4ktxd379mbneq16';
+    // Função para adicionar o contador após o carregamento do DOM
+    document.addEventListener('DOMContentLoaded', function() {
+      const contadorDiv = document.createElement('div');
+      contadorDiv.id = 'sfcqj2kgyj4xx5kbkwcx4ktxd379mbneq16';
 
-const contadorScript = document.createElement('script');
-contadorScript.type = 'text/javascript';
-contadorScript.async = true;
-contadorScript.src = 'https://counter4.optistats.ovh/private/counter.js?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16&down=async';
+      const contadorScript = document.createElement('script');
+      contadorScript.type = 'text/javascript';
+      contadorScript.async = true;
+      contadorScript.src = 'https://counter4.optistats.ovh/private/counter.js?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16&down=async';
+      document.head.appendChild(contadorScript);
 
-const contadorNoscript = document.createElement('noscript');
-contadorNoscript.innerHTML = `
-  <a href="https://www.freecounterstat.com" title="free web counter">
-    <img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16" border="0" title="free web counter" alt="free web counter">
-  </a>
-`;
-const brElement = document.createElement('br');
+      const contadorNoscript = document.createElement('noscript');
+      contadorNoscript.innerHTML = `
+        <a href="https://www.freecounterstat.com" title="free web counter">
+          <img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16" border="0" title="free web counter" alt="free web counter">
+        </a>
+      `;
+      const brElement = document.createElement('br');
 
-const counterLink = document.createElement('a');
-counterLink.href = 'https://www.freecounterstat.com';
-counterLink.textContent = 'free web counter';
+      const counterLink = document.createElement('a');
+      counterLink.href = 'https://www.freecounterstat.com';
+      counterLink.textContent = 'free web counter';
 
-// Adiciona os elementos do contador antes do footer
-const footer = document.querySelector('footer');
-document.body.insertBefore(contadorDiv, footer);
-document.head.appendChild(contadorScript); // Move script para o head
-document.body.insertBefore(contadorNoscript, footer);
-document.body.insertBefore(brElement, footer);
-document.body.insertBefore(counterLink, footer);
+      const footer = document.querySelector('footer');
+      if (footer) {
+        document.body.insertBefore(contadorDiv, footer);
+        document.body.insertBefore(contadorNoscript, footer);
+        document.body.insertBefore(brElement, footer);
+        document.body.insertBefore(counterLink, footer);
+      } else {
+        console.error("Elemento 'footer' não encontrado.");
+        document.body.appendChild(contadorDiv);
+        document.body.appendChild(contadorNoscript);
+        document.body.appendChild(brElement);
+        document.body.appendChild(counterLink);
+      }
+    });
 
-    // Script de controle da música
-function toggleMusica() {
-  const audio = document.getElementById('bg-audio');
-  const botao = document.getElementById('musica-btn');
-  if (audio.paused) {
-    audio.play();
-    botao.innerText = "⏸️ Pausar Música";
-    botao.classList.add('playing');
-  } else {
-    audio.pause();
-    botao.innerText = "🎵 Tocar Música";
-    botao.classList.remove('playing');
-  }
-}
+    // Script de controle da música (mantido como estava)
+    function toggleMusica() {
+      const audio = document.getElementById('bg-audio');
+      const botao = document.getElementById('musica-btn');
+      if (audio.paused) {
+        audio.play();
+        botao.innerText = "⏸️ Pausar Música";
+        botao.classList.add('playing');
+      } else {
+        audio.pause();
+        botao.innerText = "🎵 Tocar Música";
+        botao.classList.remove('playing');
+      }
+    }
 
-// Toca a música no primeiro clique em qualquer lugar da página
-function ativarSom() {
-  toggleMusica();
-  window.removeEventListener('click', ativarSom);
-}
-window.addEventListener('click', ativarSom);
+    // Toca a música no primeiro clique em qualquer lugar da página
+    function ativarSom() {
+      toggleMusica();
+      window.removeEventListener('click', ativarSom);
+    }
+    window.addEventListener('click', ativarSom);
 
-// Define volume baixo ao carregar a página
-document.addEventListener("DOMContentLoaded", () => {
-  const musica = document.getElementById("bg-audio");
-  if (musica) {
-    musica.volume = 0.01;
-  }
-});
+    // Define volume baixo ao carregar a página
+    document.addEventListener("DOMContentLoaded", () => {
+      const musica = document.getElementById("bg-audio");
+      if (musica) {
+        musica.volume = 0.01;
+      }
+    });
   </script>
 </body>
 </html>
