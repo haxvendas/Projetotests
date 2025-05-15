@@ -409,32 +409,8 @@ function enviarWhatsApp(produto) {
       detectRetina: true
     });
 
-    function toggleMusica() {
-      const audio = document.getElementById('bg-audio');
-      const botao = document.getElementById('musica-btn');
-      if (audio.paused) {
-        audio.play();
-        botao.innerText = "⏸️ Pausar Música";
-        botao.classList.add('playing');
-      } else {
-        audio.pause();
-        botao.innerText = "🎵 Tocar Música";
-        botao.classList.remove('playing');
-      }
-    }
-
-    window.addEventListener('click', function ativarSom() {
-  toggleMusica();
-  window.removeEventListener('click', ativarSom);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const musica = document.getElementById("bg-audio");
-  if (musica) {
-    musica.volume = 0.01;
-  }
-});
-    <div id="sfcqj2kgyj4xx5kbkwcx4ktxd379mbneq16"></div>
+    <!-- Contador de visualizações -->
+<div id="sfcqj2kgyj4xx5kbkwcx4ktxd379mbneq16"></div>
 <script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16&down=async" async></script>
 <br>
 <a href="https://www.freecounterstat.com">free web counter</a>
@@ -443,6 +419,37 @@ document.addEventListener("DOMContentLoaded", () => {
     <img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16" border="0" title="free web counter" alt="free web counter">
   </a>
 </noscript>
-  </script>
+
+<!-- Script de controle da música -->
+<script>
+  function toggleMusica() {
+    const audio = document.getElementById('bg-audio');
+    const botao = document.getElementById('musica-btn');
+    if (audio.paused) {
+      audio.play();
+      botao.innerText = "⏸️ Pausar Música";
+      botao.classList.add('playing');
+    } else {
+      audio.pause();
+      botao.innerText = "🎵 Tocar Música";
+      botao.classList.remove('playing');
+    }
+  }
+
+  // Toca a música no primeiro clique em qualquer lugar da página
+  function ativarSom() {
+    toggleMusica();
+    window.removeEventListener('click', ativarSom);
+  }
+  window.addEventListener('click', ativarSom);
+
+  // Define volume baixo ao carregar a página
+  document.addEventListener("DOMContentLoaded", () => {
+    const musica = document.getElementById("bg-audio");
+    if (musica) {
+      musica.volume = 0.01;
+    }
+  });
+</script>
 </body>
 </html>
