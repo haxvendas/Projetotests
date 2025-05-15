@@ -257,6 +257,8 @@
     </audio>
   </div>
 
+  <!-- ... (código anterior mantido) ... -->
+
   <footer>Feito por Thiago HAX</footer>
 
   <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
@@ -264,217 +266,173 @@
   </a>
 
   <script>
-    const produtos = {
-      diamantes: [
-        { nome: "200 diamantes", preco: "R$ 8" },
-        { nome: "620 diamantes", preco: "R$ 19" },
-        { nome: "1040 diamantes", preco: "R$ 33" },
-        { nome: "2120 diamantes", preco: "R$ 65" },
-        { nome: "4360 diamantes", preco: "R$ 130" },
-        { nome: "11.200 diamantes", preco: "R$ 310" },
-        { nome: "22.400 diamantes", preco: "R$ 615" }
-      ],
-      passe: [ { nome: "Passe", preco: "R$ 7" } ],
-      emotes: [
-        { nome: "Unlock all Emotes mensal", preco: "R$ 30" },
-        { nome: "Unlock all Emotes permanente", preco: "R$ 50" }
-      ],
-      unlock: [
-        { nome: "Unlock Skins mensal", preco: "R$ 20" },
-        { nome: "Unlock Skins permanente", preco: "R$ 40" }
-      ]
-    };
+  const produtos = {
+    diamantes: [
+      { nome: "200 diamantes", preco: "R$ 8" },
+      { nome: "620 diamantes", preco: "R$ 19" },
+      { nome: "1040 diamantes", preco: "R$ 33" },
+      { nome: "2120 diamantes", preco: "R$ 65" },
+      { nome: "4360 diamantes", preco: "R$ 130" },
+      { nome: "11.200 diamantes", preco: "R$ 310" },
+      { nome: "22.400 diamantes", preco: "R$ 615" }
+    ],
+    passe: [ { nome: "Passe", preco: "R$ 7" } ],
+    emotes: [
+      { nome: "Unlock all Emotes mensal", preco: "R$ 30" },
+      { nome: "Unlock all Emotes permanente", preco: "R$ 50" }
+    ],
+    unlock: [
+      { nome: "Unlock Skins mensal", preco: "R$ 20" },
+      { nome: "Unlock Skins permanente", preco: "R$ 40" }
+    ]
+  };
 
-function mostrarCategoria(categoria) {
-  document.getElementById("categorias").style.display = "none";
-  const container = document.getElementById("produtos");
-  const pai = document.getElementById("produtos-container");
-  container.innerHTML = "";
+  function mostrarCategoria(categoria) {
+    document.getElementById("categorias").style.display = "none";
+    const container = document.getElementById("produtos");
+    const pai = document.getElementById("produtos-container");
+    container.innerHTML = "";
 
-  // Mostrar os produtos
-  produtos[categoria].forEach(produto => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.innerHTML = `
-      <h3 class="product-title">${produto.nome}</h3>
-      <p class="product-price">${produto.preco}</p>
-      <div class="product-buttons">
-        <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
-      </div>
-    `;
-    container.appendChild(card);
-  });
+    produtos[categoria].forEach(produto => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <h3 class="product-title">${produto.nome}</h3>
+        <p class="product-price">${produto.preco}</p>
+        <div class="product-buttons">
+          <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
 
-  // Mensagens personalizadas por categoria
-  const infoBox = document.getElementById("info-box");
-  infoBox.style.display = "block";
+    const infoBox = document.getElementById("info-box");
+    infoBox.style.display = "block";
 
-  if (categoria === "diamantes") {
-    infoBox.innerHTML = `
-      <strong>🛡️ ATENÇÃO:</strong><br>
-      OS DIAMANTES SÃO ENTREGUES VIA <strong>ACCESS TOKEN</strong>.<br>
-      <em>O QUE É ACCESS TOKEN?</em> É basicamente um ID único de cada conta no game.<br>
-      Após efetuar a compra, ensinamos como pegar na hora o Access Token e fazemos o envio dos diamantes <strong>100% seguro!</strong>
-    `;
-  } else if (categoria === "passe") {
-    infoBox.innerHTML = `
-      <strong>🎟️ SOBRE O PASSE:</strong><br>
-      O passe é enviado diretamente na sua conta após a confirmação de pagamento.<br>
-      Basta informar o seu ID e aguardarmos o envio, que é feito em poucos minutos.
-    `;
-  } else if (categoria === "emotes") {
-    infoBox.innerHTML = `
-      <strong>💃 UNLOCK ALL EMOTES [PC | IOS]:</strong><br>
-     Sim, você leu certo: TODOS os emotes do jogo desbloqueados de uma vez só!
-Incluindo até aqueles que ainda nem foram lançados oficialmente e estão previstos só pra futuras atualizações. 😱
+    if (categoria === "diamantes") {
+      infoBox.innerHTML = `
+        <strong>🛡️ ATENÇÃO:</strong><br>
+        OS DIAMANTES SÃO ENTREGUES VIA <strong>ACCESS TOKEN</strong>.<br>
+        <em>O QUE É ACCESS TOKEN?</em> É basicamente um ID único de cada conta no game.<br>
+        Após efetuar a compra, ensinamos como pegar na hora o Access Token e fazemos o envio dos diamantes <strong>100% seguro!</strong>
+      `;
+    } else if (categoria === "passe") {
+      infoBox.innerHTML = `
+        <strong>🎟️ SOBRE O PASSE:</strong><br>
+        O passe é enviado diretamente na sua conta após a confirmação de pagamento.<br>
+        Basta informar o seu ID e aguardarmos o envio, que é feito em poucos minutos.
+      `;
+    } else if (categoria === "emotes") {
+      infoBox.innerHTML = `
+        <strong>💃 UNLOCK ALL EMOTES [PC | IOS]:</strong><br>
+        Sim, você leu certo: TODOS os emotes do jogo desbloqueados de uma vez só!<br>
+        Incluindo até aqueles que ainda nem foram lançados oficialmente e estão previstos só pra futuras atualizações. 😱<br><br>
 
-✅ 100% funcional
-✅ Visível em todos os modos de jogo
-✅ Todo mundo vê: seu squad, inimigos, espectadores – ninguém vai ignorar seu estilo!
+        ✅ 100% funcional<br>
+        ✅ Visível em todos os modos de jogo<br>
+        ✅ Todo mundo vê: seu squad, inimigos, espectadores – ninguém vai ignorar seu estilo!<br><br>
 
-Deixe seu personagem ainda mais insano nas partidas, zoe os inimigos com aquele emote raro, ou brilhe nas jogadas com um gesto exclusivo que ninguém mais tem.
+        Deixe seu personagem ainda mais insano nas partidas, zoe os inimigos com aquele emote raro, ou brilhe nas jogadas com um gesto exclusivo que ninguém mais tem.<br><br>
 
-🕺 Destaque-se. Provoque. Mostre quem manda.
+        🕺 Destaque-se. Provoque. Mostre quem manda.<br>
+        O palco é seu – e os emotes também!
+      `;
+    } else if (categoria === "unlock") {
+      infoBox.innerHTML = `
+        <strong>👕 UNLOCK ALL SKINS [PC | IOS]:</strong><br>
+        Como o nome já entrega, o Unlock All te dá acesso a todas as skins do Free Fire – mas só no lobby. Ideal pra quem curte estilo, quer tirar aquelas prints insanas ou gravar conteúdo de respeito pro Insta, TikTok ou YouTube.<br><br>
 
-O palco é seu – e os emotes também!
-    `;
-  } else if (categoria === "unlock") {
-    infoBox.innerHTML = `
-      <strong>👕 UNLOCK ALL SKINS [PC | IOS]:</strong><br>
-     Como o nome já entrega, o Unlock All te dá acesso a todas as skins do Free Fire – mas só no lobby. Ideal pra quem curte estilo, quer tirar aquelas prints insanas ou gravar conteúdo de respeito pro Insta, TikTok ou YouTube.
+        🧥 Roupas lendárias, combinações raras, skins exclusivas… tudo ao seu alcance!<br><br>
 
-🧥 Roupas lendárias, combinações raras, skins exclusivas… tudo ao seu alcance!
+        ⚠️ Atenção, jogador:<br>
+        🚫 Não funciona durante as partidas – o uso é somente no lobby.<br>
+        ✅ Sem ban, sem riscos – é apenas visual e ideal pra criação de conteúdo.<br><br>
 
-⚠️ Atenção, jogador:
-🚫 Não funciona durante as partidas – o uso é somente no lobby.
-✅ Sem ban, sem riscos – é apenas visual e ideal pra criação de conteúdo.
+        Vista seu personagem com tudo o que o Free Fire tem de melhor.<br>
+        Mostre sua identidade. Crie. Poste. Impressione.
+      `;
+    } else {
+      infoBox.style.display = "none";
+    }
 
-Vista seu personagem com tudo o que o Free Fire tem de melhor.
-Mostre sua identidade. Crie. Poste. Impressione.
-    `;
-  } else {
-    infoBox.style.display = "none";
+    pai.style.display = "flex";
   }
 
-  pai.style.display = "flex";
-}
+  function voltarCategorias() {
+    document.getElementById("produtos-container").style.display = "none";
+    document.getElementById("categorias").style.display = "flex";
+  }
 
-function voltarCategorias() {
-  document.getElementById("produtos-container").style.display = "none";
-  document.getElementById("categorias").style.display = "flex";
-}
+  function enviarWhatsApp(produto) {
+    const numero = "5591991912912";
+    const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
+    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    window.open(link, "_blank");
+  }
 
-function enviarWhatsApp(produto) {
-  const numero = "5591991912912";
-  const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-  const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-  window.open(link, "_blank");
-}
-
-
-        tsParticles.load("particles-js", {
-      fullScreen: { enable: false },
-      background: { color: { value: "transparent" } },
-      particles: {
-        number: { value: 120 },
-        color: { value: "#00ff00" },
-        shape: { type: "circle" },
-        opacity: { value: 0.8 },
-        size: { value: 3, random: true },
-        links: {
-          enable: true,
-          color: "#00ff00",
-          distance: 100,
-          opacity: 0.6,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          outModes: { default: "out" }
-        }
+  tsParticles.load("particles-js", {
+    fullScreen: { enable: false },
+    background: { color: { value: "transparent" } },
+    particles: {
+      number: { value: 120 },
+      color: { value: "#00ff00" },
+      shape: { type: "circle" },
+      opacity: { value: 0.8 },
+      size: { value: 3, random: true },
+      links: {
+        enable: true,
+        color: "#00ff00",
+        distance: 100,
+        opacity: 0.6,
+        width: 1
       },
-      interactivity: {
-        events: {
-          onHover: { enable: true, mode: "repulse" },
-          onClick: { enable: false, mode: "push" }
-        },
-        modes: {
-          repulse: { distance: 80 },
-          push: { quantity: 4 }
-        }
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        outModes: { default: "out" }
+      }
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "repulse" },
+        onClick: { enable: false, mode: "push" }
       },
-      detectRetina: true
-    });
-
-    // Função para adicionar o contador após o carregamento do DOM
-    document.addEventListener('DOMContentLoaded', function() {
-      const contadorDiv = document.createElement('div');
-      contadorDiv.id = 'sfcqj2kgyj4xx5kbkwcx4ktxd379mbneq16';
-
-      const contadorScript = document.createElement('script');
-      contadorScript.type = 'text/javascript';
-      contadorScript.async = true;
-      contadorScript.src = 'https://counter4.optistats.ovh/private/counter.js?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16&down=async';
-      document.head.appendChild(contadorScript);
-
-      const contadorNoscript = document.createElement('noscript');
-      contadorNoscript.innerHTML = `
-        <a href="https://www.freecounterstat.com" title="free web counter">
-          <img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16" border="0" title="free web counter" alt="free web counter">
-        </a>
-      `;
-      const brElement = document.createElement('br');
-
-      const counterLink = document.createElement('a');
-      counterLink.href = 'https://www.freecounterstat.com';
-      counterLink.textContent = 'free web counter';
-
-      const footer = document.querySelector('footer');
-      if (footer) {
-        document.body.insertBefore(contadorDiv, footer);
-        document.body.insertBefore(contadorNoscript, footer);
-        document.body.insertBefore(brElement, footer);
-        document.body.insertBefore(counterLink, footer);
-      } else {
-        console.error("Elemento 'footer' não encontrado.");
-        document.body.appendChild(contadorDiv);
-        document.body.appendChild(contadorNoscript);
-        document.body.appendChild(brElement);
-        document.body.appendChild(counterLink);
+      modes: {
+        repulse: { distance: 80 },
+        push: { quantity: 4 }
       }
-    });
+    },
+    detectRetina: true
+  });
 
-    // Script de controle da música (mantido como estava)
-    function toggleMusica() {
-      const audio = document.getElementById('bg-audio');
-      const botao = document.getElementById('musica-btn');
-      if (audio.paused) {
-        audio.play();
-        botao.innerText = "⏸️ Pausar Música";
-        botao.classList.add('playing');
-      } else {
-        audio.pause();
-        botao.innerText = "🎵 Tocar Música";
-        botao.classList.remove('playing');
-      }
+  // Música
+  function toggleMusica() {
+    const audio = document.getElementById('bg-audio');
+    const botao = document.getElementById('musica-btn');
+    if (audio.paused) {
+      audio.play();
+      botao.innerText = "⏸️ Pausar Música";
+      botao.classList.add('playing');
+    } else {
+      audio.pause();
+      botao.innerText = "🎵 Tocar Música";
+      botao.classList.remove('playing');
     }
+  }
 
-    // Toca a música no primeiro clique em qualquer lugar da página
-    function ativarSom() {
-      toggleMusica();
-      window.removeEventListener('click', ativarSom);
+  function ativarSom() {
+    toggleMusica();
+    window.removeEventListener('click', ativarSom);
+  }
+  window.addEventListener('click', ativarSom);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const musica = document.getElementById("bg-audio");
+    if (musica) {
+      musica.volume = 0.01;
     }
-    window.addEventListener('click', ativarSom);
-
-    // Define volume baixo ao carregar a página
-    document.addEventListener("DOMContentLoaded", () => {
-      const musica = document.getElementById("bg-audio");
-      if (musica) {
-        musica.volume = 0.01;
-      }
-    });
-  </script>
+  });
+</script>
 </body>
 </html>
