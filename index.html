@@ -257,11 +257,11 @@
     </audio>
   </div>
 
+  <footer>Feito por Thiago HAX</footer>
+
   <a href="https://wa.me/5591991912912" class="whatsapp-btn" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
-
-  <footer>Feito por Thiago HAX</footer>
 
   <script>
     const produtos = {
@@ -400,7 +400,8 @@ function enviarWhatsApp(produto) {
           onHover: { enable: true, mode: "repulse" },
           onClick: { enable: false, mode: "push" }
         },
-        modes:          {repulse: { distance: 80 },
+        modes: {
+                    repulse: { distance: 80 },
           push: { quantity: 4 }
         }
       },
@@ -410,13 +411,11 @@ function enviarWhatsApp(produto) {
     // Contador de visualizações
 const contadorDiv = document.createElement('div');
 contadorDiv.id = 'sfcqj2kgyj4xx5kbkwcx4ktxd379mbneq16';
-document.body.appendChild(contadorDiv);
 
 const contadorScript = document.createElement('script');
 contadorScript.type = 'text/javascript';
 contadorScript.async = true;
 contadorScript.src = 'https://counter4.optistats.ovh/private/counter.js?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16&down=async';
-document.head.appendChild(contadorScript);
 
 const contadorNoscript = document.createElement('noscript');
 contadorNoscript.innerHTML = `
@@ -424,14 +423,19 @@ contadorNoscript.innerHTML = `
     <img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=qj2kgyj4xx5kbkwcx4ktxd379mbneq16" border="0" title="free web counter" alt="free web counter">
   </a>
 `;
-document.body.appendChild(contadorNoscript);
 const brElement = document.createElement('br');
-document.body.appendChild(brElement);
 
 const counterLink = document.createElement('a');
 counterLink.href = 'https://www.freecounterstat.com';
 counterLink.textContent = 'free web counter';
-document.body.appendChild(counterLink);
+
+// Adiciona os elementos do contador antes do footer
+const footer = document.querySelector('footer');
+document.body.insertBefore(contadorDiv, footer);
+document.head.appendChild(contadorScript); // Move script para o head
+document.body.insertBefore(contadorNoscript, footer);
+document.body.insertBefore(brElement, footer);
+document.body.insertBefore(counterLink, footer);
 
     // Script de controle da música
 function toggleMusica() {
@@ -465,5 +469,3 @@ document.addEventListener("DOMContentLoaded", () => {
   </script>
 </body>
 </html>
-
-    
