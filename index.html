@@ -146,19 +146,29 @@
       box-shadow: 0 0 8px #4CAF50;
     }
 
-    .discord-btn {
-      position: fixed;
-      bottom: 60px;
-      right: 15px;
-      background-color: #5865F2;
-      border-radius: 50%;
-      padding: 10px;
-      z-index: 10;
-    }
+  .discord-btn {
+  position: fixed;
+  bottom: 60px;
+  right: 15px;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 10px;
+  z-index: 10;
+  border: 2px solid #5865F2;
+  box-shadow: 0 0 10px #5865F2;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    .discord-btn img {
-      width: 30px;
-    }
+.discord-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #5865F2, 0 0 25px #5865F2;
+}
+
+.discord-btn img {
+  width: 30px;
+  height: 30px;
+}
+
 
     footer {
       position: fixed;
@@ -269,7 +279,7 @@
   <footer>Feito por Thiago HAX</footer>
 
 <a href="https://discord.gg/Awq48pxBHc" class="discord-btn" target="_blank">
-  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" style="width: 40px; height: 40px;">
+  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" style="width: 40px; height: 40px;">
 </a>
 
   <script>
