@@ -364,28 +364,26 @@
         Mostre sua identidade. Crie. Poste. Impressione.
       `;
     } else if (categoria === "bot") {
-      infoBox.innerHTML = `
-        <strong>🤖INFO BOT TCP:</strong><br>
-• O Bot é por dentro do jogo, não necessita de aplicativos externos, exemplo: telegram, discord entre outros.
+  infoBox.innerHTML = `
+    <strong>🤖 INFO BOT TCP:</strong><br><br>
+    • O Bot é por dentro do jogo, não necessita de aplicativos externos, como Telegram, Discord, entre outros.<br><br>
+    • <strong>Funções Disponíveis</strong><br>
+    ✅ Spamroom<br>
+    ✅ Likes na Conta<br>
+    ✅ 5 Players no modo Ilha do Rolê<br>
+    ✅ Informações da Conta por UID<br>
+    ✅ Verificar se o player está banido pelo ID<br><br>
 
-•  Funções Disponíveis 
-✅ Spamroom
-✅ Likes Conta
-✅ 5 Players no modo ilha do rolê
-✅ Informação Sobre conta por UID
-✅ Checar se o player está banido pelo id
+    <strong>O que essas funções fazem?</strong><br><br>
+    <strong>Spamroom:</strong> Envia convites com um nome personalizado para entrar em uma sala personalizada (lembrando que a sala precisa ter senha, e o ID é do jogador que será spammado).<br><br>
 
-Oque essas funções fazem?
+    <strong>Likes na Conta:</strong> Envia likes (curtidas) para sua conta do Free Fire! Máximo de 100 curtidas a cada 24 horas por conta.<br><br>
 
-Spamroom: Serve para enviar convites com um nome personalizado para entrar em uma sala personalizada, lembrando que a sala tem que ter senha, o id é do jogador a sem spammado.
+    <strong>5 Players:</strong> Convida jogadores para formar uma equipe no modo Ilha do Rolê, permitindo até 5 jogadores juntos.<br><br>
 
-Likes Conta: Ele envia likes (curtidas) para sua conta do Free Fire! Máximo 100 curtidas a cada 24 horas por conta.
-
-5 Players: Convida um jogador para a equipe do rolê, podendo ter até 5 jogadores em equipe.
-
-Informações Player: Informações sobre uma conta pelo id, mostrando nível, nickname, likes, entre outros.
-      `;
-    } else {
+    <strong>Informações da Conta:</strong> Mostra detalhes sobre uma conta usando o ID, como nível, nickname, likes e outros dados.
+  `;
+} else {
       infoBox.style.display = "none";
     }
 
