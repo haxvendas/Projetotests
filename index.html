@@ -240,7 +240,14 @@
         <h3 class="product-title">👕 Unlock all skins</h3>
       </div>
     </div>
+     <div class="category-section" onclick="mostrarCategoria('bot')">
+      <div class="product-card category-card">
+        <img src="bot.jpg" alt="bot" class="product-image">
+        <h3 class="product-title">🤖BOT TCP FF</h3>
+      </div>
+    </div>
   </div>
+
 
   <div id="produtos-container" style="display: none; flex-direction: column; align-items: center;">
     <button onclick="voltarCategorias()" style="margin-top: 15px; margin-bottom: 15px; background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">⬅️ Voltar</button>
@@ -284,7 +291,12 @@
     unlock: [
       { nome: "Unlock Skins mensal", preco: "R$ 20" },
       { nome: "Unlock Skins permanente", preco: "R$ 40" }
-    ]
+      ],
+    bot: [
+      { nome: "Bot TCP 1 dia ", preco: "R$ 2" },
+      { nome: "Bot TCP mensal ", preco: "R$ 15" }
+     { nome: "Bot TCP trimensal", preco: "R$ 30" }
+      ]
   };
 
   function mostrarCategoria(categoria) {
@@ -350,6 +362,29 @@
 
         Vista seu personagem com tudo o que o Free Fire tem de melhor.<br>
         Mostre sua identidade. Crie. Poste. Impressione.
+      `;
+    }
+    else if (categoria === "bot") {
+      infoBox.innerHTML = `
+        <strong>🤖INFO BOT TCP:</strong><br>
+• O Bot é por dentro do jogo, não necessita de aplicativos externos, exemplo: telegram, discord entre outros.
+
+•  Funções Disponíveis 
+✅ Spamroom
+✅ Likes Conta
+✅ 5 Players no modo ilha do rolê
+✅ Informação Sobre conta por UID
+✅ Checar se o player está banido pelo id
+
+Oque essas funções fazem?
+
+Spamroom: Serve para enviar convites com um nome personalizado para entrar em uma sala personalizada, lembrando que a sala tem que ter senha, o id é do jogador a sem spammado.
+
+Likes Conta: Ele envia likes (curtidas) para sua conta do Free Fire! Máximo 100 curtidas a cada 24 horas por conta.
+
+5 Players: Convida um jogador para a equipe do rolê, podendo ter até 5 jogadores em equipe.
+
+Informações Player: Informações sobre uma conta pelo id, mostrando nível, nickname, likes, entre outros.
       `;
     } else {
       infoBox.style.display = "none";
