@@ -15,15 +15,15 @@
   <!-- Open Graph Tags -->
   <meta property="og:title" content="HAX VENDAS - Diamantes Baratos para Free Fire">
   <meta property="og:description" content="Compre diamantes, passes e emotes para Free Fire com segurança via WhatsApp.">
-  <meta property="og:image" content="https://seusite.com/perfil.jpg">
-  <meta property="og:url" content="https://seusite.com">
+  <meta property="og:image" content="https://haxvendas.netlify.app/perfil.jpg">
+  <meta property="og:url" content="https://haxvendas.netlify.app">
   <!-- Schema Markup -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "OnlineStore",
       "name": "HAX VENDAS",
-      "url": "https://seusite.com",
+      "url": "https://haxvendas.netlify.app",
       "description": "Loja de diamantes baratos para Free Fire"
     }
   </script>
@@ -56,6 +56,8 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      top: 0;
+      left: 0;
     }
 
     .navbar {
@@ -156,7 +158,7 @@
 
     .product-price {
       font-size: 12px;
-      color: #f0f0f0; /* Melhor contraste */
+      color: #f0f0f0;
       margin-bottom: 5px;
     }
 
@@ -168,7 +170,7 @@
     }
 
     .buy-btn {
-      background-color: #4CAF50; /* Cor padronizada */
+      background-color: #4CAF50;
       color: white;
       border: none;
       padding: 10px;
@@ -221,7 +223,7 @@
     .audio-player {
       position: fixed;
       bottom: 30px;
-      right: 15px; /* Movido para o canto direito */
+      right: 15px;
       z-index: 15;
     }
 
@@ -284,7 +286,6 @@
       background: #45a049;
     }
 
-    /* Media Queries para Responsividade */
     @media (max-width: 600px) {
       .product-card {
         width: 45%;
@@ -305,13 +306,13 @@
     }
   </style>
 
-  <script async src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <!-- Removido o async para garantir carregamento correto -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
 
 <body>
   <div id="particles-js"></div>
 
-  <!-- Barra de Navegação -->
   <nav class="navbar">
     <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
     <button onclick="mostrarCategoria('passe')">Passe</button>
@@ -327,13 +328,11 @@
   <div id="promo-timer" class="subtitle">Promoção acaba em: <span id="timer"></span></div>
   <div class="subtitle">Divulgue o site para que a promoção dure mais tempo 👍🤓</div>
 
-  <!-- Botões de Compartilhamento -->
   <div class="share-buttons">
     <button onclick="compartilhar('whatsapp')" aria-label="Compartilhar no WhatsApp">Compartilhar no WhatsApp</button>
     <button onclick="compartilhar('telegram')" aria-label="Compartilhar no Telegram">Compartilhar no Telegram</button>
   </div>
 
-  <!-- Campo de Busca -->
   <div class="search-bar">
     <input type="text" id="busca-produto" placeholder="Buscar produtos..." oninput="filtrarProdutos()" aria-label="Buscar produtos">
   </div>
@@ -564,58 +563,71 @@
 
     function animateCards() {
       const cards = document.querySelectorAll(".product-card");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.1 });
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, { threshold: 0.1 });
 
-      cards.forEach(card => {
-        card.style.opacity = 0;
-        card.style.transform = "translateY(20px)";
-        observer.observe(card);
-      });
+        cards.forEach(card => {
+          card.style.opacity = 0;
+          card.style.transform = "translateY(20px)";
+          observer.observe(card);
+        });
+      } else {
+        // Fallback para navegadores sem IntersectionObserver
+        cards.forEach(card => {
+          card.classList.add("visible");
+        });
+      }
     }
 
-    tsParticles.load("particles-js", {
-      fullScreen: { enable: false },
-      background: { color: { value: "transparent" } },
-      particles: {
-        number: { value: 120 },
-        color: { value: "#00ff00" },
-        shape: { type: "circle" },
-        opacity: { value: 0.8 },
-        size: { value: 3, random: true },
-        links: {
-          enable: true,
-          color: "#00ff00",
-          distance: 100,
-          opacity: 0.6,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          outModes: { default: "out" }
-        }
-      },
-      interactivity: {
-        events: {
-          onHover: { enable: true, mode: "repulse" },
-          onClick: { enable: false, mode: "push" }
-        },
-        modes: {
-          repulse: { distance: 80 },
-          push: { quantity: 4 }
-        }
-      },
-      detectRetina: true
+    // Inicializar tsParticles
+    document.addEventListener("DOMContentLoaded", () => {
+       if (typeof tsParticles !== 'undefined') {
+        tsParticles.load("particles-js", {
+          fullScreen: { enable: false },
+          background: { color: { value: "transparent" } },
+          particles: {
+            number: { value: 120 },
+            color: { value: "#00ff00" },
+            shape: { type: "circle" },
+            opacity: { value: 0.8 },
+            size: { value: 3, random: true },
+            links: {
+              enable: true,
+              color: "#00ff00",
+              distance: 100,
+              opacity: 0.6,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 2,
+              direction: "none",
+              outModes: { default: "out" }
+            }
+          },
+          interactivity: {
+            events: {
+              onHover: { enable: true, mode: "repulse" },
+              onClick: { enable: false, mode: "push" }
+            },
+            modes: {
+              repulse: { distance: 80 },
+              push: { quantity: 4 }
+            }
+          },
+          detectRetina: true
+        });
+      } else {
+        console.error("tsParticles não está disponível.");
+      }
     });
 
-    // Música
     function toggleMusica() {
       const audio = document.getElementById('bg-audio');
       const botao = document.getElementById('musica-btn');
@@ -636,7 +648,6 @@
     }
     window.addEventListener('click', ativarSom);
 
-    // Cronômetro de Promoção
     function startTimer(duration, display) {
       let timer = duration, hours, minutes, seconds;
       setInterval(() => {
@@ -653,7 +664,7 @@
       if (musica) {
         musica.volume = 0.01;
       }
-      const duration = 24 * 3600; // 24 horas
+      const duration = 24 * 3600;
       const display = document.getElementById("timer");
       startTimer(duration, display);
       animateCards();
