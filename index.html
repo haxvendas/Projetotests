@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>HAX VENDAS - Diamantes Baratos para Free Fire</title>
 
+  <!-- Ícone para dispositivos Apple -->
   <link rel="apple-touch-icon" href="icone.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Substituído o meta tag obsoleto -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- Adicionando favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Compre diamantes baratos para Free Fire com segurança via WhatsApp. Produtos digitais entregues rapidamente.">
@@ -495,14 +500,14 @@
       }
 
       pai.style.display = "flex";
-      animateCards(); // Reaplicar animação após criar os novos cartões
+      animateCards();
     }
 
     function voltarCategorias() {
       document.getElementById("produtos-container").style.display = "none";
       document.getElementById("categorias").style.display = "flex";
       document.getElementById("busca-produto").value = "";
-      animateCards(); // Reaplicar animação nas categorias
+      animateCards();
     }
 
     function enviarWhatsApp(produto) {
@@ -547,7 +552,7 @@
           container.appendChild(card);
         });
       }
-      animateCards(); // Reaplicar animação após criar os novos cartões
+      animateCards();
     }
 
     function compartilhar(plataforma) {
@@ -577,14 +582,13 @@
           observer.observe(card);
         });
       } else {
-        // Fallback para navegadores sem IntersectionObserver
         cards.forEach(card => {
           card.classList.add("visible");
         });
       }
     }
 
-  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
       if (typeof tsParticles !== 'undefined') {
         tsParticles.load("particles-js", {
           fullScreen: { enable: false },
@@ -632,7 +636,7 @@
       const duration = 24 * 3600;
       const display = document.getElementById("timer");
       startTimer(duration, display);
-      animateCards(); // Inicializar animação nas categorias
+      animateCards();
     });
 
     function toggleMusica() {
