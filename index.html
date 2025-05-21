@@ -5,12 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>HAX VENDAS - Diamantes Baratos para Free Fire</title>
 
-  <!-- Ícone para dispositivos Apple -->
   <link rel="apple-touch-icon" href="icone.png">
-  <!-- Substituído o meta tag obsoleto -->
   <meta name="mobile-web-app-capable" content="yes">
 
-  <!-- Adicionando favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
   <!-- SEO Meta Tags -->
@@ -117,6 +114,7 @@
       justify-content: center;
       gap: 20px;
       margin-top: 20px;
+      min-height: 200px; /* Garantir espaço para os cartões */
     }
 
     .category-section {
@@ -137,14 +135,13 @@
       align-items: center;
       border: 1px solid #25D366;
       box-shadow: 0 0 8px rgba(37, 211, 102, 0.3);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s, transform 0.6s;
+      opacity: 1; /* Removido opacity: 0 para garantir visibilidade */
+      transform: none; /* Removido transform inicial */
+      transition: transform 0.3s ease; /* Animação mais simples */
     }
 
-    .product-card.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .product-card:hover {
+      transform: scale(1.05); /* Efeito ao passar o mouse */
     }
 
     .product-image {
@@ -374,10 +371,12 @@
     </div>
   </div>
 
-  <div id="produtos-container" style="display: none; flex-direction: column; align-items: center;">
+  <div id="produtos-container" style="display: none; flex-direction: column; align-items: center; min-height: 300px; padding-bottom: 20px;">
     <button onclick="voltarCategorias()" style="margin-top: 15px; margin-bottom: 15px; background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" aria-label="Voltar para categorias">⬅️ Voltar</button>
-    <div id="produtos" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;"></div>
-    <div id="info-box" style="display: none; max-width: 90%; margin-top: 20px; background-color: rgba(0,0,0,0.7); border-left: 5px solid #00ff00; padding: 15px; border-radius: 8px; text-align: left; font-size: 14px;"></div>
+    <div id="produtos" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; min-height: 200px;"></div>
+    <div id="info-box" style="display: none; max-width: 90%; margin-top: 20px; background-color: rgba(0,0,0,0.7); border-left: 5px solid #00ff00; padding: 15px; border-radius: 8px; text
+
+-align: left; font-size: 14px;"></div>
   </div>
 
   <div class="audio-player">
@@ -438,6 +437,7 @@
           </div>
         `;
         container.appendChild(card);
+        console.log("Cartão criado:", produto.nome); // Depuração
       });
 
       const infoBox = document.getElementById("info-box");
@@ -500,14 +500,12 @@
       }
 
       pai.style.display = "flex";
-      animateCards();
     }
 
     function voltarCategorias() {
       document.getElementById("produtos-container").style.display = "none";
       document.getElementById("categorias").style.display = "flex";
       document.getElementById("busca-produto").value = "";
-      animateCards();
     }
 
     function enviarWhatsApp(produto) {
@@ -550,9 +548,9 @@
             </div>
           `;
           container.appendChild(card);
+          console.log("Cartão criado (busca):", produto.nome); // Depuração
         });
       }
-      animateCards();
     }
 
     function compartilhar(plataforma) {
@@ -565,6 +563,8 @@
       }
     }
 
+    // Função de animação removida temporariamente
+    /*
     function animateCards() {
       const cards = document.querySelectorAll(".product-card");
       if ('IntersectionObserver' in window) {
@@ -587,6 +587,7 @@
         });
       }
     }
+    */
 
     document.addEventListener("DOMContentLoaded", () => {
       if (typeof tsParticles !== 'undefined') {
@@ -636,7 +637,7 @@
       const duration = 24 * 3600;
       const display = document.getElementById("timer");
       startTimer(duration, display);
-      animateCards();
+      // animateCards(); // Removido temporariamente
     });
 
     function toggleMusica() {
