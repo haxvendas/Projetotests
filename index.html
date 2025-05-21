@@ -3,18 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>HAX VENDAS</title>
+  <title>HAX VENDAS - Diamantes Baratos para Free Fire</title>
 
   <link rel="apple-touch-icon" href="icone.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
+  <!-- SEO Meta Tags -->
   <meta name="description" content="Compre diamantes baratos para Free Fire com segurança via WhatsApp. Produtos digitais entregues rapidamente.">
   <meta name="keywords" content="Free Fire, diamantes baratos, loja online, HAX VENDAS, comprar diamantes, passe de elite, emotes">
   <meta name="author" content="HAX VENDAS">
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="HAX VENDAS - Diamantes Baratos para Free Fire">
+  <meta property="og:description" content="Compre diamantes, passes e emotes para Free Fire com segurança via WhatsApp.">
+  <meta property="og:image" content="https://haxvendas.netlify.app//perfil.jpg">
+  <meta property="og:url" content="https://haxvendas.netlify.app/">
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "OnlineStore",
+      "name": "HAX VENDAS",
+      "url": "https://haxvendas.netlify.app/",
+      "description": "Loja de diamantes baratos para Free Fire"
+    }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
   <style>
-    /* Estilos CSS (mantidos como estavam) */
     * {
       margin: 0;
       padding: 0;
@@ -40,6 +56,31 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .navbar button {
+      background: #4CAF50;
+      border: none;
+      padding: 8px 15px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .navbar button:hover {
+      background: #45a049;
     }
 
     .logo {
@@ -75,7 +116,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      cursor: pointer; /* Adicionado cursor para indicar interatividade */
+      cursor: pointer;
     }
 
     .product-card {
@@ -89,22 +130,21 @@
       align-items: center;
       border: 1px solid #25D366;
       box-shadow: 0 0 8px rgba(37, 211, 102, 0.3);
-      animation: fadeInUp 0.6s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
     }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .product-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .product-image {
-      max-width: 60%;
-      height: auto;
+      width: 80px;
+      height: 80px;
       border-radius: 3px;
       margin-bottom: 5px;
-      max-height: 80px;
       object-fit: contain;
     }
 
@@ -116,7 +156,7 @@
 
     .product-price {
       font-size: 12px;
-      color: #ddd;
+      color: #f0f0f0; /* Melhor contraste */
       margin-bottom: 5px;
     }
 
@@ -128,7 +168,7 @@
     }
 
     .buy-btn {
-      background-color: #007bff;
+      background-color: #4CAF50; /* Cor padronizada */
       color: white;
       border: none;
       padding: 10px;
@@ -141,34 +181,33 @@
     }
 
     .buy-btn:hover {
-      background-color: #0056b3;
+      background-color: #45a049;
       transform: scale(1.03);
       box-shadow: 0 0 8px #4CAF50;
     }
 
-  .discord-btn {
-  position: fixed;
-  bottom: 60px;
-  right: 15px;
-  background-color: transparent;
-  border-radius: 50%;
-  padding: 10px;
-  z-index: 10;
-  border: 2px solid #5865F2;
-  box-shadow: 0 0 10px #5865F2;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    .discord-btn {
+      position: fixed;
+      bottom: 60px;
+      right: 15px;
+      background-color: transparent;
+      border-radius: 50%;
+      padding: 10px;
+      z-index: 10;
+      border: 2px solid #5865F2;
+      box-shadow: 0 0 10px #5865F2;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-.discord-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #5865F2, 0 0 25px #5865F2;
-}
+    .discord-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #5865F2, 0 0 25px #5865F2;
+    }
 
-.discord-btn img {
-  width: 30px;
-  height: 30px;
-}
-
+    .discord-btn img {
+      width: 30px;
+      height: 30px;
+    }
 
     footer {
       position: fixed;
@@ -182,10 +221,8 @@
     .audio-player {
       position: fixed;
       bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      z-index: 5;
+      right: 15px; /* Movido para o canto direito */
+      z-index: 15;
     }
 
     .audio-player button {
@@ -212,269 +249,340 @@
     .audio-player audio {
       display: none;
     }
+
+    .search-bar {
+      margin: 20px auto;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .share-buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .share-buttons button {
+      background: #4CAF50;
+      border: none;
+      padding: 8px 15px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .share-buttons button:hover {
+      background: #45a049;
+    }
+
+    /* Media Queries para Responsividade */
+    @media (max-width: 600px) {
+      .product-card {
+        width: 45%;
+        min-width: 140px;
+      }
+      .products-container {
+        gap: 10px;
+      }
+      .navbar {
+        flex-wrap: wrap;
+      }
+      .title {
+        font-size: 24px;
+      }
+      .subtitle {
+        font-size: 14px;
+      }
+    }
   </style>
 
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
 
 <body>
   <div id="particles-js"></div>
 
-  <img src="perfil.jpg" alt="HAX VENDAS" class="logo">
+  <!-- Barra de Navegação -->
+  <nav class="navbar">
+    <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
+    <button onclick="mostrarCategoria('passe')">Passe</button>
+    <button onclick="mostrarCategoria('emotes')">Emotes</button>
+    <button onclick="mostrarCategoria('unlock')">Skins</button>
+    <button onclick="mostrarCategoria('bot')">Bot</button>
+  </nav>
+
+  <img src="perfil.jpg" alt="Logo da HAX VENDAS" class="logo">
   <div class="title">HAX VENDAS</div>
   <div class="subtitle">Loja de diamantes baratos</div>
- <div class="subtitle">Promoção por tempo limitado</div>
+  <div class="subtitle">Promoção por tempo limitado</div>
+  <div id="promo-timer" class="subtitle">Promoção acaba em: <span id="timer"></span></div>
   <div class="subtitle">Divulgue o site para que a promoção dure mais tempo 👍🤓</div>
+
+  <!-- Botões de Compartilhamento -->
+  <div class="share-buttons">
+    <button onclick="compartilhar('whatsapp')" aria-label="Compartilhar no WhatsApp">Compartilhar no WhatsApp</button>
+    <button onclick="compartilhar('telegram')" aria-label="Compartilhar no Telegram">Compartilhar no Telegram</button>
+  </div>
+
+  <!-- Campo de Busca -->
+  <div class="search-bar">
+    <input type="text" id="busca-produto" placeholder="Buscar produtos..." oninput="filtrarProdutos()" aria-label="Buscar produtos">
+  </div>
+
   <div id="categorias" class="products-container">
     <div class="category-section" onclick="mostrarCategoria('diamantes')">
       <div class="product-card category-card">
-        <img src="diamante.jpg" alt="Diamantes" class="product-image">
+        <img src="diamante.jpg" alt="Ícone de diamantes para Free Fire" class="product-image">
         <h3 class="product-title">💎 Diamantes</h3>
       </div>
     </div>
     <div class="category-section" onclick="mostrarCategoria('passe')">
       <div class="product-card category-card">
-        <img src="passe.jpg" alt="Passe de Elite" class="product-image">
+        <img src="passe.jpg" alt="Ícone do Passe de Elite para Free Fire" class="product-image">
         <h3 class="product-title">🎟️ Passe</h3>
       </div>
     </div>
     <div class="category-section" onclick="mostrarCategoria('emotes')">
       <div class="product-card category-card">
-        <img src="emotes.jpg" alt="Emotes" class="product-image">
+        <img src="emotes.jpg" alt="Ícone de Emotes para Free Fire" class="product-image">
         <h3 class="product-title">💃 Unlock all Emotes</h3>
       </div>
     </div>
-  <div class="category-section" onclick="mostrarCategoria('unlock')">
+    <div class="category-section" onclick="mostrarCategoria('unlock')">
       <div class="product-card category-card">
-        <img src="unlock.jpg" alt="unlock" class="product-image">
-        <h3 class="product-title">👕 Unlock all skins</h3>
+        <img src="unlock.jpg" alt="Ícone de Skins para Free Fire" class="product-image">
+        <h3 class="product-title">👕 Unlock all Skins</h3>
       </div>
     </div>
-     <div class="category-section" onclick="mostrarCategoria('bot')">
+    <div class="category-section" onclick="mostrarCategoria('bot')">
       <div class="product-card category-card">
-        <img src="bot.jpg" alt="bot" class="product-image">
-        <h3 class="product-title">🤖BOT TCP FF</h3>
+        <img src="bot.jpg" alt="Ícone do Bot TCP para Free Fire" class="product-image">
+        <h3 class="product-title">🤖 BOT TCP FF</h3>
       </div>
     </div>
   </div>
-
 
   <div id="produtos-container" style="display: none; flex-direction: column; align-items: center;">
-    <button onclick="voltarCategorias()" style="margin-top: 15px; margin-bottom: 15px; background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">⬅️ Voltar</button>
+    <button onclick="voltarCategorias()" style="margin-top: 15px; margin-bottom: 15px; background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" aria-label="Voltar para categorias">⬅️ Voltar</button>
     <div id="produtos" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;"></div>
-    <div id="info-box" style="display: none; max-width: 90%; margin-top: 20px; background-color: rgba(0,0,0,0.7); border-left: 5px solid #00ff00; padding: 15px; border-radius: 8px; text-align: left; font-size: 14px;">
-  </div>
+    <div id="info-box" style="display: none; max-width: 90%; margin-top: 20px; background-color: rgba(0,0,0,0.7); border-left: 5px solid #00ff00; padding: 15px; border-radius: 8px; text-align: left; font-size: 14px;"></div>
   </div>
 
   <div class="audio-player">
-    <button onclick="toggleMusica()" id="musica-btn">🎵 Tocar Música</button>
+    <button onclick="toggleMusica()" id="musica-btn" aria-label="Tocar ou pausar música">🎵 Tocar Música</button>
     <audio id="bg-audio" loop>
       <source src="Happy Nation.mp3" type="audio/mpeg">
       Seu navegador não suporta o elemento de áudio.
     </audio>
   </div>
 
-  <!-- ... (código anterior mantido) ... -->
-
   <footer>Feito por Thiago HAX</footer>
 
-<a href="https://discord.gg/6ueYp7hPF6" class="discord-btn" target="_blank">
-  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" style="width: 40px; height: 40px;">
-</a>
+  <a href="https://discord.gg/6ueYp7hPF6" class="discord-btn" target="_blank" aria-label="Entrar no servidor do Discord">
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Ícone do Discord" style="width: 40px; height: 40px;">
+  </a>
 
   <script>
-  const produtos = {
-    diamantes: [
-      { nome: "200 diamantes", preco: "R$ 9" },
-      { nome: "620 diamantes", preco: "R$ 19" },
-      { nome: "1040 diamantes", preco: "R$ 34" },
-      { nome: "2120 diamantes", preco: "R$ 65" },
-      { nome: "4360 diamantes", preco: "R$ 130" },
-      { nome: "11.200 diamantes", preco: "R$ 310" },
-      { nome: "22.400 diamantes", preco: "R$ 615" }
-    ],
-    passe: [ { nome: "Passe", preco: "R$ 7" } ],
-    emotes: [
-      { nome: "Unlock all Emotes mensal", preco: "R$ 30" },
-      { nome: "Unlock all Emotes permanente", preco: "R$ 50" }
-    ],
-    unlock: [
-      { nome: "Unlock Skins mensal", preco: "R$ 20" },
-      { nome: "Unlock Skins permanente", preco: "R$ 40" }
+    const produtos = {
+      diamantes: [
+        { nome: "200 diamantes", preco: "R$ 9" },
+        { nome: "620 diamantes", preco: "R$ 19" },
+        { nome: "1040 diamantes", preco: "R$ 34" },
+        { nome: "2120 diamantes", preco: "R$ 65" },
+        { nome: "4360 diamantes", preco: "R$ 130" },
+        { nome: "11.200 diamantes", preco: "R$ 310" },
+        { nome: "22.400 diamantes", preco: "R$ 615" }
       ],
-    bot: [
-  { nome: "Bot TCP 1 dia ", preco: "R$ 2" },
-  { nome: "Bot TCP mensal ", preco: "R$ 15" },
-  { nome: "Bot TCP trimensal", preco: "R$ 30" }
-]
-  };
+      passe: [{ nome: "Passe", preco: "R$ 7" }],
+      emotes: [
+        { nome: "Unlock all Emotes mensal", preco: "R$ 30" },
+        { nome: "Unlock all Emotes permanente", preco: "R$ 50" }
+      ],
+      unlock: [
+        { nome: "Unlock Skins mensal", preco: "R$ 20" },
+        { nome: "Unlock Skins permanente", preco: "R$ 40" }
+      ],
+      bot: [
+        { nome: "Bot TCP 1 dia", preco: "R$ 2" },
+        { nome: "Bot TCP mensal", preco: "R$ 15" },
+        { nome: "Bot TCP trimensal", preco: "R$ 30" }
+      ]
+    };
 
-  function mostrarCategoria(categoria) {
-    document.getElementById("categorias").style.display = "none";
-    const container = document.getElementById("produtos");
-    const pai = document.getElementById("produtos-container");
-    container.innerHTML = "";
+    function mostrarCategoria(categoria) {
+      document.getElementById("categorias").style.display = "none";
+      const container = document.getElementById("produtos");
+      const pai = document.getElementById("produtos-container");
+      container.innerHTML = "";
 
-    produtos[categoria].forEach(produto => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        <h3 class="product-title">${produto.nome}</h3>
-        <p class="product-price">${produto.preco}</p>
-        <div class="product-buttons">
-          <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" style="background-color: #4CAF50;">Comprar</button>
-        </div>
-      `;
-      container.appendChild(card);
-    });
+      produtos[categoria].forEach(produto => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <h3 class="product-title">${produto.nome}</h3>
+          <p class="product-price">${produto.preco}</p>
+          <div class="product-buttons">
+            <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" aria-label="Comprar ${produto.nome} por ${produto.preco}">Comprar</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
 
-    const infoBox = document.getElementById("info-box");
-    infoBox.style.display = "block";
+      const infoBox = document.getElementById("info-box");
+      infoBox.style.display = "block";
 
-    if (categoria === "diamantes") {
-      infoBox.innerHTML = `
-        <strong>🛡️ ATENÇÃO:</strong><br>
-        OS DIAMANTES SÃO ENTREGUES VIA <strong>ACCESS TOKEN</strong>.<br>
-        <em>O QUE É ACCESS TOKEN?</em> É basicamente um ID único de cada conta no game.<br>
-        Após efetuar a compra, ensinamos como pegar na hora o Access Token e fazemos o envio dos diamantes <strong>100% seguro!</strong>
-      `;
-    } else if (categoria === "passe") {
-      infoBox.innerHTML = `
-        <strong>🎟️ SOBRE O PASSE:</strong><br>
-        O passe é enviado diretamente na sua conta após a confirmação de pagamento.<br>
-        Basta informar o seu ID e aguardarmos o envio, que é feito em poucos minutos.
-      `;
-    } else if (categoria === "emotes") {
-      infoBox.innerHTML = `
-        <strong>💃 UNLOCK ALL EMOTES [PC | IOS]:</strong><br>
-        Sim, você leu certo: TODOS os emotes do jogo desbloqueados de uma vez só!<br>
-        Incluindo até aqueles que ainda nem foram lançados oficialmente e estão previstos só pra futuras atualizações. 😱<br><br>
-
-        ✅ 100% funcional<br>
-        ✅ Visível em todos os modos de jogo<br>
-        ✅ Todo mundo vê: seu squad, inimigos, espectadores – ninguém vai ignorar seu estilo!<br><br>
-
-        Deixe seu personagem ainda mais insano nas partidas, zoe os inimigos com aquele emote raro, ou brilhe nas jogadas com um gesto exclusivo que ninguém mais tem.<br><br>
-
-        🕺 Destaque-se. Provoque. Mostre quem manda.<br>
-        O palco é seu – e os emotes também!
-      `;
-    } else if (categoria === "unlock") {
-      infoBox.innerHTML = `
-        <strong>👕 UNLOCK ALL SKINS [PC | IOS]:</strong><br>
-        Como o nome já entrega, o Unlock All te dá acesso a todas as skins do Free Fire – mas só no lobby. Ideal pra quem curte estilo, quer tirar aquelas prints insanas ou gravar conteúdo de respeito pro Insta, TikTok ou YouTube.<br><br>
-
-        🧥 Roupas lendárias, combinações raras, skins exclusivas… tudo ao seu alcance!<br><br>
-
-        ⚠️ Atenção, jogador:<br>
-        🚫 Não funciona durante as partidas – o uso é somente no lobby.<br>
-        ✅ Sem ban, sem riscos – é apenas visual e ideal pra criação de conteúdo.<br><br>
-
-        Vista seu personagem com tudo o que o Free Fire tem de melhor.<br>
-        Mostre sua identidade. Crie. Poste. Impressione.
-      `;
-    } else if (categoria === "bot") {
-  infoBox.innerHTML = `
-    <strong>🤖 INFO BOT TCP:</strong><br><br>
-    • O Bot é por dentro do jogo, não necessita de aplicativos externos, como Telegram, Discord, entre outros.<br><br>
-    • <strong>Funções Disponíveis</strong><br>
-    ✅ Spamroom<br>
-    ✅ Likes na Conta<br>
-    ✅ 5 Players no modo Ilha do Rolê<br>
-    ✅ Informações da Conta por UID<br>
-    ✅ Verificar se o player está banido pelo ID<br><br>
-
-    <strong>O que essas funções fazem?</strong><br><br>
-    <strong>Spamroom:</strong> Envia convites com um nome personalizado para entrar em uma sala personalizada (lembrando que a sala precisa ter senha, e o ID é do jogador que será spammado).<br><br>
-
-    <strong>Likes na Conta:</strong> Envia likes (curtidas) para sua conta do Free Fire! Máximo de 100 curtidas a cada 24 horas por conta.<br><br>
-
-    <strong>5 Players:</strong> Convida jogadores para formar uma equipe no modo Ilha do Rolê, permitindo até 5 jogadores juntos.<br><br>
-
-    <strong>Informações da Conta:</strong> Mostra detalhes sobre uma conta usando o ID, como nível, nickname, likes e outros dados.
-  `;
-} else {
-      infoBox.style.display = "none";
-    }
-
-    pai.style.display = "flex";
-  }
-
-  function voltarCategorias() {
-    document.getElementById("produtos-container").style.display = "none";
-    document.getElementById("categorias").style.display = "flex";
-  }
-
-  function enviarWhatsApp(produto) {
-    const numero = "5591991912912";
-    const mensagem = `Olá, gostaria de comprar o produto: ${produto}`;
-    const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-    window.open(link, "_blank");
-  }
-
-  tsParticles.load("particles-js", {
-    fullScreen: { enable: false },
-    background: { color: { value: "transparent" } },
-    particles: {
-      number: { value: 120 },
-      color: { value: "#00ff00" },
-      shape: { type: "circle" },
-      opacity: { value: 0.8 },
-      size: { value: 3, random: true },
-      links: {
-        enable: true,
-        color: "#00ff00",
-        distance: 100,
-        opacity: 0.6,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 2,
-        direction: "none",
-        outModes: { default: "out" }
+      if (categoria === "diamantes") {
+        infoBox.innerHTML = `
+          <strong>🛡️ ATENÇÃO:</strong><br>
+          OS DIAMANTES SÃO ENTREGUES VIA <strong>ACCESS TOKEN</strong>.<br>
+          <em>O QUE É ACCESS TOKEN?</em> É basicamente um ID único de cada conta no game.<br>
+          Após efetuar a compra, ensinamos como pegar na hora o Access Token e fazemos o envio dos diamantes <strong>100% seguro!</strong>
+        `;
+      } else if (categoria === "passe") {
+        infoBox.innerHTML = `
+          <strong>🎟️ SOBRE O PASSE:</strong><br>
+          O passe é enviado diretamente na sua conta após a confirmação de pagamento.<br>
+          Basta informar o seu ID e aguardarmos o envio, que é feito em poucos minutos.
+        `;
+      } else if (categoria === "emotes") {
+        infoBox.innerHTML = `
+          <strong>💃 UNLOCK ALL EMOTES [PC | IOS]:</strong><br>
+          Sim, você leu certo: TODOS os emotes do jogo desbloqueados de uma vez só!<br>
+          Incluindo até aqueles que ainda nem foram lançados oficialmente e estão previstos só pra futuras atualizações. 😱<br><br>
+          ✅ 100% funcional<br>
+          ✅ Visível em todos os modos de jogo<br>
+          ✅ Todo mundo vê: seu squad, inimigos, espectadores – ninguém vai ignorar seu estilo!<br><br>
+          Deixe seu personagem ainda mais insano nas partidas, zoe os inimigos com aquele emote raro, ou brilhe nas jogadas com um gesto exclusivo que ninguém mais tem.<br><br>
+          🕺 Destaque-se. Provoque. Mostre quem manda.<br>
+          O palco é seu – e os emotes também!
+        `;
+      } else if (categoria === "unlock") {
+        infoBox.innerHTML = `
+          <strong>👕 UNLOCK ALL SKINS [PC | IOS]:</strong><br>
+          Como o nome já entrega, o Unlock All te dá acesso a todas as skins do Free Fire – mas só no lobby. Ideal pra quem curte estilo, quer tirar aquelas prints insanas ou gravar conteúdo de respeito pro Insta, TikTok ou YouTube.<br><br>
+          🧥 Roupas lendárias, combinações raras, skins exclusivas… tudo ao seu alcance!<br><br>
+          ⚠️ Atenção, jogador:<br>
+          🚫 Não funciona durante as partidas – o uso é somente no lobby.<br>
+          ✅ Sem ban, sem riscos – é apenas visual e ideal pra criação de conteúdo.<br><br>
+          Vista seu personagem com tudo o que o Free Fire tem de melhor.<br>
+          Mostre sua identidade. Crie. Poste. Impressione.
+        `;
+      } else if (categoria === "bot") {
+        infoBox.innerHTML = `
+          <strong>🤖 INFO BOT TCP:</strong><br><br>
+          • O Bot é por dentro do jogo, não necessita de aplicativos externos, como Telegram, Discord, entre outros.<br><br>
+          • <strong>Funções Disponíveis</strong><br>
+          ✅ Spamroom<br>
+          ✅ Likes na Conta<br>
+          ✅ 5 Players no modo Ilha do Rolê<br>
+          ✅ Informações da Conta por UID<br>
+          ✅ Verificar se o player está banido pelo ID<br><br>
+          <strong>O que essas funções fazem?</strong><br><br>
+          <strong>Spamroom:</strong> Envia convites com um nome personalizado para entrar em uma sala personalizada (lembrando que a sala precisa ter senha, e o ID é do jogador que será spammado).<br><br>
+          <strong>Likes na Conta:</strong> Envia likes (curtidas) para sua conta do Free Fire! Máximo de 100 curtidas a cada 24 horas por conta.<br><br>
+          <strong>5 Players:</strong> Convida jogadores para formar uma equipe no modo Ilha do Rolê, permitindo até 5 jogadores juntos.<br><br>
+          <strong>Informações da Conta:</strong> Mostra detalhes sobre uma conta usando o ID, como nível, nickname, likes e outros dados.
+        `;
+      } else {
+        infoBox.style.display = "none";
       }
-    },
-    interactivity: {
-      events: {
-        onHover: { enable: true, mode: "repulse" },
-        onClick: { enable: false, mode: "push" }
-      },
-      modes: {
-        repulse: { distance: 80 },
-        push: { quantity: 4 }
+
+      pai.style.display = "flex";
+      animateCards();
+    }
+
+    function voltarCategorias() {
+      document.getElementById("produtos-container").style.display = "none";
+      document.getElementById("categorias").style.display = "flex";
+      document.getElementById("busca-produto").value = "";
+      animateCards();
+    }
+
+    function enviarWhatsApp(produto) {
+      const numero = "5591991912912";
+      const mensagem = `Olá, gostaria de comprar o produto: ${encodeURIComponent(produto.replace(/[<>\"&]/g, ''))}`;
+      const link = `https://wa.me/${numero}?text=${mensagem}`;
+      alert(`Você será redirecionado para o WhatsApp para comprar: ${produto}`);
+      window.open(link, "_blank");
+    }
+
+    function filtrarProdutos() {
+      const busca = document.getElementById("busca-produto").value.toLowerCase();
+      const container = document.getElementById("produtos");
+      const categorias = document.getElementById("categorias");
+      const pai = document.getElementById("produtos-container");
+      container.innerHTML = "";
+      categorias.style.display = "none";
+      pai.style.display = "flex";
+
+      let resultados = [];
+      Object.keys(produtos).forEach(categoria => {
+        produtos[categoria].forEach(produto => {
+          if (produto.nome.toLowerCase().includes(busca)) {
+            resultados.push({ ...produto, categoria });
+          }
+        });
+      });
+
+      if (resultados.length === 0) {
+        container.innerHTML = "<p>Nenhum produto encontrado.</p>";
+      } else {
+        resultados.forEach(produto => {
+          const card = document.createElement("div");
+          card.className = "product-card";
+          card.innerHTML = `
+            <h3 class="product-title">${produto.nome}</h3>
+            <p class="product-price">${produto.preco}</p>
+            <div class="product-buttons">
+              <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" aria-label="Comprar ${produto.nome} por ${produto.preco}">Comprar</button>
+            </div>
+          `;
+          container.appendChild(card);
+        });
       }
-    },
-    detectRetina: true
-  });
-
-  // Música
-  function toggleMusica() {
-    const audio = document.getElementById('bg-audio');
-    const botao = document.getElementById('musica-btn');
-    if (audio.paused) {
-      audio.play();
-      botao.innerText = "⏸️ Pausar Música";
-      botao.classList.add('playing');
-    } else {
-      audio.pause();
-      botao.innerText = "🎵 Tocar Música";
-      botao.classList.remove('playing');
+      animateCards();
     }
-  }
 
-  function ativarSom() {
-    toggleMusica();
-    window.removeEventListener('click', ativarSom);
-  }
-  window.addEventListener('click', ativarSom);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const musica = document.getElementById("bg-audio");
-    if (musica) {
-      musica.volume = 0.01;
+    function compartilhar(plataforma) {
+      const url = window.location.href;
+      const text = "Confira a HAX VENDAS! Diamantes baratos para Free Fire: ";
+      if (plataforma === 'whatsapp') {
+        window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`, '_blank');
+      } else if (plataforma === 'telegram') {
+        window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+      }
     }
-  });
-</script>
-</body>
-</html>
+
+    function animateCards() {
+      const cards = document.querySelectorAll(".product-card");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      cards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = "translateY(20px)";
+        observer.observe(card);
+      });
+    }
+
+    tsParticles.load("particles-js", {
+      fullScreen: { enable: false },
+      background: { color: { value: "transparent" } },
+      particles: {
+        number: { value: 120 },
+        color: { value: "#00ff00" },
+        shape: { 
