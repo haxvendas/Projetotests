@@ -15,15 +15,15 @@
   <!-- Open Graph Tags -->
   <meta property="og:title" content="HAX VENDAS - Diamantes Baratos para Free Fire">
   <meta property="og:description" content="Compre diamantes, passes e emotes para Free Fire com segurança via WhatsApp.">
-  <meta property="og:image" content="https://haxvendas.netlify.app/perfil.jpg">
-  <meta property="og:url" content="https://haxvendas.netlify.app">
+  <meta property="og:image" content="https://seusite.com/perfil.jpg">
+  <meta property="og:url" content="https://seusite.com">
   <!-- Schema Markup -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "OnlineStore",
       "name": "HAX VENDAS",
-      "url": "https://haxvendas.netlify.app",
+      "url": "https://seusite.com",
       "description": "Loja de diamantes baratos para Free Fire"
     }
   </script>
@@ -306,7 +306,6 @@
     }
   </style>
 
-  <!-- Removido o async para garantir carregamento correto -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
 
@@ -496,14 +495,14 @@
       }
 
       pai.style.display = "flex";
-      animateCards();
+      animateCards(); // Reaplicar animação após criar os novos cartões
     }
 
     function voltarCategorias() {
       document.getElementById("produtos-container").style.display = "none";
       document.getElementById("categorias").style.display = "flex";
       document.getElementById("busca-produto").value = "";
-      animateCards();
+      animateCards(); // Reaplicar animação nas categorias
     }
 
     function enviarWhatsApp(produto) {
@@ -548,7 +547,7 @@
           container.appendChild(card);
         });
       }
-      animateCards();
+      animateCards(); // Reaplicar animação após criar os novos cartões
     }
 
     function compartilhar(plataforma) {
@@ -585,9 +584,8 @@
       }
     }
 
-    // Inicializar tsParticles
-    document.addEventListener("DOMContentLoaded", () => {
-       if (typeof tsParticles !== 'undefined') {
+  document.addEventListener("DOMContentLoaded", () => {
+      if (typeof tsParticles !== 'undefined') {
         tsParticles.load("particles-js", {
           fullScreen: { enable: false },
           background: { color: { value: "transparent" } },
@@ -626,6 +624,15 @@
       } else {
         console.error("tsParticles não está disponível.");
       }
+
+      const musica = document.getElementById("bg-audio");
+      if (musica) {
+        musica.volume = 0.01;
+      }
+      const duration = 24 * 3600;
+      const display = document.getElementById("timer");
+      startTimer(duration, display);
+      animateCards(); // Inicializar animação nas categorias
     });
 
     function toggleMusica() {
@@ -658,17 +665,6 @@
         if (--timer < 0) timer = duration;
       }, 1000);
     }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const musica = document.getElementById("bg-audio");
-      if (musica) {
-        musica.volume = 0.01;
-      }
-      const duration = 24 * 3600;
-      const display = document.getElementById("timer");
-      startTimer(duration, display);
-      animateCards();
-    });
   </script>
 </body>
 </html>
