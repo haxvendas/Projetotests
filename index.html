@@ -585,4 +585,63 @@
       particles: {
         number: { value: 120 },
         color: { value: "#00ff00" },
-        shape: { 
+        shape: { type: "circle" },
+      opacity: { value: 0.8 },
+      size: { value: 3, random: true },
+      links: {
+        enable: true,
+        color: "#00ff00",
+        distance: 100,
+        opacity: 0.6,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        outModes: { default: "out" }
+      }
+    },
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "repulse" },
+        onClick: { enable: false, mode: "push" }
+      },
+      modes: {
+        repulse: { distance: 80 },
+        push: { quantity: 4 }
+      }
+    },
+    detectRetina: true
+  });
+
+  // Música
+  function toggleMusica() {
+    const audio = document.getElementById('bg-audio');
+    const botao = document.getElementById('musica-btn');
+    if (audio.paused) {
+      audio.play();
+      botao.innerText = "⏸️ Pausar Música";
+      botao.classList.add('playing');
+    } else {
+      audio.pause();
+      botao.innerText = "🎵 Tocar Música";
+      botao.classList.remove('playing');
+    }
+  }
+
+  function ativarSom() {
+    toggleMusica();
+    window.removeEventListener('click', ativarSom);
+  }
+  window.addEventListener('click', ativarSom);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const musica = document.getElementById("bg-audio");
+    if (musica) {
+      musica.volume = 0.01;
+    }
+  });
+</script>
+</body>
+</html>
