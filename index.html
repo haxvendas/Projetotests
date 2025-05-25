@@ -352,12 +352,6 @@
         <h3 class="product-title">🎟️ Passe</h3>
       </div>
     </div>
-    <div class="category-section" onclick="mostrarCategoria('emotes')">
-      <div class="product-card category-card">
-        <img src="emotes.jpg" alt="Ícone de Emotes para Free Fire" class="product-image">
-        <h3 class="product-title">💃 Unlock all Emotes</h3>
-      </div>
-    </div>
     <div class="category-section" onclick="mostrarCategoria('unlock')">
       <div class="product-card category-card">
         <img src="unlock.jpg" alt="Ícone de Skins para Free Fire" class="product-image">
@@ -404,10 +398,6 @@
         { nome: "22.400 diamantes", preco: "R$ 615" }
       ],
       passe: [{ nome: "Passe", preco: "R$ 7" }],
-      emotes: [
-        { nome: "Unlock all Emotes mensal", preco: "R$ 30" },
-        { nome: "Unlock all Emotes permanente", preco: "R$ 50" }
-      ],
       unlock: [
         { nome: "Unlock Skins mensal", preco: "R$ 20" },
         { nome: "Unlock Skins permanente", preco: "R$ 40" }
@@ -464,18 +454,6 @@
           <strong>🎟️ SOBRE O PASSE:</strong><br>
           O passe é enviado diretamente na sua conta após a confirmação de pagamento.<br>
           Basta informar o seu ID e aguardarmos o envio, que é feito em poucos minutos.
-        `;
-      } else if (categoria === "emotes") {
-        infoBox.innerHTML = `
-          <strong>💃 UNLOCK ALL EMOTES [PC | IOS]:</strong><br>
-          Sim, você leu certo: TODOS os emotes do jogo desbloqueados de uma vez só!<br>
-          Incluindo até aqueles que ainda nem foram lançados oficialmente e estão previstos só pra futuras atualizações. 😱<br><br>
-          ✅ 100% funcional<br>
-          ✅ Visível em todos os modos de jogo<br>
-          ✅ Todo mundo vê: seu squad, inimigos, espectadores – ninguém vai ignorar seu estilo!<br><br>
-          Deixe seu personagem ainda mais insano nas partidas, zoe os inimigos com aquele emote raro, ou brilhe nas jogadas com um gesto exclusivo que ninguém mais tem.<br><br>
-          🕺 Destaque-se. Provoque. Mostre quem manda.<br>
-          O palco é seu – e os emotes também!
         `;
       } else if (categoria === "unlock") {
         infoBox.innerHTML = `
