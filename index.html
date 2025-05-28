@@ -316,6 +316,7 @@
         <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
         <button onclick="mostrarCategoria('passe')">Passe</button>
         <button onclick="mostrarCategoria('bot')">Bot</button>
+        <button onclick="mostrarCategoria('servervip')">Server VIP</button>
     </nav>
 
     <img src="perfil.jpg" alt="Logo da HAX VENDAS" class="logo">
@@ -327,7 +328,6 @@
 
     <div class="share-buttons">
         <button onclick="compartilhar('whatsapp')" aria-label="Compartilhar no WhatsApp">Compartilhar no WhatsApp</button>
-        <button onclick="compartilhar('telegram')" aria-label="Compartilhar no Telegram">Compartilhar no Telegram</button>
     </div>
 
     <div class="search-bar">
@@ -351,6 +351,12 @@
             <div class="product-card category-card">
                 <img src="bot.jpg" alt="Ícone do Bot TCP para Free Fire" class="product-image">
                 <h3 class="product-title">🤖 BOT TCP FF</h3>
+            </div>
+        </div>
+         <div class="category-section" onclick="mostrarCategoria('servervip')">
+            <div class="product-card category-card">
+                <img src="server.jpg" alt="Ícone do Server VIP para Free Fire" class="product-image">
+                <h3 class="product-title">🥇Server VIP</h3>
             </div>
         </div>
     </div>
@@ -387,6 +393,7 @@
                 { nome: "22.400 diamantes", preco: "R$ 615" }
             ],
             passe: [{ nome: "Passe", preco: "R$ 7" }],
+            servervip: [{ nome: "server vip 1 dia", preco: "R$ 10" }],
             bot: [
                 { nome: "Bot TCP 1 dia", preco: "R$ 2" },
                 { nome: "Bot TCP mensal", preco: "R$ 15" },
@@ -432,13 +439,33 @@
                     <em>O QUE É ACCESS TOKEN?</em> É basicamente um ID único de cada conta no game.<br>
                     Após efetuar a compra, ensinamos como pegar na hora o Access Token e fazemos o envio dos diamantes <strong>100% seguro!</strong>
                 `;
+            } else if (categoria === "servervip") {
+                infoBox.innerHTML = `
+                    Chegou o <strong>SERVER VIP</strong>, o serviço mais completo e poderoso para quem quer dominar o Free Fire de verdade!<br>
+Com ele, você assume o controle total do seu perfil e vive uma experiência totalmente <strong>VIP</strong> e <strong>sem limites</strong>!<br><br>
+
+✅ <strong>O que você pode fazer com o SERVER VIP:</strong><br><br>
+
+💎 <strong>Libere tudo do jogo</strong> – Tenha acesso instantâneo a todas as skins, roupas, personagens, pets, armas evolutivas e muito mais!<br>
+💰 <strong>Configure seu perfil como quiser</strong> – Edite diamantes, ouro, nível, passes e qualquer outro recurso do seu perfil.<br>
+🧬 <strong>Clone skins e nomes</strong> – Copie o visual e o nome de qualquer jogador do mundo, até mesmo os mais famosos!<br>
+📜 <strong>Tenha qualquer verificado</strong> – Acesso a todos os tipos de selos verificados.<br>
+👥 <strong>Adicione quem quiser na lista de amigos</strong> <br><br>
+
+⚠️ <strong>Exclusivo, poderoso e 100% personalizável.</strong><br>
+⚠️ <strong>Seja único. Seja lendário. Seja SERVER VIP.</strong><br><br>
+
+🚀 <strong>Garanta agora e vire o rei do Free Fire com HAX VENDAS!</strong><br>
+📲 <strong>Suporte rápido e entrega imediata!</strong>
+
+                `;
             } else if (categoria === "passe") {
                 infoBox.innerHTML = `
-                    <strong>🎟️ SOBRE O PASSE:</strong><br>
+                    <strong>🔥 SERVER VIP - Liberdade Total no Free Fire! 🔥</strong><br>
                     O passe é enviado diretamente na sua conta após a confirmação de pagamento.<br>
                     Basta informar o seu ID e aguardarmos o envio, que é feito em poucos minutos.
                 `;
-            } else if (categoria === "bot") {
+            }else if (categoria === "bot") {
                 infoBox.innerHTML = `
                     <strong>🤖 INFO BOT TCP:</strong><br><br>
                     • O Bot é por dentro do jogo, não necessita de aplicativos externos, como Telegram, Discord, entre outros.<br><br>
