@@ -650,21 +650,20 @@ Com ele, você assume o controle total do seu perfil e vive uma experiência tot
   }
 
   // Mostrar aviso de atualização após 1 minuto
-  fetch('/version.txt')
+  const bust = Date.now(); // Força busca mais recente (evita cache)
+  fetch('/version.txt?bust=' + bust)
     .then(res => res.text())
     .then(latestVersion => {
       const currentVersion = localStorage.getItem('site-version');
       const newVersion = latestVersion.trim();
 
       if (currentVersion && currentVersion !== newVersion) {
-        // Versão mudou → salva e recarrega automaticamente
         localStorage.setItem('site-version', newVersion);
-        location.reload();
+        location.reload(); // Recarrega automaticamente
       } else {
-        // Primeira visita ou versão já atual → salva versão atual
         localStorage.setItem('site-version', newVersion);
       }
-    }); minuto
+    });
 </script>
 </body>
 </html>
