@@ -650,36 +650,21 @@ Com ele, você assume o controle total do seu perfil e vive uma experiência tot
   }
 
   // Mostrar aviso de atualização após 1 minuto
-  setTimeout(() => {
-    const div = document.createElement('div');
-    div.style.position = 'fixed';
-    div.style.bottom = '20px';
-    div.style.right = '20px';
-    div.style.background = '#1e1e1e';
-    div.style.color = '#fff';
-    div.style.padding = '15px 20px';
-    div.style.borderRadius = '12px';
-    div.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
-    div.style.fontFamily = 'Arial, sans-serif';
-    div.style.zIndex = 9999;
+  fetch('/version.txt')
+    .then(res => res.text())
+    .then(latestVersion => {
+      const currentVersion = localStorage.getItem('site-version');
+      const newVersion = latestVersion.trim();
 
-    div.innerHTML = `
-      <span>Atualização disponível.</span>
-      <button style="
-        margin-left: 10px;
-        padding: 6px 12px;
-        background: #00c851;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-      ">Atualizar</button>
-    `;
-
-    const button = div.querySelector('button');
-    button.onclick = () => location.reload();
-    document.body.appendChild(div);
-  }, 60000); // 1 minuto
+      if (currentVersion && currentVersion !== newVersion) {
+        // Versão mudou → salva e recarrega automaticamente
+        localStorage.setItem('site-version', newVersion);
+        location.reload();
+      } else {
+        // Primeira visita ou versão já atual → salva versão atual
+        localStorage.setItem('site-version', newVersion);
+      }
+    }); minuto
 </script>
 </body>
 </html>
