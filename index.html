@@ -83,10 +83,9 @@
     <div id="particles-js"></div>
 
     <nav class="navbar">
-        <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
-        <button onclick="mostrarCategoria('passe')">Passe</button>
-        <button onclick="mostrarCategoria('bot')">Bot</button>
-        <button onclick="mostrarCategoria('bypass')">Bypass via ID</button>
+        <button onclick="mostrarCategoria(\'diamantes\')">Diamantes</button>
+        <button onclick="mostrarCategoria(\'passe\')">Passe</button>
+        <button onclick="mostrarCategoria(\'bypass\')">Bypass via ID</button>
     </nav>
 
     <img src="perfil.jpg" alt="Logo da HAX VENDAS - Loja de diamantes para Free Fire" class="logo">
@@ -97,7 +96,7 @@
     <p class="subtitle">Divulgue o site para que a promoção dure mais tempo 👍🤓</p>
 
     <div class="share-buttons">
-        <button onclick="compartilhar('whatsapp')" aria-label="Compartilhar no WhatsApp">Compartilhar no WhatsApp</button>
+        <button onclick="compartilhar(\'whatsapp\')" aria-label="Compartilhar no WhatsApp">Compartilhar no WhatsApp</button>
     </div>
 
     <div class="search-bar">
@@ -105,26 +104,20 @@
     </div>
 
     <div id="categorias" class="products-container">
-        <div class="category-section" onclick="mostrarCategoria('diamantes')">
-            <div class="product-card category-card">
+        <div class="category-section">
+            <div class="product-card category-card" onclick="mostrarCategoria('diamantes')">
                 <img src="diamante.jpg" alt="Ícone de diamantes para Free Fire" class="product-image">
                 <h3 class="product-title">💎 Diamantes</h3>
             </div>
         </div>
-        <div class="category-section" onclick="mostrarCategoria('passe')">
-            <div class="product-card category-card">
+        <div class="category-section">
+            <div class="product-card category-card" onclick="mostrarCategoria('passe')">
                 <img src="passe.jpg" alt="Ícone do Passe de Elite para Free Fire" class="product-image">
                 <h3 class="product-title">🎟️ Passe</h3>
             </div>
         </div>
-        <div class="category-section" onclick="mostrarCategoria('bot')">
-            <div class="product-card category-card">
-                <img src="bot.jpg" alt="Ícone do Bot TCP para Free Fire" class="product-image">
-                <h3 class="product-title">🤖 BOT TCP FF</h3>
-            </div>
-        </div>
-        <div class="category-section" onclick="mostrarCategoria('bypass')">
-            <div class="product-card category-card">
+        <div class="category-section">
+            <div class="product-card category-card" onclick="mostrarCategoria('bypass')">
                 <img src="bypass.jpg" alt="Ícone do bypass para Free Fire" class="product-image">
                 <h3 class="product-title">Bypass via ID</h3>
             </div>
@@ -162,10 +155,6 @@
                 { nome: "11.200 diamantes", preco: "R$ 330" }
             ],
             passe: [{ nome: "Passe", preco: "R$ 7" }],
-            bot: [
-                { nome: "Bot TCP 15 dias", preco: "R$ 20" },
-                { nome: "Bot TCP 30 dias", preco: "R$ 35" }
-            ],
             bypass: [
                 { nome: "bypass id 15 dias", preco: "R$ 60" },
                 { nome: "bypass id 30 dias", preco: "R$ 100" }
@@ -188,14 +177,6 @@
                 <p><strong>Requisitos:</strong> ID do Free Fire</p>
                 <p><strong>Benefícios:</strong> Acesso a todas as recompensas premium</p>
                 <p><strong>Validade:</strong> Temporada atual</p>
-            `,
-            bot: `
-                <h3>🤖 Informações sobre Bot TCP</h3>
-                <p><strong>Entrega:</strong> Imediata via download</p>
-                <p><strong>Compatibilidade:</strong> Android e iOS</p>
-                <p><strong>Recursos:</strong> Auto-aim, wallhack, speed hack</p>
-                <p><strong>Segurança:</strong> Anti-ban atualizado</p>
-                <p><strong>Suporte:</strong> Tutorial completo incluído</p>
             `,
             bypass: `
                 <h3>🔓 Informações sobre Bypass via ID</h3>
@@ -224,8 +205,14 @@
                 produtos[categoria].forEach(produto => {
                     const produtoDiv = document.createElement('div');
                     produtoDiv.className = 'product-card';
+                    let imagemSrc = '';
+                    if (categoria === 'diamantes') {
+                        imagemSrc = 'diamante.jpg';
+                    } else {
+                        imagemSrc = `${categoria}.jpg`;
+                    }
                     produtoDiv.innerHTML = `
-                        <img src="${categoria}.jpg" alt="${produto.nome}" class="product-image" loading="lazy">
+                        <img src="${imagemSrc}" alt="${produto.nome}" class="product-image" loading="lazy">
                         <h3 class="product-title">${produto.nome}</h3>
                         <p class="product-price">${produto.preco}</p>
                         <div class="product-buttons">
@@ -250,8 +237,15 @@
             const categorias = document.getElementById('categorias');
             const produtosContainer = document.getElementById('produtos-container');
             
-            categorias.style.display = 'flex';
+            // Garantir que as categorias sejam exibidas em grid
+            categorias.style.display = 'grid';
             produtosContainer.style.display = 'none';
+            
+            // Limpar campo de busca
+            const buscaInput = document.getElementById('busca-produto');
+            if (buscaInput) {
+                buscaInput.value = '';
+            }
         }
 
         function comprar(nome, preco) {
@@ -363,7 +357,7 @@
             iniciarParticulas();
             
             // Preload de imagens
-            const imagensPreload = ['diamante.jpg', 'passe.jpg', 'bot.jpg', 'bypass.jpg', 'perfil.jpg'];
+            const imagensPreload = ['diamante.jpg', 'passe.jpg', 'bypass.jpg', 'perfil.jpg'];
             imagensPreload.forEach(img => {
                 const link = document.createElement('link');
                 link.rel = 'preload';
@@ -409,4 +403,3 @@
     </script>
 </body>
 </html>
-
