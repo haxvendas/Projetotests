@@ -117,3 +117,12 @@ self.addEventListener('notificationclick', function(event) {
     }
 });
 
+self.addEventListener('install', event => {
+    self.skipWaiting(); // Força a nova versão a ser ativada imediatamente
+});
+
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(keys => Promise.all(keys.map(cache => caches.delete(cache))))
+    );
+});
