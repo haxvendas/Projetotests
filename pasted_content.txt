@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <title>HAX VENDAS - Diamantes Baratos para Free Fire</title>
+
+    <link rel="apple-touch-icon" href="icone.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <meta name="description" content="Compre diamantes baratos para Free Fire com segurança via WhatsApp. Produtos digitais entregues rapidamente.">
+    <meta name="keywords" content="Free Fire, diamantes baratos, loja online, HAX VENDAS, comprar diamantes, passe de elite">
+    <meta name="author" content="HAX VENDAS">
+    <meta property="og:title" content="HAX VENDAS - Diamantes Baratos para Free Fire">
+    <meta property="og:description" content="Compre diamantes e passes para Free Fire com segurança via WhatsApp.">
+    <meta property="og:image" content="https://haxvendas.netlify.app/perfil.jpg">
+    <meta property="og:url" content="https://haxvendas.netlify.app/">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "OnlineStore",
+            "name": "HAX VENDAS",
+            "url": "https://haxvendas.netlify.app/",
+            "description": "Loja de diamantes baratos para Free Fire"
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="perfil.jpg" type="image/jpg">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background: linear-gradient(145deg, #000000, #0f0f0f, #1c1c1c);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .navbar button {
+            background: #4CAF50;
+            border: none;
+            padding: 8px 15px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .navbar button:hover {
+            background: #45a049;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 15px;
+            border: 3px solid white;
+        }
+
+        .title {
+            margin-top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            font-size: 16px;
+        }
+
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            min-height: 200px;
+        }
+
+        .category-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .product-card {
+            background-color: rgba(144, 238, 144, 0.05);
+            border-radius: 6px;
+            padding: 15px; /* Aumentado para melhor espaçamento */
+            width: 160px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #25D366;
+            box-shadow: 0 0 10px rgba(37, 211, 102, 0.4); /* Sombra mais pronunciada */
+            opacity: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 3px;
+            margin-bottom: 8px; /* Aumentado para melhor espaçamento */
+            object-fit: contain;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 12px;
+            color: #f0f0f0;
+            margin-bottom: 8px;
+        }
+
+        .product-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+        }
+
+        .buy-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            min-height: 44px;
+        }
+
+        .buy-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.03);
+            box-shadow: 0 0 8px #4CAF50;
+        }
+
+        .discord-btn {
+            position: fixed;
+            bottom: 60px;
+            right: 15px;
+            background-color: transparent;
+            border-radius: 50%;
+            padding: 10px;
+            z-index: 10;
+            border: 2px solid #5865F2;
+            box-shadow: 0 0 10px #5865F2;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .discord-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #5865F2, 0 0 25px #5865F2;
+        }
+
+        .discord-btn img {
+            width: 30px;
+            height: 30px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 5px;
+            width: 100%;
+            font-size: 10px;
+            color: #ccc;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .audio-player {
+            position: fixed;
+            bottom: 30px;
+            right: 15px;
+            z-index: 15;
+        }
+
+        .audio-player button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .audio-player button.playing::before {
+            content: "🎶 ";
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.5; transform: scale(1); }
+        }
+
+        .audio-player audio {
+            display: none;
+        }
+
+        .search-bar {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .share-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .share-buttons button {
+            background: #4CAF50;
+            border: none;
+            padding: 8px 15px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .share-buttons button:hover {
+            background: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            .product-card {
+                width: 45%;
+                min-width: 140px;
+            }
+            .products-container {
+                gap: 10px;
+            }
+            .navbar {
+                flex-wrap: wrap;
+            }
+            .title {
+                font-size: 24px;
+            }
+            .subtitle {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <nav class="navbar">
+        <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
+        <button onclick="mostrarCategoria('passe')">Passe</button>
+        <button onclick="mostrarCategoria('bot')">Bot</button>
+        <button onclick="mostrarCategoria('servervip')">Server VIP</button>
+        <button onclick="mostrarCategoria('bypass')">Bypass via ID</button>
+
+    </nav>
+
+    <img src="perfil.jpg" alt="Logo da HAX VENDAS" class="logo">
+    <div class="title">HAX VENDAS</div>
+    <div class="subtitle">Loja de diamantes baratos</div>
+    <div class="subtitle">Promoção por tempo limitado</div>
+    <div id="promo-timer" class="subtitle">Promoção acaba em: <span id="timer"></span></div>
+    <div class="subtitle">Divulgue o site para que a promoção dure mais tempo 👍🤓</div>
+
+    <div class="share-buttons">
+        <button onclick="compartilhar('whatsapp')" aria-label="Compartilhar no WhatsApp">Compartilhar no WhatsApp</button>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" id="busca-produto" placeholder="Buscar produtos..." oninput="filtrarProdutos()" aria-label="Buscar produtos">
+    </div>
+
+    <div id="categorias" class="products-container">
+        <div class="category-section" onclick="mostrarCategoria('diamantes')">
+            <div class="product-card category-card">
+                <img src="diamante.jpg" alt="Ícone de diamantes para Free Fire" class="product-image">
+                <h3 class="product-title">💎 Diamantes</h3>
+            </div>
+        </div>
+        <div class="category-section" onclick="mostrarCategoria('passe')">
+            <div class="product-card category-card">
+                <img src="passe.jpg" alt="Ícone do Passe de Elite para Free Fire" class="product-image">
+                <h3 class="product-title">🎟️ Passe</h3>
+            </div>
+        </div>
+        <div class="category-section" onclick="mostrarCategoria('bot')">
+            <div class="product-card category-card">
+                <img src="bot.jpg" alt="Ícone do Bot TCP para Free Fire" class="product-image">
+                <h3 class="product-title">🤖 BOT TCP FF</h3>
+            </div>
+        </div>
+         <div class="category-section" onclick="mostrarCategoria('servervip')">
+            <div class="product-card category-card">
+                <img src="server.jpg" alt="Ícone do Server VIP para Free Fire" class="product-image">
+                <h3 class="product-title">🥇Server VIP</h3>
+            </div>
+        </div>
+        <div class="category-section" onclick="mostrarCategoria('bypass')">
+            <div class="product-card category-card">
+                <img src="bypass.jpg" alt="Ícone do bypass para Free Fire" class="product-image">
+                <h3 class="product-title">Bypass via ID</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="produtos-container" style="display: none; flex-direction: column; align-items: center; min-height: 300px; padding-bottom: 20px;">
+        <button onclick="voltarCategorias()" style="margin-top: 15px; margin-bottom: 15px; background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;" aria-label="Voltar para categorias">⬅️ Voltar</button>
+        <div id="produtos" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; min-height: 200px;"></div>
+        <div id="info-box" style="display: none; max-width: 90%; margin-top: 20px; background-color: rgba(0,0,0,0.7); border-left: 5px solid #00ff00; padding: 15px; border-radius: 8px; text-align: left; font-size: 14px;"></div>
+    </div>
+
+    <div class="audio-player">
+        <button onclick="toggleMusica()" id="musica-btn" aria-label="Tocar ou pausar música">🎵 Tocar Música</button>
+        <audio id="bg-audio" loop>
+            <source src="Happy Nation.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+
+    <footer>Feito por Thiago HAX</footer>
+
+    <a href="https://discord.gg/6ueYp7hPF6" class="discord-btn" target="_blank" aria-label="Entrar no servidor do Discord">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Ícone do Discord" style="width: 40px; height: 40px;">
+    </a>
+
+    <script>
+        const produtos = {
+            diamantes: [
+                { nome: "200 diamantes", preco: "R$ 9" },
+                { nome: "620 diamantes", preco: "R$ 19" },
+                { nome: "1040 diamantes", preco: "R$ 35" },
+                { nome: "2120 diamantes", preco: "R$ 65" },
+                { nome: "4360 diamantes", preco: "R$ 135" },
+                { nome: "11.200 diamantes", preco: "R$ 330" },
+                { nome: "22.400 diamantes", preco: "R$ 625" }
+            ],
+            passe: [{ nome: "Passe", preco: "R$ 7" }],
+            servervip: [{ nome: "server vip 1 dia", preco: "R$ 10" }],
+            bypass: [{ nome: "bypass id 15 dias", preco: "R$ 60" },
+                       { nome: "bypass id 30 dias", preco: "R$ 100" }],
+            bot: [
+                { nome: "Bot TCP 1 dia", preco: "R$ 2" },
+                { nome: "Bot TCP mensal", preco: "R$ 15" },
+                { nome: "Bot TCP trimensal", preco: "R$ 30" }
+            ]
+        };
+
+        // Mapeamento de imagens por categoria
+        const imagensCategorias = {
+            diamantes: "diamante.jpg",
+            passe: "passe.jpg",
+            servervip: "server.jpg",
+            bot: "bot.jpg",
+            bypass: "bypass.jpg"
+        };
+
+        function mostrarCategoria(categoria) {
+            document.getElementById("categorias").style.display = "none";
+            const container = document.getElementById("produtos");
+            const pai = document.getElementById("produtos-container");
+            container.innerHTML = "";
+
+            produtos[categoria].forEach(produto => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.innerHTML = `
+                    <img src="${imagensCategorias[categoria]}" alt="Imagem do produto ${produto.nome}" class="product-image">
+                    <h3 class="product-title">${produto.nome}</h3>
+                    <p class="product-price">${produto.preco}</p>
+                    <div class="product-buttons">
+                        <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" aria-label="Comprar ${produto.nome} por ${produto.preco}">Comprar</button>
+                    </div>
+                `;
+                container.appendChild(card);
+                console.log("Cartão criado:", produto.nome);
+            });
+
+            const infoBox = document.getElementById("info-box");
+            infoBox.style.display = "block";
+
+            if (categoria === "diamantes") {
+                infoBox.innerHTML = `
+                    <strong>🛡️ ATENÇÃO:</strong><br>
+                    OS DIAMANTES SÃO ENTREGUES VIA <strong>ACCESS TOKEN</strong>.<br>
+                    <em>O QUE É ACCESS TOKEN?</em> É basicamente um ID único de cada conta no game.<br>
+                    Após efetuar a compra, ensinamos como pegar na hora o Access Token e fazemos o envio dos diamantes <strong>100% seguro!</strong>
+                `;
+            } else if (categoria === "servervip") {
+                infoBox.innerHTML = `
+                    Chegou o <strong>SERVER VIP</strong>, o serviço mais completo e poderoso para quem quer dominar o Free Fire de verdade!<br>
+Com ele, você assume o controle total do seu perfil e vive uma experiência totalmente <strong>VIP</strong> e <strong>sem limites</strong>!<br><br>
+
+✅ <strong>O que você pode fazer com o SERVER VIP:</strong><br><br>
+
+💎 <strong>Libere tudo do jogo</strong> – Tenha acesso instantâneo a todas as skins, roupas, personagens, pets, armas evolutivas e muito mais!<br>
+💰 <strong>Configure seu perfil como quiser</strong> – Edite diamantes, ouro, nível, passes e qualquer outro recurso do seu perfil.<br>
+🧬 <strong>Clone skins e nomes</strong> – Copie o visual e o nome de qualquer jogador do mundo, até mesmo os mais famosos!<br>
+📜 <strong>Tenha qualquer verificado</strong> – Acesso a todos os tipos de selos verificados.<br>
+👥 <strong>Adicione quem quiser na lista de amigos</strong> <br><br>
+
+⚠️ <strong>Exclusivo, poderoso e 100% personalizável.</strong><br>
+⚠️ <strong>Seja único. Seja lendário. Seja SERVER VIP.</strong><br><br>
+
+🚀 <strong>Garanta agora e vire o rei do Free Fire com HAX VENDAS!</strong><br>
+📲 <strong>Suporte rápido e entrega imediata!</strong>
+
+                `;
+            } 
+            else if (categoria === "bypass") {
+                infoBox.innerHTML = `
+                    <strong>🔥 BYPASS EMULADOR VIA ID 🔥</strong><br>
+                    É TOTALMENTE SEGURO, VIA ID. NAO E NECESSARIO ATIVAR NENHUM HACK OU ALGO, É SÓ CONECTAR NO SERVIDOR COM SUA CONTA E PRONTO. LEMBRANDO, POR SER VIA ID, FUNCIONA APENAS NA CONTA QUE O CLIENTE ESCOLHER!
+                `;
+            }else if (categoria === "passe") {
+                infoBox.innerHTML = `
+                    <strong>🔥 SERVER VIP - Liberdade Total no Free Fire! 🔥</strong><br>
+                    O passe é enviado diretamente na sua conta após a confirmação de pagamento.<br>
+                    Basta informar o seu ID e aguardarmos o envio, que é feito em poucos minutos.
+                `;
+            }else if (categoria === "bot") {
+                infoBox.innerHTML = `
+                    <strong>🤖 INFO BOT TCP:</strong><br><br>
+                    • O Bot é por dentro do jogo, não necessita de aplicativos externos, como Telegram, Discord, entre outros.<br><br>
+                    • <strong>Funções Disponíveis</strong><br>
+                    ✅ Spamroom<br>
+                    ✅ Likes na Conta<br>
+                    ✅ 5 Players no modo Ilha do Rolê<br>
+                    ✅ Informações da Conta por UID<br>
+                    ✅ Verificar se o player está banido pelo ID<br><br>
+                    <strong>O que essas funções fazem?</strong><br><br>
+                    <strong>Spamroom:</strong> Envia convites com um nome personalizado para entrar em uma sala personalizada (lembrando que a sala precisa ter senha, e o ID é do jogador que será spammado).<br><br>
+                    <strong>Likes na Conta:</strong> Envia likes (curtidas) para sua conta do Free Fire! Máximo de 100 curtidas a cada 24 horas por conta.<br><br>
+                    <strong>5 Players:</strong> Convida jogadores para formar uma equipe no modo Ilha do Rolê, permitindo até 5 jogadores juntos.<br><br>
+                    <strong>Informações da Conta:</strong> Mostra detalhes sobre uma conta usando o ID, como nível, nickname, likes e outros dados.
+                `;
+            } else {
+                infoBox.style.display = "none";
+            }
+
+            pai.style.display = "flex";
+        }
+
+        function voltarCategorias() {
+            document.getElementById("produtos-container").style.display = "none";
+            document.getElementById("categorias").style.display = "flex";
+            document.getElementById("busca-produto").value = "";
+        }
+
+        function enviarWhatsApp(produto) {
+            const numero = "5591991912912";
+            const mensagem = `Olá, gostaria de comprar o produto: ${encodeURIComponent(produto.replace(/[<>\"&]/g, ''))}`;
+            const link = `https://wa.me/${numero}?text=${mensagem}`;
+            alert(`Você será redirecionado para o WhatsApp para comprar: ${produto}`);
+            window.open(link, "_blank");
+        }
+
+        function filtrarProdutos() {
+            const busca = document.getElementById("busca-produto").value.toLowerCase();
+            const container = document.getElementById("produtos");
+            const categorias = document.getElementById("categorias");
+            const pai = document.getElementById("produtos-container");
+            container.innerHTML = "";
+            categorias.style.display = "none";
+            pai.style.display = "flex";
+
+            let resultados = [];
+            Object.keys(produtos).forEach(categoria => {
+                produtos[categoria].forEach(produto => {
+                    if (produto.nome.toLowerCase().includes(busca)) {
+                        resultados.push({ ...produto, categoria });
+                    }
+                });
+            });
+
+            if (resultados.length === 0) {
+                container.innerHTML = "<p>Nenhum produto encontrado.</p>";
+            } else {
+                resultados.forEach(produto => {
+                    const card = document.createElement("div");
+                    card.className = "product-card";
+                    card.innerHTML = `
+                        <img src="${imagensCategorias[produto.categoria]}" alt="Imagem do produto ${produto.nome}" class="product-image">
+                        <h3 class="product-title">${produto.nome}</h3>
+                        <p class="product-price">${produto.preco}</p>
+                        <div class="product-buttons">
+                            <button class="buy-btn" onclick="enviarWhatsApp('${produto.nome} - ${produto.preco}')" aria-label="Comprar ${produto.nome} por ${produto.preco}">Comprar</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                    console.log("Cartão criado (busca):", produto.nome);
+                });
+            }
+        }
+
+        function compartilhar(plataforma) {
+            const url = window.location.href;
+            const text = "Confira a HAX VENDAS! Diamantes baratos para Free Fire: ";
+            if (plataforma === 'whatsapp') {
+                window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`, '_blank');
+            } else if (plataforma === 'telegram') {
+                window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof tsParticles !== 'undefined') {
+                tsParticles.load("particles-js", {
+                    fullScreen: { enable: false },
+                    background: { color: { value: "transparent" } },
+                    particles: {
+                        number: { value: 120 },
+                        color: { value: "#00ff00" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.8 },
+                        size: { value: 3, random: true },
+                        links: {
+                            enable: true,
+                            color: "#00ff00",
+                            distance: 100,
+                            opacity: 0.6,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "none",
+                            outModes: { default: "out" }
+                        }
+                    },
+                    interactivity: {
+                        events: {
+                            onHover: { enable: true, mode: "repulse" },
+                            onClick: { enable: false, mode: "push" }
+                        },
+                        modes: {
+                            repulse: { distance: 80 },
+                            push: { quantity: 4 }
+                        }
+                    },
+                    detectRetina: true
+                });
+            } else {
+                console.error("tsParticles não está disponível.");
+            }
+
+            const musica = document.getElementById("bg-audio");
+            if (musica) {
+                musica.volume = 0.01;
+            }
+            const duration = 24 * 3600;
+            const display = document.getElementById("timer");
+            startTimer(duration, display);
+        });
+
+        function toggleMusica() {
+            const audio = document.getElementById('bg-audio');
+            const botao = document.getElementById('musica-btn');
+            if (audio.paused) {
+                audio.play();
+                botao.innerText = "⏸️ Pausar Música";
+                botao.classList.add('playing');
+            } else {
+                audio.pause();
+                botao.innerText = "🎵 Tocar Música";
+                botao.classList.remove('playing');
+            }
+        }
+
+        function ativarSom() {
+            toggleMusica();
+            window.removeEventListener('click', ativarSom);
+        }
+        window.addEventListener('click', ativarSom);
+
+  function startTimer(duration, display) {
+      let timer = duration, hours, minutes, seconds;
+      setInterval(() => {
+          hours = Math.floor(timer / 3600);
+          minutes = Math.floor((timer % 3600) / 60);
+          seconds = timer % 60;
+          display.textContent = `${hours}h ${minutes}m ${seconds}s`;
+          if (--timer < 0) timer = duration;
+      }, 1000);
+  }
+
+  // Mostrar aviso de atualização após 1 minuto
+  const bust = Date.now(); // Força busca mais recente (evita cache)
+  fetch('/version.txt?bust=' + bust)
+    .then(res => res.text())
+    .then(latestVersion => {
+      const currentVersion = localStorage.getItem('site-version');
+      const newVersion = latestVersion.trim();
+
+      if (currentVersion && currentVersion !== newVersion) {
+        localStorage.setItem('site-version', newVersion);
+        location.reload(); // Recarrega automaticamente
+      } else {
+        localStorage.setItem('site-version', newVersion);
+      }
+    });
+</script>
+</body>
+</html>

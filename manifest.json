@@ -1,0 +1,63 @@
+{
+    "name": "HAX VENDAS - Diamantes Free Fire",
+    "short_name": "HAX VENDAS",
+    "description": "Loja de diamantes baratos para Free Fire com entrega instantânea",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#25D366",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "pt-BR",
+    "categories": ["games", "shopping"],
+    "icons": [
+        {
+            "src": "perfil.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "perfil.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "perfil.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpeg",
+            "platform": "wide",
+            "label": "HAX VENDAS - Loja de Diamantes"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Diamantes",
+            "short_name": "Diamantes",
+            "description": "Comprar diamantes para Free Fire",
+            "url": "/?category=diamantes",
+            "icons": [
+                {
+                    "src": "diamante.jpg",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Passe de Elite",
+            "short_name": "Passe",
+            "description": "Comprar Passe de Elite",
+            "url": "/?category=passe",
+            "icons": [
+                {
+                    "src": "passe.jpg",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
+}
+
