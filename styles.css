@@ -543,11 +543,11 @@ input:focus {
     }
 }
 
-/* --- ESTILOS DO PRELOADER (COM REVISÃO DA ANIMAÇÃO DE LOOP) --- */
-/* --- ESTILOS DO PRELOADER (COM CORREÇÃO PARA O LOOP) --- */
+/* --- ESTILOS DO PRELOADER (CORREÇÃO FINAL PARA O LOOP) --- */
 #preloader {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: #000; /* Fundo sólido preto para o preloader */
@@ -555,7 +555,7 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.6s ease, visibility 0.6s ease; /* Adicionado para o fade-out */
+  transition: opacity 0.6s ease, visibility 0.6s ease; /* Transição para o fade-out */
 }
 
 #preloader.fade-out {
@@ -573,12 +573,14 @@ input:focus {
   height: 18px;
   background-color: #25D366; /* verde do seu tema */
   border-radius: 50%;
-  /* A linha mais importante para a animação em loop */
-  animation: bounce 1.2s infinite ease-in-out; /* 'infinite' já garante o loop */
-  display: inline-block;
-  /* Estado inicial para a animação */
-  transform: translateY(0); /* Garante que a animação comece de uma posição conhecida */
-  opacity: 0.7; /* Inicia com alguma opacidade para serem visíveis */
+  display: inline-block; /* Garante que o span se comporte como um bloco inline para transformação */
+
+  /* Esta é a linha crucial para a animação. */
+  animation: bounce 0.8s infinite ease-in-out; /* Reduzi a duração para 0.8s para um pulo mais "vivo" */
+  
+  /* Adicionamos um estado inicial explícito para evitar que comecem paradas */
+  transform: translateY(0); 
+  opacity: 1; /* Mantém a opacidade constante se o pulo for apenas movimento */
 }
 
 /* Delay para pular uma de cada vez */
@@ -592,15 +594,15 @@ input:focus {
   animation-delay: 0.4s;
 }
 
-/* Animação de pulo (ajustada para garantir o loop e o movimento) */
+/* Nova definição da animação de pulo (mais simples e direta) */
 @keyframes bounce {
-  0%, 80%, 100% { /* As bolinhas voltam para a posição base e opacidade inicial */
+  0%, 100% {
+    /* Posição inicial e final (base) */
     transform: translateY(0);
-    opacity: 0.7; /* Ligeiramente transparente na base */
   }
-  40% { /* No meio da animação, no pico do pulo */
-    transform: translateY(-20px);
-    opacity: 1; /* Totalmente opaca no pico */
+  50% {
+    /* Posição no pico do pulo */
+    transform: translateY(-15px); /* Um pulo um pouco menor pode parecer mais dinâmico */
   }
 }
 
