@@ -366,32 +366,30 @@
                     });
             });
         }
+window.addEventListener('load', () => {
+  // Lazy loading para imagens
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
 
-        // Otimizações de performance
-     window.addEventListener('load', () => {
-    // Lazy loading para imagens (se quiser mantém igual)
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
 
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-
-    // Preloader com fade-out mais lento
-    const preloader = document.getElementById('preloader');
-    preloader.classList.add('fade-out');
-    setTimeout(() => preloader.remove(), 1600); // 1600ms pra garantir
+  // Preloader com fade-out mais lento
+  const preloader = document.getElementById('preloader');
+  preloader.classList.add('fade-out');
+  setTimeout(() => preloader.remove(), 1600); // 1.6 segundos para animação suave
 });
-    </script>
+
 </body>
 </html>
