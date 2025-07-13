@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <title>HAX VENDAS - Diamantes Baratos para Free Fire | Loja Oficial</title>
 
-    <!-- PWA Meta Tags -->
     <link rel="apple-touch-icon" href="icone.png">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,14 +13,12 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="manifest" href="/manifest.json">
 
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Compre diamantes baratos para Free Fire com segurança via WhatsApp. Entrega instantânea, preços promocionais e suporte 24/7. A melhor loja de diamantes do Brasil!">
     <meta name="keywords" content="Free Fire, diamantes baratos, loja online, HAX VENDAS, comprar diamantes, passe de elite, diamantes FF, recarga Free Fire">
     <meta name="author" content="HAX VENDAS">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://haxvendas.netlify.app/">
 
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="HAX VENDAS - Diamantes Baratos para Free Fire">
     <meta property="og:description" content="Compre diamantes e passes para Free Fire com segurança via WhatsApp. Entrega instantânea e preços promocionais!">
     <meta property="og:image" content="https://haxvendas.netlify.app/perfil.jpg">
@@ -29,13 +26,11 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="HAX VENDAS">
 
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HAX VENDAS - Diamantes Baratos para Free Fire">
     <meta name="twitter:description" content="Compre diamantes e passes para Free Fire com segurança via WhatsApp.">
     <meta name="twitter:image" content="https://haxvendas.netlify.app/perfil.jpg">
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -61,22 +56,18 @@
         }
     </script>
 
-    <!-- Preload Critical Resources -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" as="style">
     <link rel="preload" href="perfil.jpg" as="image">
 
-    <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="//wa.me">
 
-    <!-- Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   
     
-    <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js" defer></script>
 </head>
 <body>
@@ -323,7 +314,7 @@
                             direction: "none",
                             random: true,
                             straight: false,
-                            outModes: "out"
+                            outModes: "bounce" // Alterado para "bounce" para as bolinhas de fundo continuarem
                         }
                     },
                     interactivity: {
@@ -337,12 +328,27 @@
                 });
             }
         }
+        
+        // --- FUNÇÃO PARA REMOVER O PRELOADER (CORRIGIDA) ---
+        // Definida fora do listener para ser acessível
+        function removePreloader() {
+            const preloader = document.getElementById('preloader');
+            if (!preloader) return;
+            preloader.classList.add('fade-out');
+            setTimeout(() => {
+                if (preloader.parentNode) {
+                    preloader.parentNode.removeChild(preloader);
+                }
+            }, 1600);
+        }
+        // --- FIM DA CORREÇÃO ---
+
 
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
             iniciarTimer();
             iniciarParticulas();
-            removePreloader();
+            removePreloader(); // Chamada para iniciar o desaparecimento do preloader
             
             // Preload de imagens
             const imagensPreload = ['diamante.jpg', 'passe.jpg', 'bypass.jpg', 'perfil.jpg'];
@@ -367,23 +373,11 @@
                     });
             });
         }
-window.addEventListener('load', () => {
-
-
-  // Função para remover o preloader
-  function removePreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) return;
-    preloader.classList.add('fade-out');
-    setTimeout(() => {
-      if (preloader.parentNode) {
-        preloader.parentNode.removeChild(preloader);
-      }
-    }, 1600);
-  }
-
-  window.addEventListener('load', removePreloader);
-  setTimeout(removePreloader, 10000);
-</script>
+        
+        // Fallback para remover o preloader após 10 segundos, caso algo falhe
+        window.addEventListener('load', () => {
+          setTimeout(removePreloader, 10000);
+        });
+    </script>
 </body>
 </html>
