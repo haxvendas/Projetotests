@@ -365,25 +365,30 @@
         }
 
         // Otimizações de performance
-        window.addEventListener('load', function() {
-            // Lazy loading para imagens
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src;
-                            img.classList.remove('lazy');
-                            imageObserver.unobserve(img);
-                        }
-                    });
-                });
-
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    imageObserver.observe(img);
-                });
-            }
+      window.addEventListener('load', () => {
+    // Lazy loading para imagens
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
         });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // Preloader
+    const preloader = document.getElementById('preloader');
+    preloader.classList.add('fade-out');
+    setTimeout(() => preloader.remove(), 1000); // Remove após fade-out
+});
     </script>
 </body>
 </html>
