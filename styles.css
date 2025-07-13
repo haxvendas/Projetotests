@@ -554,7 +554,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
 }
 
 #preloader.fade-out {
