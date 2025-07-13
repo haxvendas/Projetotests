@@ -365,8 +365,8 @@
         }
 
         // Otimizações de performance
-      window.addEventListener('load', () => {
-    // Lazy loading para imagens
+     window.addEventListener('load', () => {
+    // Lazy loading para imagens (se quiser mantém igual)
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -384,10 +384,10 @@
         });
     }
 
-    // Preloader
+    // Preloader com fade-out mais lento
     const preloader = document.getElementById('preloader');
     preloader.classList.add('fade-out');
-    setTimeout(() => preloader.remove(), 1000); // Remove após fade-out
+    setTimeout(() => preloader.remove(), 1600); // 1600ms pra garantir
 });
     </script>
 </body>
