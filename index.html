@@ -342,6 +342,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             iniciarTimer();
             iniciarParticulas();
+            removePreloader();
             
             // Preload de imagens
             const imagensPreload = ['diamante.jpg', 'passe.jpg', 'bypass.jpg', 'perfil.jpg'];
@@ -367,23 +368,7 @@
             });
         }
 window.addEventListener('load', () => {
-   // Lazy loading para imagens
-  if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.classList.remove('lazy');
-          imageObserver.unobserve(img);
-        }
-      });
-    });
 
-    document.querySelectorAll('img[data-src]').forEach(img => {
-      imageObserver.observe(img);
-    });
-  }
 
   // Função para remover o preloader
   function removePreloader() {
@@ -397,10 +382,7 @@ window.addEventListener('load', () => {
     }, 1600);
   }
 
-  // Remover quando a página carregar
   window.addEventListener('load', removePreloader);
-
-  // Timeout extra caso o load não dispare (máx. 10 segundos)
   setTimeout(removePreloader, 10000);
 </script>
 </body>
