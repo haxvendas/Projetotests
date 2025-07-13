@@ -167,7 +167,218 @@
                 <p><strong>Validade:</strong> Temporada atual</p>
             `
         };
+        let musicaAtiva = false;
 
+        function mostrarCategoria(categoria) {
+            const categorias = document.getElementById('categorias');
+            const produtosContainer = document.getElementById('produtos-container');
+            const produtosDiv = document.getElementById('produtos');
+            const infoBox = document.getElementById('info-box');
+            
+            categorias.style.display = 'none';
+            produtosContainer.style.display = 'flex';
+            
+            produtosDiv.innerHTML = '';
+            
+            if (produtos[categoria]) {
+                produtos[categoria].forEach(produto => {
+                    const produtoDiv = document.createElement('div');
+                    produtoDiv.className = 'product-card';
+                    let imagemSrc = '';
+                    if (categoria === 'diamantes') {
+                        imagemSrc = 'diamante.jpg';
+                    } else {
+                        imagemSrc = `${categoria}.jpg`;
+                    }
+                    produtoDiv.innerHTML = `
+                        <img src="${imagemSrc}" alt="${produto.nome}" class="product-image" loading="lazy">
+                        <h3 class="product-title">${produto.nome}</h3>
+                        <p class="product-price">${produto.preco}</p>
+                        <div class="product-buttons">
+                            <button class="buy-btn" onclick="comprar('${produto.nome}', '${produto.preco}')" aria-label="Comprar ${produto.nome}">
+                                💰 Comprar
+                            </button>
+                        </div>
+                    `;
+                    produtosDiv.appendChild(produtoDiv);
+                });
+                
+                if (infoBoxContent[categoria]) {
+                    infoBox.innerHTML = infoBoxContent[categoria];
+                    infoBox.style.display = 'block';
+                } else {
+                    infoBox.style.display = 'none';
+                }
+            }
+        }
+
+        function voltarCategorias() {
+            const categorias = document.getElementById('categorias');
+            const produtosContainer = document.getElementById('produtos-container');
+            
+            // Garantir que as categorias sejam exibidas em grid
+            categorias.style.display = 'grid';
+            produtosContainer.style.display = 'none';
+            
+            // Limpar campo de busca
+            const buscaInput = document.getElementById('busca-produto');
+            if (buscaInput) {
+                buscaInput.value = '';
+            }
+        }
+
+        function comprar(nome, preco) {
+            const mensagem = `Olá! Gostaria de comprar: ${nome} por ${preco}`;
+            const whatsappUrl = `https://wa.me/559191912912?text=${encodeURIComponent(mensagem)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function compartilhar(plataforma) {
+            const url = window.location.href;
+            const texto = 'Confira os melhores preços de diamantes para Free Fire na HAX VENDAS!';
+            
+            if (plataforma === 'whatsapp') {
+                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(texto + ' ' + url)}`;
+                window.open(whatsappUrl, '_blank');
+            }
+        }
+
+        function filtrarProdutos() {
+            const busca = document.getElementById('busca-produto').value.toLowerCase();
+            const produtosDiv = document.getElementById('produtos');
+            const produtos = produtosDiv.getElementsByClassName('product-card');
+            
+            Array.from(produtos).forEach(produto => {
+                const titulo = produto.querySelector('.product-title').textContent.toLowerCase();
+                if (titulo.includes(busca)) {
+                    produto.style.display = 'flex';
+                } else {
+                    produto.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleMusica() {
+            const audio = document.getElementById('bg-audio');
+            const btn = document.getElementById('musica-btn');
+            
+            if (musicaAtiva) {
+                audio.pause();
+                btn.textContent = '🎵 Tocar Música';
+                btn.classList.remove('playing');
+                musicaAtiva = false;
+            } else {
+                audio.play().catch(e => console.log('Erro ao reproduzir áudio:', e));
+                btn.textContent = '⏸️ Pausar Música';
+                btn.classList.add('playing');
+                musicaAtiva = true;
+            }
+        }
+
+        function iniciarTimer() {
+            const agora = new Date();
+            const fimPromocao = new Date(agora.getTime() + (7 * 24 * 60 * 60 * 1000)); // 7 dias
+            
+            function atualizarTimer() {
+                const agora = new Date();
+                const diferenca = fimPromocao - agora;
+                
+                if (diferenca > 0) {
+                    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+                    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+                    
+                    document.getElementById('timer').textContent = 
+                        `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+                } else {
+                    document.getElementById('timer').textContent = 'Promoção encerrada!';
+                }
+            }
+            
+            atualizarTimer();
+            setInterval(atualizarTimer, 1000);
+        }
+
+        function iniciarParticulas() {
+            if (typeof tsParticles !== 'undefined') {
+                tsParticles.load("particles-js", {
+                    particles: {
+                        number: { value: 50 },
+                        color: { value: "#25D366" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.3 },
+                        size: { value: 3 },
+                        move: {
+                            enable: true,
+                            speed: 1,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            outModes: "out"
+                        }
+                    },
+                    interactivity: {
+                        detectsOn: "canvas",
+                        events: {
+                            onHover: { enable: true, mode: "repulse" },
+                            onClick: { enable: true, mode: "push" }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            iniciarTimer();
+            iniciarParticulas();
+            
+            // Preload de imagens
+            const imagensPreload = ['diamante.jpg', 'passe.jpg', 'bypass.jpg', 'perfil.jpg'];
+            imagensPreload.forEach(img => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = img;
+                document.head.appendChild(link);
+            });
+        });
+
+        // Service Worker para cache
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registrado com sucesso:', registration.scope);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('Falha no registro do SW:', registrationError);
+                    });
+            });
+        }
+
+        // Otimizações de performance
+        window.addEventListener('load', function() {
+            // Lazy loading para imagens
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        });
     </script>
 </body>
 </html>
