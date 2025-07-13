@@ -326,8 +326,7 @@ footer {
     background: linear-gradient(135deg, #25D366, #20b358);
     border: none;
     padding: 10px 20px;
-    color: white;
-    border-radius: 25px;
+    color: white;<br>    border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
@@ -543,12 +542,14 @@ input:focus {
         border: 2px solid white;
     }
 }
+
+/* --- ESTILOS DO PRELOADER (COM REVISÃO DA ANIMAÇÃO DE LOOP) --- */
 #preloader {
   position: fixed;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: #000; /* Fundo sólido preto para o preloader */
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -565,8 +566,9 @@ input:focus {
   height: 18px;
   background-color: #25D366; /* verde do seu tema */
   border-radius: 50%;
-  animation: bounce 1.2s infinite;
+  animation: bounce 1.2s infinite ease-in-out; /* 'infinite' já garante o loop, adicionei ease-in-out para suavizar */
   display: inline-block;
+  /* Removi o opacity e transform: translateY(0) iniciais aqui se você quiser que eles estejam sempre visíveis e pulando */
 }
 
 /* Delay para pular uma de cada vez */
@@ -580,21 +582,21 @@ input:focus {
   animation-delay: 0.4s;
 }
 
-/* Animação de pulo */
+/* Animação de pulo revisada */
 @keyframes bounce {
-  0%, 80%, 100% {
+  0%, 100% { /* Começa e termina na posição base, com opacidade constante se preferir */
     transform: translateY(0);
-    opacity: 0.7;
+    opacity: 1; /* Mantém a opacidade em 1 para estarem sempre visíveis */
   }
-  40% {
+  50% { /* Meio da animação, no pico do pulo */
     transform: translateY(-20px);
-    opacity: 1;
+    opacity: 1; /* Mantém a opacidade em 1 */
   }
 }
 
 /* Fade-out (mantém igual sua classe .fade-out) */
 #preloader.fade-out {
   opacity: 0;
-  visibility: hidden;
+  visibility: hidden; /* Garante que o elemento não é clicável após sumir */
   transition: opacity 0.6s ease, visibility 0.6s ease;
 }
