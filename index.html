@@ -125,7 +125,7 @@
         <button onclick="toggleMusica()" id="musica-btn" aria-label="Tocar ou pausar música">🎵 Tocar Música</button>
         <audio id="bg-audio" loop>
             <source src="Happy Nation.mp3" type="audio/mpeg">
-            Seu navegador não suporta o elemento de áudio.
+            Seu navegador não suporta o elemento de áudio.<br>
         </audio>
     </div>
 
@@ -314,7 +314,7 @@
                             direction: "none",
                             random: true,
                             straight: false,
-                            outModes: "bounce" // Alterado para "bounce" para as bolinhas de fundo continuarem
+                            outModes: "bounce" 
                         }
                     },
                     interactivity: {
@@ -329,7 +329,7 @@
             }
         }
         
-        // --- FUNÇÃO PARA REMOVER O PRELOADER (CORRIGIDA) ---
+        // --- FUNÇÃO PARA REMOVER O PRELOADER ---
         // Definida fora do listener para ser acessível
         function removePreloader() {
             const preloader = document.getElementById('preloader');
@@ -339,16 +339,18 @@
                 if (preloader.parentNode) {
                     preloader.parentNode.removeChild(preloader);
                 }
-            }, 1600);
+            }, 1600); // Mantém 1.6 segundos para a animação fade-out em CSS
         }
-        // --- FIM DA CORREÇÃO ---
+        // --- FIM DA FUNÇÃO ---
 
 
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
             iniciarTimer();
             iniciarParticulas();
-            removePreloader(); // Chamada para iniciar o desaparecimento do preloader
+            
+            // ATRAZO ADICIONADO AQUI: O preloader só começará a sumir após 3 segundos
+            setTimeout(removePreloader, 3000); // 3000 milissegundos = 3 segundos
             
             // Preload de imagens
             const imagensPreload = ['diamante.jpg', 'passe.jpg', 'bypass.jpg', 'perfil.jpg'];
@@ -374,10 +376,11 @@
             });
         }
         
-        // Fallback para remover o preloader após 10 segundos, caso algo falhe
-        window.addEventListener('load', () => {
-          setTimeout(removePreloader, 10000);
-        });
+        // O fallback de 10 segundos pode ser removido se o delay de 3 segundos for suficiente
+        // Ou você pode ajustar o tempo aqui também se quiser um fallback diferente.
+        // window.addEventListener('load', () => {
+        //   setTimeout(removePreloader, 10000); 
+        // });
     </script>
 </body>
 </html>
