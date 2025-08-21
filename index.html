@@ -113,6 +113,12 @@
                 <h3 class="product-title">🎟️ Passe</h3>
             </div>
         </div>
+         <div class="category-section">
+            <div class="product-card category-card" onclick="mostrarCategoria('caixa')">
+                <img src="caixa.jpg" alt="Ícone de caixa de armas para Free Fire" class="product-image">
+                <h3 class="product-title">📦 Caixa de Armas</h3>
+            </div>
+        </div>
     </div>
 
     <div id="produtos-container" style="display: none; flex-direction: column; align-items: center; min-height: 300px; padding-bottom: 20px;">
@@ -145,7 +151,10 @@
                 { nome: "4360 diamantes", preco: "R$ 135" },
                 { nome: "11.200 diamantes", preco: "R$ 330" }
             ],
-            passe: [{ nome: "Passe", preco: "R$ 7" }]
+            passe: [{ nome: "Passe", preco: "R$ 7" }],
+            caixa: [{ nome: "Pacote Arma 1", preco: "R$ 15" },
+                   { nome: "Pacote Arma 2", preco: "R$ 15" },
+                   { nome: "Pacote Arma 3", preco: "R$ 15" }]
         };
 
         const infoBoxContent = {
@@ -164,6 +173,16 @@
                 <p><strong>Requisitos:</strong> ID do Free Fire</p>
                 <p><strong>Benefícios:</strong> Acesso a todas as recompensas premium</p>
                 <p><strong>Validade:</strong> Temporada atual</p>
+            `,
+              caixa: `
+                <h3>📦 Informações sobre as Caixas de Armas</h3>
+                <p><strong>Pacote Arma 1 Contém:</strong> Até 24 horas após confirmação</p>
+                <p><strong>Pacote Arma 2 Contém:</strong> Ativação direta na conta</p>
+                <p><strong>Pacote Arma 3 Contém:</strong> 3x Caixas Scar
+3x Caixas M4A1
+3x Caixas MP40
+3x Caixas FAMAS/SKS</p>
+                <p><strong>Requisitos:</strong> Access token do Free Fire</p>
             `
         };
         let musicaAtiva = false;
