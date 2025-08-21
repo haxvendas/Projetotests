@@ -7,7 +7,7 @@ const urlsToCache = [
   '/diamante.jpg',
   '/passe.jpg',
   '/bot.jpg',
-  '/bypass.jpg',
+  '/caixa.png',
   'https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap',
   'https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js'
 ];
