@@ -57,7 +57,18 @@
                     "sizes": "96x96"
                 }
             ]
-        }
+        },
+         {
+            "name": "Pacote Arma",
+            "short_name": "Caixa",
+            "description": "Comprar Pacote Arma",
+            "url": "/?category=caixa",
+            "icons": [
+                {
+                    "src": "caixa.jpg",
+                    "sizes": "96x96"
+                }
+            ]
     ]
 }
 
