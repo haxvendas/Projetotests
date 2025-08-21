@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hax-vendas-v1.2.9'; // Atualize a versão quando quiser forçar atualização
+const CACHE_NAME = 'hax-vendas-v1.3.0'; // Atualize a versão quando quiser forçar atualização
 const urlsToCache = [
   '/',
   '/index.html',
