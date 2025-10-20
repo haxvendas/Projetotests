@@ -83,7 +83,6 @@
     <nav class="navbar">
         <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
         <button onclick="mostrarCategoria('passe')">Passe</button>
-         <button onclick="mostrarCategoria('caixa')">Pacote Arma</button>
     </nav>
 
     <img src="perfil.jpg" alt="Logo da HAX VENDAS - Loja de diamantes para Free Fire" class="logo">
@@ -114,12 +113,6 @@
                 <h3 class="product-title">🎟️ Passe</h3>
             </div>
         </div>
-         <div class="category-section">
-            <div class="product-card category-card" onclick="mostrarCategoria('caixa')">
-                <img src="caixa.jpg" alt="Ícone de caixa de armas para Free Fire" class="product-image">
-                <h3 class="product-title">📦 Caixa de Armas</h3>
-            </div>
-        </div>
     </div>
 
     <div id="produtos-container" style="display: none; flex-direction: column; align-items: center; min-height: 300px; padding-bottom: 20px;">
@@ -140,21 +133,18 @@
     <script>
         const produtos = {
             diamantes: [
-                { nome: "200 diamantes", preco: "R$ 9" },
-                { nome: "620 diamantes", preco: "R$ 19" },
-                { nome: "930 diamantes", preco: "R$ 30" },
-                { nome: "1040 diamantes", preco: "R$ 35" },
-                { nome: "2120 diamantes", preco: "R$ 65" },
-                { nome: "4360 diamantes", preco: "R$ 135" },
-                { nome: "5.300 diamantes", preco: "R$ 170" },
-                { nome: "9.800 diamantes", preco: "R$ 290" },
-                { nome: "11.200 diamantes", preco: "R$ 330" },
-                { nome: "22.400 diamantes", preco: "R$ 640" }
+                { nome: "200 diamantes", preco: "R$ 8" },
+                { nome: "620 diamantes", preco: "R$ 18" },
+                { nome: "930 diamantes", preco: "R$ 29" },
+                { nome: "1040 diamantes", preco: "R$ 33" },
+                { nome: "2120 diamantes", preco: "R$ 62" },
+                { nome: "4360 diamantes", preco: "R$ 130" },
+                { nome: "5.300 diamantes", preco: "R$ 160" },
+                { nome: "9.800 diamantes", preco: "R$ 280" },
+                { nome: "11.200 diamantes", preco: "R$ 310" },
+                { nome: "22.400 diamantes", preco: "R$ 600" }
             ],
-            passe: [{ nome: "Passe", preco: "R$ 7" }],
-            caixa: [{ nome: "Pacote Arma 1", preco: "R$ 15" },
-                   { nome: "Pacote Arma 2", preco: "R$ 15" },
-                   { nome: "Pacote Arma 3", preco: "R$ 15" }]
+            passe: [{ nome: "Passe", preco: "R$ 7" }]
         };
 
         const infoBoxContent = {
@@ -173,16 +163,6 @@
                 <p><strong>Requisitos:</strong> ID do Free Fire</p>
                 <p><strong>Benefícios:</strong> Acesso a todas as recompensas premium</p>
                 <p><strong>Validade:</strong> Temporada atual</p>
-            `,
-              caixa: `
-                <h3>📦 Informações sobre as Caixas de Armas</h3>
-                <p><strong>Pacote Arma 1 Contém:</strong> ;;;;;</p>
-                <p><strong>Pacote Arma 2 Contém:</strong> ;;;;;;</p>
-                <p><strong>Pacote Arma 3 Contém:</strong> 3x Caixas Scar
-3x Caixas M4A1
-3x Caixas MP40
-3x Caixas FAMAS/SKS</p>
-                <p><strong>Requisitos:</strong> Access token do Free Fire</p>
             `
         };
         let musicaAtiva = false;
@@ -372,7 +352,7 @@
             setTimeout(removePreloader, 3000); // 3000 milissegundos = 3 segundos
             
             // Preload de imagens
-            const imagensPreload = ['diamante.jpg', 'passe.jpg', 'caixa.jpg', 'perfil.jpg'];
+            const imagensPreload = ['diamante.jpg', 'passe.jpg', 'perfil.jpg'];
             imagensPreload.forEach(img => {
                 const link = document.createElement('link');
                 link.rel = 'preload';
