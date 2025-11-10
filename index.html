@@ -69,10 +69,9 @@
   
     
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js" defer></script>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-
 </head>
 <body>
  <div id="preloader">
@@ -84,11 +83,20 @@
 </div>
     <div id="particles-js"></div>
 
-    <nav class="navbar">
-        <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
-        <button onclick="mostrarCategoria('passe')">Passe</button>
-         <button onclick="mostrarCategoria('tokens')">Tokens</button>
-    </nav>
+   <nav class="navbar">
+    <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
+    <button onclick="mostrarCategoria('passe')">Passe</button>
+    <button onclick="mostrarCategoria('tokens')">Tokens</button>
+</nav>
+
+<!-- Botão de atualização -->
+<div style="text-align:center; margin: 10px 0;">
+  <button onclick="window.location.reload(true)" 
+    style="background:#25D366;color:white;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;">
+    🔄 Atualizar página
+  </button>
+</div>
+
 
     <img src="perfil.jpg" alt="Logo da HAX VENDAS - Loja de diamantes para Free Fire" class="logo">
     <h1 class="title">HAX VENDAS</h1>
@@ -363,12 +371,12 @@
         // --- FIM DA FUNÇÃO ---
 
 
-        // Inicialização
+                // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
             iniciarTimer();
             iniciarParticulas();
             
-            // ATRAZO ADICIONADO AQUI: O preloader só começará a sumir após 3 segundos
+            // ATRASO ADICIONADO AQUI: O preloader só começará a sumir após 3 segundos
             setTimeout(removePreloader, 3000); // 3000 milissegundos = 3 segundos
             
             // Preload de imagens
@@ -380,6 +388,11 @@
                 link.href = img;
                 document.head.appendChild(link);
             });
+
+            // 🔄 FORÇAR ATUALIZAÇÃO AUTOMÁTICA A CADA 1 MINUTO
+            setTimeout(() => {
+                window.location.reload(true);
+            }, 60000); // 60000 milissegundos = 1 minuto
         });
 
         // Service Worker para cache
@@ -394,7 +407,7 @@
                     });
             });
         }
-        
+
         // O fallback de 10 segundos pode ser removido se o delay de 3 segundos for suficiente
         // Ou você pode ajustar o tempo aqui também se quiser um fallback diferente.
         // window.addEventListener('load', () => {
