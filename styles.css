@@ -600,4 +600,31 @@ input:focus {
         border: 2px solid white;
     }
 }
+ /* Estilo do botão flutuante */
+  #btn-refresh {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    z-index: 9999;
+  }
 
+  /* Efeito hover */
+  #btn-refresh:hover {
+    transform: rotate(180deg) scale(1.1);
+    background: #20b85b;
+  }
+
+  /* Efeito de clique */
+  #btn-refresh:active {
+    transform: scale(0.95);
+  }
