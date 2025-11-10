@@ -83,6 +83,7 @@
     <nav class="navbar">
         <button onclick="mostrarCategoria('diamantes')">Diamantes</button>
         <button onclick="mostrarCategoria('passe')">Passe</button>
+         <button onclick="mostrarCategoria('tokens')">Tokens</button>
     </nav>
 
     <img src="perfil.jpg" alt="Logo da HAX VENDAS - Loja de diamantes para Free Fire" class="logo">
@@ -117,7 +118,7 @@
             <div class="category-section">
             <div class="product-card category-card" onclick="mostrarCategoria('tokens')">
                 <img src="tokens.jpg" alt="Ícone do tokens para Free Fire" class="product-image">
-                <h3 class="product-title">🎟️ Tokens</h3>
+                <h3 class="product-title">📦 Tokens</h3>
             </div>
         </div>
     </div>
@@ -151,7 +152,8 @@
                 { nome: "11.200 diamantes", preco: "R$ 310" },
                 { nome: "22.400 diamantes", preco: "R$ 600" }
             ],
-            passe: [{ nome: "Passe", preco: "R$ 7" }]
+            passe: [{ nome: "Passe", preco: "R$ 7" }]   ],
+            tokens: [{ nome: "1 caixa de tokens", preco: "R$ 1.50" }]
         };
 
         const infoBoxContent = {
@@ -359,7 +361,7 @@
             setTimeout(removePreloader, 3000); // 3000 milissegundos = 3 segundos
             
             // Preload de imagens
-            const imagensPreload = ['diamante.jpg', 'passe.jpg', 'perfil.jpg'];
+            const imagensPreload = ['diamante.jpg', 'passe.jpg', 'perfil.jpg', 'tokens.jpg'];
             imagensPreload.forEach(img => {
                 const link = document.createElement('link');
                 link.rel = 'preload';
